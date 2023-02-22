@@ -1,0 +1,6 @@
+55 00,06,12,18 * * * /Users/jameshayes/opt/anaconda3/python.app/Contents/MacOS/python /Users/jameshayes/getData.py > /Users/jameshayes/logGet.txt 2>&1
+56 00,06,12,18 * * * /Users/jameshayes/opt/anaconda3/python.app/Contents/MacOS/python /Users/jameshayes/process_Data_UTC.py > /Users/jameshayes/logProcess.txt 2>&1 
+25 07 * * * /Users/jameshayes/opt/anaconda3/python.app/Contents/MacOS/python /Users/jameshayes/GetData.py > /Users/jameshayes/logGet_12z.txt 2>&1
+26 07 * * * /Users/jameshayes/opt/anaconda3/python.app/Contents/MacOS/python /Users/jameshayes/Process_Data_UTC.py > /Users/jameshayes/logProcess_12z.txt 2>&1
+00 00 * * * /Users/jameshayes/opt/anaconda3/python.app/Contents/MacOS/python /Users/jameshayes/getTempestdata.py > /Users/jameshayes/getTempest.txt 2>&1
+00 00 * * * /Users/jameshayes/opt/anaconda3/python.app/Contents/MacOS/python /Users/jameshayes/getAPIfromDavis.py > /Users/jameshayes/getDavis.txt 2>&1
