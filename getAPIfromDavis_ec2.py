@@ -251,7 +251,7 @@ o4.value = "Date"
 # Calculate the date and write the data...
 now = datetime.now()
 date = now.strftime("%d") 
-offset_day = (int(date) + 3)
+offset_day = (int(date) + 2)
 
 maxTT = sheet.cell(row = offset_day, column = 2)
 maxTT.value = maxT
