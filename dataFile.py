@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[5]:
 
 
 import datetime
@@ -12,7 +12,6 @@ def dataFile_mac():
     date = now.strftime("%d") 
     myMonth = now.strftime("%B")
     myMonthNum = now.strftime("%m")
-    print(myMonthNum)
     myYear = now.strftime("%Y")
     addTo = f'_{myYear}{myMonthNum}{date}'
 
@@ -27,7 +26,20 @@ def dataFile_ec2():
     date = now.strftime("%d") 
     myMonth = now.strftime("%B")
     myMonthNum = now.strftime("%m")
-    print(myMonthNum)
+    myYear = now.strftime("%Y")
+    addTo = f'_{myYear}{myMonthNum}{date}'
+
+    path_name = '/home/ec2-user/'
+    file_name = f'Davis{addTo}.csv'
+    full_file = (f'{path_name}{file_name}')
+    
+    return(full_file)
+
+def dataFile_wxflow():
+    now = datetime.now()
+    date = now.strftime("%d") 
+    myMonth = now.strftime("%B")
+    myMonthNum = now.strftime("%m")
     myYear = now.strftime("%Y")
     addTo = f'_{myYear}{myMonthNum}{date}'
 
@@ -36,4 +48,16 @@ def dataFile_ec2():
     full_file = (f'{path_name}{file_name}')
     
     return(full_file)
+
+
+# In[6]:
+
+
+dataFile_wxflow()
+
+
+# In[ ]:
+
+
+
 
