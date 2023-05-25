@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[3]:
 
 
 import pandas as pd
@@ -14,7 +14,7 @@ import calcTimeNow
 import month_Days
 
 
-# In[1]:
+# In[2]:
 
 
 #
@@ -99,7 +99,7 @@ for qwe in sta:
     plt.figure(figsize= (10,6))
     plt.locator_params(axis='x', nbins= r)
     plt.xlim(1, date)
-    plt.ylim(-15, 105)
+    plt.ylim(0, 105)
     plt.xticks(fontsize=12)
     plt.xlabel('Date', fontsize=12, fontweight ='bold')
     plt.yticks(fontsize=12)
@@ -111,10 +111,4 @@ for qwe in sta:
     plt.plot(xnew,y1_smooth,color = "blue", linewidth =3, label ="Low")
     plt.legend(fontsize=12)
     plt.savefig(f'{path1}temps_{qwe}')
-
-
-# In[ ]:
-
-
-
 
