@@ -1,0 +1,198 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: royalblue;
+    color: black;
+    font-family: sans-serif;
+    font-size: 2.0vw;
+    font-weight: 300;
+    text-rendering: optimizeLegibility;
+
+}
+
+body {
+    height: 100%;
+
+}
+
+h1 {
+    color: yellow;
+    font-size: 5vw;
+    text-align: center;
+}
+
+h2 {
+    color: black;
+    font-size: 1.5vw;
+    text-align: center;
+}
+
+h3 {
+    font-size: 1.5vw;
+    color: black;
+    text-align: center;
+    padding: 10px;
+}
+
+h4 {
+    font-size: 1.5wv;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+
+tr {
+    font-size: 1.5vw;
+    color: blue;
+
+}
+
+td {
+    font-size: 1.5vw;
+    color: black;
+    text-align: center;
+    padding: 5px;
+    font-weight: bold;
+}
+
+p {
+    font-size: 2.0vw;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+
+}
+
+a {
+    text-decoration: none;
+    color: darkblue;
+    font-weight: bold;
+}
+
+.topbox {
+    border: 5px outset darkblue;
+    background-color: yellow;
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 3vw;
+    transform: scale(0.45);
+    margin-bottom: 2%;
+    margin: auto;
+    width: 40%;
+}
+
+.nationalCenters {
+    width: 100%;
+    border: 5px outset Black;
+    background-color: lightgoldenrodyellow;
+    color: black;
+    padding: 5px;
+    font-size: 5vw;
+    font-weight: 800;
+    margin-top: 1%;
+    margin-bottom: 2%;
+    text-align: center;
+
+}
+
+.wfo {
+    width: 100%;
+    background-color: lightgoldenrodyellow;
+    border: 5px outset Black;
+    color: black;
+    padding: 5px;
+    font-size: 5vw;
+    font-weight: 800;
+    margin-top: 1%;
+    margin-bottom: 2%;
+    text-align: center;
+
+
+}
+
+.wfo1 {
+    width: 100%;
+    background-color: lightgoldenrodyellow;
+    border: 5px outset Black;
+    color: black;
+    padding: 5px;
+    font-size: 5vw;
+    font-weight: 800;
+    text-align: center;
+    margin-top: 1%;
+    margin-bottom: 2%;
+
+}
+
+.localStuff {
+    width: 100%;
+    background-color: lightgoldenrodyellow;
+    color: black;
+    border: 5px outset Black;
+    padding: 5px;
+    font-size: 5vw;
+    font-weight: 800;
+    margin-top: 1%;
+    text-align: center;
+
+}
+
+.em {
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    color: black;
+    padding: 3px;
+    font-size: 3vw;
+    font-weight: 800;
+    width: 100%;
+    text-align: center;
+
+}
+
+.rightside {
+    width: 100%;
+    height: fit-content;
+    background-color: rgb(2, 2, 2);
+    color: yellow;
+    font-size: 1vw;
+    font-weight: 800;
+    text-align: center;
+
+}
+
+.drillDown {
+    width: 100%;
+    height: auto;
+    border: 5px outset Black;
+    background-color: lightgoldenrodyellow;
+    color: black;
+    padding: 5px;
+    font-size: 7vw;
+    font-weight: 800;
+    text-align: center;
+
+}
+
+.tempImages {
+    width: 100%;
+    height: auto;
+    border: 5px outset Black;
+    background-color: black;
+    color: black;
+    padding: 5px;
+    font-size: 7vw;
+    font-weight: 800;
+    text-align: center;
+}
+
+/*--iframe {
+   height: 50%;
+}*/
