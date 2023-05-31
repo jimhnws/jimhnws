@@ -63,22 +63,22 @@ for qwe in sta:
         else:
             r = 31
     
-    print(date,r)
     wxdata = f'{path}{month_name}_{year}_{qwe}.xlsx'
     df = pd.read_excel(wxdata, skiprows=[0,1])
-    print(df)
     if qwe == 'Tempest':
         df = df.drop(df.columns[[1,2,3,4,5,8,9]], axis=1)
         df = df.drop(df.index[date:r]) 
-        df.plot(kind="bar", x = "Date", rot = 0, color={"totR": "green", "corR": "red"} )
+        df.plot(kind="bar", x = "Date", rot = 0, width = 0.9, color={"totR": "green", "corR": "red"} )
     else:
         df = df.drop(df.columns[[1,2,3,4,5,7,8,9,10,11,12,13]], axis=1)
         df = df.drop(df.index[date:r])       
-        df.plot(kind="bar", x = "Date", rot = 0, color={"Rainfall": "green"} )
-  
+        df.plot(kind="bar", x = "Date", rot = 0, width = 0.9, color={"Rainfall": "green"} )
+        
+        
+    plot.tick_params(axis='x', colors='black', direction='out', length=4, width=1)
     plot.figsize = (10,6)
     plot.grid(axis = "y", linewidth = 1.0, color = 'black')
-    plot.xticks(fontsize=10)
+    plot.xticks(fontsize=8)
     plot.xlabel('Date', fontsize=12, fontweight ='bold')
     plot.yticks(fontsize=12)
     plot.ylabel('Rainfall (inches)', fontsize=12, fontweight ='bold')

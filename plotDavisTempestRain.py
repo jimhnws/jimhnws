@@ -54,29 +54,28 @@ for monther in months:
         else:
             r = 28
     else:
-        r = 31
-    
-print(date,r)
-    
+        r = 31 
+   
 wxdata1 = f'{path}{month_name}_{year}_Tempest.xlsx'
 wxdata = f'{path}{month_name}_{year}_Davis.xlsx'
 df = pd.read_excel(wxdata1, skiprows=[0,1])
-df = df.drop(df.columns[[1,2,3,4,5,8,9]], axis=1)
+df = df.drop(df.columns[[1,2,3,4,5,6,8,9]], axis=1)
 df = df.drop(df.index[date:r]) 
 
 df1 = pd.read_excel(wxdata, skiprows=[0,1])
 df1 = df1.drop(df1.columns[[1,2,3,4,5,7,8,9,10,11,12,13,14]], axis=1)
 df1 = df1.drop(df1.index[date:r])              
-    
+
+
 df2 = pd.merge(df,df1, on='Date')
-df2 = df2.drop(df2.columns[[1]], axis = 1)
-print(df2)
 
-df2.plot(kind="bar", x = "Date", rot = 0, color={"Rainfall": "green", "corR": "red"})
 
+df2.plot(kind="bar", x = "Date", rot = 0, width = 1.0, color={"Rainfall": "green", "corR": "red"})
+
+plot.tick_params(axis='x', colors='black', direction='out', length=4, width=1)
 plot.figsize = (10,6)
 plot.grid(axis = "y", linewidth = 1.0, color = 'black')
-plot.xticks(fontsize=10)
+plot.xticks(fontsize=8)
 plot.xlabel('Date', fontsize=12, fontweight ='bold')
 plot.yticks(fontsize=12)
 plot.ylabel('Rainfall (inches)', fontsize=12, fontweight ='bold')
