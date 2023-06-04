@@ -98,13 +98,17 @@ for y in states:
         timeOnset = onset[11:16]
         hourOnset = int(timeOnset[0:2])
                
-        if hourOnset == 0:
-            hourOnset = 12
-        elif hourOnset in range(1,12):    
+        
+        if hourOnset in range(1,12):    
             xx = 'AM'
-        elif hourOnset in range(12,24):
+            
+        if hourOnset in range(12,24):
             hourOnset = hourOnset - 12
             xx = "PM"
+            
+        if hourOnset == 0:
+            hourOnset = 12
+            xx = 'AM'
         
         minuteOnset = (timeOnset[3:5])
         minOnset = int(timeOnset[3:5])  
@@ -134,7 +138,7 @@ for y in states:
             hourEnds = 12
             print(hourEnds)
             xxE = 'AM'
-            dayEnds = dayEnds + 1 
+            #dayEnds = dayEnds + 1 
         
         
         minuteEnds = (timeEnds[3:5])

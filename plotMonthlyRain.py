@@ -14,7 +14,7 @@ import calcTimeNow
 import month_Days
 
 
-# In[8]:
+# In[1]:
 
 
 # Determine the date
@@ -27,12 +27,12 @@ sta = ['Tempest', 'Davis']
 for qwe in sta:
 
     xr = calcTimeNow.calcTimeNow()
-    month_name, year, date = xr[1], xr[2],xr[3]
+    month_name = calcTimeNow.calcMonthNow()
+    year, date = xr[2],xr[3]
     year = int(year)
     date =  int(date)
     date = date - 1
-    print(date)
-
+    
     # figure out the month number
     months = ['January','February', 'March','April','May','June','July','August','September','October','November','December']
 
@@ -45,38 +45,44 @@ for qwe in sta:
     else:
         leap_year = False
 
-    for monther in months:
-    
-        month31 = ['January','March', 'May', 'July', 'August', 'October', 'December']
-        month30 = ['April', 'June', 'September', 'November']
-        month28 = ['February']
+    month31 = ['January','March', 'May', 'July', 'August', 'October', 'December']
+    month30 = ['April', 'June', 'September', 'November']
+    month28 = ['February']
  
-        if monther in month31:
-            r = 31
-        elif monther in month30:
-            r = 30 
-        elif monther in month28:
-            if leap_year:
-                r = 29
-            else:
-                r = 28
+    if month_name in month31:
+        r = 31
+    elif month_name in month30:
+        r = 30 
+    elif month_name in month28:
+        if leap_year:
+            r = 29
         else:
-            r = 31
+            r = 28
+    else:
+        r = 31           
+        
+        
+    print(date,r)    
     
     wxdata = f'{path}{month_name}_{year}_{qwe}.xlsx'
     df = pd.read_excel(wxdata, skiprows=[0,1])
+        
     if qwe == 'Tempest':
         df = df.drop(df.columns[[1,2,3,4,5,8,9]], axis=1)
-        df = df.drop(df.index[date:r]) 
+        df = df.drop(df.index[date:r+1]) 
+        df['Date'] = df['Date'].astype(int)
         df.plot(kind="bar", x = "Date", rot = 0, width = 0.9, color={"totR": "green", "corR": "red"} )
     else:
-        df = df.drop(df.columns[[1,2,3,4,5,7,8,9,10,11,12,13]], axis=1)
-        df = df.drop(df.index[date:r])       
+        df = df.drop(df.columns[[1,2,3,4,5,7,8,9,10,11,12,13,14]], axis=1)
+        df = df.drop(df.index[date:r+1])
+        df['Date'] = df['Date'].astype(int)
         df.plot(kind="bar", x = "Date", rot = 0, width = 0.9, color={"Rainfall": "green"} )
         
-        
+    
     plot.tick_params(axis='x', colors='black', direction='out', length=4, width=1)
+    plot.locator_params(axis='x', nbins= r)
     plot.figsize = (10,6)
+    plot.ylim(0, 3)
     plot.grid(axis = "y", linewidth = 1.0, color = 'black')
     plot.xticks(fontsize=8)
     plot.xlabel('Date', fontsize=12, fontweight ='bold')
