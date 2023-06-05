@@ -90,13 +90,13 @@ for qwe in sta:
 
 
     #define x as 200 equally spaced values between the min and max of original x 
-    #xnew = np.linspace(x.min(), x.max(), 200) 
+    xnew = np.linspace(x.min(), x.max(), 200) 
 
     #define spline
-    #HIspl = make_interp_spline(x, y, k=1)
-    #y_smooth = HIspl(xnew)
-    #LOspl = make_interp_spline(x, y1, k=1)
-    #y1_smooth = LOspl(xnew)
+    HIspl = make_interp_spline(x, y, k=2)
+    y_smooth = HIspl(xnew)
+    LOspl = make_interp_spline(x, y1, k=2)
+    y1_smooth = LOspl(xnew)
     
     path1 = '/var/www/html/000/'
     plt.figure(figsize= (10,6))
@@ -110,8 +110,8 @@ for qwe in sta:
     plt.locator_params(axis='y', nbins=20)
     plt.title(f'{month_name} {year} Temperatures - {qwe}', fontsize=12, fontweight ='bold')
     plt.grid(axis = "y", linewidth = 2.0, color = 'black')
-    plt.plot(x, y, color = "red", linewidth =3, label ="High")
-    plt.plot(x, y1, color = "blue", linewidth =3, label ="Low")
+    plt.plot(xnew, y_smooth, color = "red", linewidth =3, label ="High")
+    plt.plot(xnew, y1_smooth, color = "blue", linewidth =3, label ="Low")
     plt.legend(fontsize=12)
     plt.savefig(f'{path1}temps_{qwe}')
 
