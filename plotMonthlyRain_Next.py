@@ -5,11 +5,9 @@
 
 
 import pandas as pd
-import matplotlib.pyplot as plot
+import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 import numpy as np
-import numpy as np
-from scipy.interpolate import make_interp_spline
 import calcTimeNow
 import month_Days
 
@@ -62,7 +60,11 @@ for qwe in sta:
         r = 31           
         
       
-        
+    x_indexes = np.arange(1, r+1)
+    print(x_indexes)
+    height = 0.0
+    width = 0.25
+    
     wxdata = f'{path}{month_name}_{year}_{qwe}.xlsx'
     df = pd.read_excel(wxdata, skiprows=[0,1])
         
@@ -70,28 +72,32 @@ for qwe in sta:
         df = df.drop(df.columns[[1,2,3,4,5,8,9]], axis=1)
         df = df.drop(df.index[date:r+1]) 
         df['Date'] = df['Date'].astype(int)
-        df.plot(kind="bar", x = "Date", rot = 0, width = 0.9, color={"totR": "green", "corR": "red"} )
+        #df.plot(kind="bar", x = "Date", rot = 0, width = 0.9, color={"totR": "green", "corR": "red"} )
+        plt.bar(x_indexes, height, color ='red', width = width, label = "Corrected")
+        plt.bar(x_indexes + width, height, color ='green', width = width, label = "Tabulated")
+        
     else:
         df = df.drop(df.columns[[1,2,3,4,5,7,8,9,10,11,12,13,14]], axis=1)
         df = df.drop(df.index[date:r+1])
         df['Date'] = df['Date'].astype(int)
-        df.plot(kind="bar", x = "Date", rot = 0, width = 0.9, color={"Rainfall": "green"})    
-     
+        #df.plot(kind="bar", x = "Date", rot = 0, width = 0.9, color={"Rainfall": "green"})    
+        plt.bar(x_indexes + width, height, color ='green', width = width)     
     
-    plot.locator_params(axis='x', nbins= r)
     
-    plot.tick_params(axis='x', colors='black', direction='out', length=4, width=1)
-    plot.figsize = (10,6)
-    plot.locator_params(axis='x', nbins= r)
-    plot.xlim(0, r)
-    plot.ylim(0, None)
-    plot.grid(axis = "y", linewidth = 1.0, color = 'black')
-    plot.xticks(fontsize=8)
-    plot.xlabel('Date', fontsize=12, fontweight ='bold')
-    plot.yticks(fontsize=12)
-    plot.ylabel('Rainfall (inches)', fontsize=12, fontweight ='bold')
-    plot.title(f'{month_name} {year} Rainfall - {qwe}', fontsize=12, fontweight ='bold')
-    plot.savefig(f'{path1}rainfall_{qwe}')
+    plt.locator_params(axis='x', nbins= r)
+    plt.tick_params(axis='x', colors='black', direction='out', length=4, width=1)
+    plt.figsize = (10,6)
+    plt.locator_params(axis='x', nbins= r)
+    plt.xlim(1, r)
+    plt.ylim(0, None)
+    plt.grid(axis = "y", linewidth = 1.0, color = 'black')
+    plt.xticks(fontsize=8)
+    plt.xlabel('Date', fontsize=12, fontweight ='bold')
+    plt.yticks(fontsize=12)
+    plt.ylabel('Rainfall (inches)', fontsize=12, fontweight ='bold')
+    plt.legend()
+    plt.title(f'{month_name} {year} Rainfall - {qwe}', fontsize=12, fontweight ='bold')
+    plt.savefig(f'{path1}rainfall_{qwe}')
     
 
 

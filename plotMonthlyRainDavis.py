@@ -14,15 +14,13 @@ import calcTimeNow
 import month_Days
 
 
-# In[1]:
+# In[2]:
 
-
-# Determine the date
 
 path = '/home/ec2-user/'
-path1 = '/var/www/html/000/'
+path1 = '/var/www/html/trclimate/'
 
-sta = ['Tempest', 'Davis']
+sta = ['Davis']
 
 for qwe in sta:
 
@@ -61,8 +59,7 @@ for qwe in sta:
     else:
         r = 31           
         
-      
-        
+              
     wxdata = f'{path}{month_name}_{year}_{qwe}.xlsx'
     df = pd.read_excel(wxdata, skiprows=[0,1])
         
@@ -75,28 +72,24 @@ for qwe in sta:
         df = df.drop(df.columns[[1,2,3,4,5,7,8,9,10,11,12,13,14]], axis=1)
         df = df.drop(df.index[date:r+1])
         df['Date'] = df['Date'].astype(int)
-        df.plot(kind="bar", x = "Date", rot = 0, width = 0.9, color={"Rainfall": "green"})    
-     
-    
-    plot.locator_params(axis='x', nbins= r)
-    
-    plot.tick_params(axis='x', colors='black', direction='out', length=4, width=1)
-    plot.figsize = (10,6)
-    plot.locator_params(axis='x', nbins= r)
-    plot.xlim(0, r)
-    plot.ylim(0, None)
-    plot.grid(axis = "y", linewidth = 1.0, color = 'black')
-    plot.xticks(fontsize=8)
-    plot.xlabel('Date', fontsize=12, fontweight ='bold')
-    plot.yticks(fontsize=12)
-    plot.ylabel('Rainfall (inches)', fontsize=12, fontweight ='bold')
-    plot.title(f'{month_name} {year} Rainfall - {qwe}', fontsize=12, fontweight ='bold')
-    plot.savefig(f'{path1}rainfall_{qwe}')
-    
+        df.plot(kind="bar", x = "Date", rot = 0, width = 0.9, color={"Rainfall": 'green'})
 
 
 # In[ ]:
 
 
-
+#Plot the results in matplotlib
+plot.figure(figsize=(10, 6))
+plot.grid(True)
+#plot.grid(axis = "y", linewidth = 2.0, color = 'black')
+plot.locator_params(axis='x', nbins= r)
+plot.xlim(1,r)
+plot.ylim(0, None)
+plot.xticks(fontsize=12)
+plot.xlabel('Date', fontsize=12, fontweight ='bold')
+plot.yticks(fontsize=12)
+plot.ylabel('Rainfall (inches)', fontsize=12, fontweight ='bold')
+plot.locator_params(axis='y', nbins=10)
+plot.title(f'{month_name} {year} Rainfall', fontsize=12, fontweight ='bold')
+plot.savefig(f'{path1}rain_{qwe}')
 

@@ -5,7 +5,7 @@
 
 
 import pandas as pd
-import matplotlib.pyplot as plot
+import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 import numpy as np
 import numpy as np
@@ -14,18 +14,19 @@ import calcTimeNow
 import month_Days
 
 
-# In[6]:
+# In[3]:
 
 
 path = '/home/ec2-user/'
 path1 = '/var/www/html/000/'
 
 xr = calcTimeNow.calcTimeNow()
-month_name, year, date = xr[1], xr[2],xr[3]
+month_name = calcTimeNow.calcMonthNow()
+year, date = xr[2],xr[3]
 year = int(year)
 date =  int(date)
 date = date - 1
-    
+
 # figure out the month number
 months = ['January','February', 'March','April','May','June','July','August','September','October','November','December']
 
@@ -55,9 +56,17 @@ for monther in months:
             r = 28
     else:
         r = 31 
-   
+        
+x_indexes = np.arange(1, r+1)
+print(x_indexes)
+height = 0.0
+width = 0.25     
+
+print(month_name)
 wxdata1 = f'{path}{month_name}_{year}_Tempest.xlsx'
 wxdata = f'{path}{month_name}_{year}_Davis.xlsx'
+print(wxdata,wxdata1)
+
 df = pd.read_excel(wxdata1, skiprows=[0,1])
 df = df.drop(df.columns[[1,2,3,4,5,6,8,9]], axis=1)
 df = df.drop(df.index[date:r]) 
@@ -66,22 +75,26 @@ df1 = pd.read_excel(wxdata, skiprows=[0,1])
 df1 = df1.drop(df1.columns[[1,2,3,4,5,7,8,9,10,11,12,13,14]], axis=1)
 df1 = df1.drop(df1.index[date:r])              
 
-
 df2 = pd.merge(df,df1, on='Date')
+df2['Date'] = df2['Date'].astype(int)
 
+#df2.plot(kind="bar", x = "Date", rot = 0, width = 1.0, color={"Rainfall": "green", "corR": "red"})
+plt.bar(x_indexes, height, color ='red', width = width, label = 'corR')
+plt.bar(x_indexes + width, height, color ='green', width = width, label = 'Rainfall')
 
-df2.plot(kind="bar", x = "Date", rot = 0, width = 1.0, color={"Rainfall": "green", "corR": "red"})
-
-plot.tick_params(axis='x', colors='black', direction='out', length=4, width=1)
-plot.figsize = (10,6)
-plot.grid(axis = "y", linewidth = 1.0, color = 'black')
-plot.xticks(fontsize=8)
-plot.xlabel('Date', fontsize=12, fontweight ='bold')
-plot.yticks(fontsize=12)
-plot.ylabel('Rainfall (inches)', fontsize=12, fontweight ='bold')
-plot.title(f'{month_name} {year} Rainfall - Davis vs Tempest', fontsize=12, fontweight ='bold')
-plot.savefig(f'{path1}rainfall_DavisTempest')
-        
+plt.tick_params(axis='x', colors='black', direction='out', length=4, width=1)
+plt.figsize = (10,6)
+plt.grid(axis = "y", linewidth = 1.0, color = 'black')
+plt.locator_params(axis='x', nbins= r)
+plt.xlim(1, r)
+plt.ylim(0, None)
+plt.xticks(fontsize=8)
+plt.xlabel('Date', fontsize=12, fontweight ='bold')
+plt.yticks(fontsize=12)
+plt.ylabel('Rainfall (inches)', fontsize=12, fontweight ='bold')
+plt.legend()
+plt.title(f'{month_name} {year} Rainfall - Davis vs Tempest', fontsize=12, fontweight ='bold')
+plt.savefig(f'{path1}rainfall_DavisTempest')    
 
 
 # In[ ]:
