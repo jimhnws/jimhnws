@@ -57,7 +57,7 @@ for monther in months:
     else:
         r = 31 
         
-x_indexes = np.arange(1, r+1)
+x_indexes = np.arange(1, r)
 print(x_indexes)
 height = 0.0
 width = 0.25     
@@ -86,7 +86,7 @@ plt.tick_params(axis='x', colors='black', direction='out', length=4, width=1)
 plt.figsize = (10,6)
 plt.grid(axis = "y", linewidth = 1.0, color = 'black')
 plt.locator_params(axis='x', nbins= r)
-plt.xlim(1, r)
+plt.xlim(1, r-1)
 plt.ylim(0, None)
 plt.xticks(fontsize=8)
 plt.xlabel('Date', fontsize=12, fontweight ='bold')
