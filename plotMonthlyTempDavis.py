@@ -100,7 +100,7 @@ for qwe in sta:
     path1 = '/var/www/html/trclimate/'
     plt.figure(figsize= (10,6))
     plt.locator_params(axis='x', nbins= r)
-    plt.xlim(1, r-1)
+    plt.xlim(1, r)
     plt.ylim(0, 105)
     plt.xticks(fontsize=12)
     plt.xlabel('Date', fontsize=12, fontweight ='bold')
@@ -109,7 +109,6 @@ for qwe in sta:
     plt.locator_params(axis='y', nbins=20)
     plt.title(f'{month_name} {year} Temperatures', fontsize=12, fontweight ='bold')
     plt.grid(True)
-    plt.set_color = ('xkcd:blue')
     #plt.grid(axis = "y", linewidth = 2.0, color = 'black')
     plt.plot(xnew, y_smooth, color = "red", linewidth =3, label ="High")
     plt.plot(xnew, y1_smooth, color = "blue", linewidth =3, label ="Low")
