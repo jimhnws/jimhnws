@@ -11,7 +11,7 @@ import numpy as np
 import numpy as np
 from scipy.interpolate import make_interp_spline
 import calcTimeNow
-import month_Days
+import getDaysInMonth
 
 
 # In[2]:
@@ -31,34 +31,8 @@ for qwe in sta:
     date =  int(date)
     date = date - 1
     
-    # figure out the month number
-    months = ['January','February', 'March','April','May','June','July','August','September','October','November','December']
-
-    if (year % 400 == 0):
-        leap_year = True
-    elif (year % 100 == 0):
-        leap_year = False
-    elif (year % 4 == 0):
-        leap_year = True
-    else:
-        leap_year = False
-
-    month31 = ['January','March', 'May', 'July', 'August', 'October', 'December']
-    month30 = ['April', 'June', 'September', 'November']
-    month28 = ['February']
- 
-    if month_name in month31:
-        r = 31
-    elif month_name in month30:
-        r = 30 
-    elif month_name in month28:
-        if leap_year:
-            r = 29
-        else:
-            r = 28
-    else:
-        r = 31           
-        
+    r = getDaysInMonth.getDaysInMonth()
+    print(r)    
               
     wxdata = f'{path}{month_name}_{year}_{qwe}.xlsx'
     df = pd.read_excel(wxdata, skiprows=[0,1])
