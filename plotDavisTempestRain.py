@@ -48,8 +48,11 @@ df2 = pd.merge(df,df1, on='Date')
 df2['Date'] = df2['Date'].astype(int)
 
 # Settings for plotting the rainfall
-plt.bar(x_indexes, height, color ='red', width = width, label = 'corR')
-plt.bar(x_indexes + width, height, color ='green', width = width, label = 'Rainfall')
+#plt.bar(x_indexes, height, color ='red', width = width, label = 'corR')
+#plt.bar(x_indexes + width, height, color ='green', width = width, label = 'Rainfall')
+
+plt.bar(df['Date'], df['corR'], color ='red', width = 0.3, label = "Tempest Corrected")
+plt.bar((df1['Date'] + width), df1['Rainfall'], color ='green', width = 0.3, label = "Davis")
 
 plt.figsize = (10,6)
 plt.tick_params(axis='x', colors='black', direction='out', length=4, width=1)

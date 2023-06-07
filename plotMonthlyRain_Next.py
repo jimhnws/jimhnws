@@ -43,15 +43,15 @@ for qwe in sta:
         df = df.drop(df.columns[[1,2,3,4,5,8,9]], axis=1)
         df = df.drop(df.index[date:r]) 
         df['Date'] = df['Date'].astype(int)
-        plt.bar(x_indexes, height, color ='red', width = width, label = "Corrected")
-        plt.bar(x_indexes + width, height, color ='green', width = width, label = "Tabulated")
+        plt.bar(df['Date'], df['totR'], color ='red', width = 0.3, label = "Tabulated")
+        plt.bar((df['Date'] + width), df['corR'], color ='green', width = 0.3, label = "Corrected")
+        #plt.bar(df['Date'],df['totR'], color = "green", width= 0.6)
         
     else:
         df = df.drop(df.columns[[1,2,3,4,5,7,8,9,10,11,12,13,14]], axis=1)
         df = df.drop(df.index[date:r])
         df['Date'] = df['Date'].astype(int)
-        plt.bar(x_indexes + width, height, color ='green', width = width)     
-    
+        #plt.bar(df['Date']+ width),   color ='green', width = width)    
     
     plt.figsize = (10,6)
     plt.locator_params(axis='x', nbins= r)
