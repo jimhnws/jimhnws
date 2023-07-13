@@ -54,7 +54,9 @@ format1 = '&format=csv'
 goGetDeviceSummary = (f'{protocol}{urlSiteDevice}{deviceID}{preStart}{start_time}{preEnd}{end_time}{format1}{preToken}{token}')
 print(goGetDeviceSummary)
 r =  requests.get(goGetDeviceSummary)
-full_file = dataFile.dataFile_wxflow()
+path = '/home/ec2-user/'
+file_name = 'tempest_temp.csv'
+full_file = {path}{file_name}
 
 with open(full_file,'w') as fd:
      fd.write(r.text)
@@ -71,7 +73,9 @@ import getNameNumbers
 # Read in the CSV file for processing in pandas
 #
 
-full_file = dataFile.dataFile_wxflow()
+path = '/home/ec2-user/'
+file_name = 'tempest_temp.csv'
+full_file = {path}{file_name}
 df = pd.read_csv(full_file, index_col=False)
 
 pd.set_option('display.max_rows', 1440)
