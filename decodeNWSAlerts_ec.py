@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[22]:
+# In[1]:
 
 
 import json
@@ -96,20 +96,27 @@ for y in states:
         monthOnset = int(onset[5:7])
         dayOnset = int(onset[8:10])
         timeOnset = onset[11:16]
-        hourOnset = int(timeOnset[0:2])
-               
+        hourOnset = int(timeOnset[0:2])         
         
-        if hourOnset in range(1,12):    
+        if hourOnset in range(1,12):  
+            print(f' 1-12 This is the hourOnset for this example: {hourOnset}')
             xx = 'AM'
             
         if hourOnset in range(12,24):
-            hourOnset = hourOnset - 12
+            if hourOnset == 12:
+                hourOnset = 12
+            else:
+                hourOnset = hourOnset - 12
+            print(f'12-24 This is the hourOnset for this example: {hourOnset}')
             xx = "PM"
             
         if hourOnset == 0:
             hourOnset = 12
+            print("As it turns out, I am here", y)
+            print(f'This is the hourOnset for this example: {hourOnset}')
             xx = 'AM'
-        
+            
+                
         minuteOnset = (timeOnset[3:5])
         minOnset = int(timeOnset[3:5])  
         newOnset = (str(hourOnset) + minuteOnset)
@@ -124,9 +131,7 @@ for y in states:
         dayEnds = int(ends[8:10])
         timeEnds = ends[11:16]
         hourEnds = int(timeEnds[0:2]) 
-        
-        print(hourEnds)
-                            
+                                            
         if hourEnds in range(1,12):    
             xxE = 'AM'
         
@@ -136,7 +141,6 @@ for y in states:
             
         if hourEnds == 0:
             hourEnds = 12
-            print(hourEnds)
             xxE = 'AM'
             #dayEnds = dayEnds + 1 
         
