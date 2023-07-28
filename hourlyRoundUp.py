@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[92]:
+# In[95]:
 
 
 import json
@@ -24,11 +24,12 @@ temp = round((rsqd['air_temperature']) * 1.8 + 32)
 dew_point = round((rsqd['dew_point']) * 1.8 + 32)
 sea_press = round((rsqd['sea_level_pressure']) * 0.0295301, 2)
 press_trend = rsqd['pressure_trend']
-wind_spd = int(rsqd['wind_avg']) * 2.23694
+wind_spd = round((rsqd['wind_avg']) * 2.23694)
+feels_like = round((rsqd['feels_like']) * 1.8 + 32)
 
 wind_card = round(rsqd['wind_direction'])
 if wind_card == 0:
-    wind_dir = 'calm'
+    wind_dir = 'north'
 if wind_card > 0 and wind_card < 23:
     wind_dir = 'north'
 if wind_card > 22 and wind_card < 68: 
@@ -48,8 +49,8 @@ if wind_card > 292 and wind_card < 348:
 if wind_card > 348 and wind_card < 361:
     wind_dir = 'north' 
 
-wind = f'{wind_dir} at {wind_spd} miles an hour'    
-if wind_spd < 3:
+wind = f'{wind_dir} at {wind_spd} miles per hour'    
+if wind_spd < 1.5:
     wind = 'calm'
 
 pcpn_1hr = round((rsqd['precip_accum_last_1hr'] * 0.03937), 2)
@@ -61,11 +62,23 @@ dt_object = datetime.fromtimestamp(timestamp)
 localT = dt_object.astimezone(timezone)
 lastTime = localT.strftime('%I:%M %p')
 
+heat_desc = f'(Feels like {feels_like} degrees)'
+if feels_like < 100:
+    heat_desc = ''
+    
+print(feels_like, heat_desc)    
+
 with open('/var/www/html/000/text975.txt','w') as fd:
     print(f'In Toms River, NJ at {lastTime}','\n', file = fd)
-    print(f'The temperature was {temp} degrees', file =fd)
+    print(f'The temperature was {temp} degrees {heat_desc}', file = fd)
     print(f'The relative humidity was {rh}%', file = fd)
     print(f'The wind was {wind}', file = fd)
-    print(f'The barometric pressure was {sea_press} inches and {press_trend}', file = fd)
-    print(f'There was {pcpn_1hr} inches of rainfall in the last hour', file = fd)
+    print(f'The barometric pressure was {sea_press:.2f} inches and {press_trend}', file = fd)
+    print(f'There was {pcpn_1hr:.2f} inches of rainfall in the last hour', file = fd)
+
+
+# In[ ]:
+
+
+
 
