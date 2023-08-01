@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[3]:
 
 
 #!/usr/bin/env python
@@ -56,7 +56,7 @@ print(goGetDeviceSummary)
 r =  requests.get(goGetDeviceSummary)
 path = '/home/ec2-user/'
 file_name = 'tempest_temp.csv'
-full_file = {path}{file_name}
+full_file = f'{path}{file_name}'
 
 with open(full_file,'w') as fd:
      fd.write(r.text)
@@ -75,7 +75,7 @@ import getNameNumbers
 
 path = '/home/ec2-user/'
 file_name = 'tempest_temp.csv'
-full_file = {path}{file_name}
+full_file = f'{path}{file_name}'
 df = pd.read_csv(full_file, index_col=False)
 
 pd.set_option('display.max_rows', 1440)
@@ -158,7 +158,8 @@ import getNameNumbers
 
 gg = getNameNumbers.tempest_ec2()
 
-xls_filename, xls_fullfile, path_name, date, thisYear, this_month = gg[0], gg[1], gg[2], gg[3], gg[4], gg[5]
+xls_filename, xls_fullname, path_name, date, thisYear, this_month = gg[0], gg[1], gg[2], gg[3], gg[4], gg[5]
+
 
 #sa1 = excelFilename.tempest_ec2()
 #xls_filename, path_name = (sa1[0], sa1[1])
@@ -166,7 +167,7 @@ xls_filename, xls_fullfile, path_name, date, thisYear, this_month = gg[0], gg[1]
 #t1 = calcTimeNow()
 #now, myMonth, myYear, date = (t1[0], t1[1], t1[2], t1[3])
 
-wb = openpyxl.load_workbook(xls_fullfile)
+wb = openpyxl.load_workbook(xls_fullname)
 sheet = wb.active
 
 # Write headers first...
@@ -204,6 +205,7 @@ j3.value = 'Lightning6_10'
 
 # Write the data..
 
+print(date)
 offset_day = (int(date) + 2)
 maxTT = sheet.cell(row = offset_day, column = 2)
 maxTT.value = maxT
@@ -222,7 +224,7 @@ lightning1.value = q
 lightning2 = sheet.cell(row = offset_day, column = 10)
 lightning2.value = r1
 
-wb.save(xls_fullfile)
+wb.save(xls_fullname)
 
 
 # In[ ]:
@@ -232,7 +234,8 @@ wb.save(xls_fullfile)
 
 html_path = '/var/www/html/000/'
 
-df1 = pd.read_excel(xls_fullfile, skiprows=2)
+df1 = pd.read_excel(xls_fullname, skiprows=2)
+print(df1)
 df1 = df1.drop(df1.columns[[10,11]], axis = 1)
-df1.to_html(f'{html_path}testTempest1.html', index = False) 
+df1.to_html(f'{html_path}testTempest.html', index = False) 
 
