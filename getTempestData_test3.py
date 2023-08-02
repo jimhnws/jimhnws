@@ -227,7 +227,7 @@ lightning2.value = r1
 wb.save(xls_fullname)
 
 
-# In[ ]:
+# In[6]:
 
 
 # Read the Excel file as a possible pandas dataframe and html file
@@ -236,6 +236,12 @@ html_path = '/var/www/html/000/'
 
 df1 = pd.read_excel(xls_fullname, skiprows=2)
 print(df1)
-df1 = df1.drop(df1.columns[[10,11]], axis = 1)
-df1.to_html(f'{html_path}testTempest.html', index = False) 
+df2 = df1.drop(df1.columns[[10,11,12,13,14]], axis = 1)
+df2.to_html(f'{html_path}testTempest.html', index = False) 
+
+
+# In[ ]:
+
+
+
 

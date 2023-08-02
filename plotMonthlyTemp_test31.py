@@ -15,7 +15,7 @@ import month_Days
 import getNameNumbers
 
 
-# In[ ]:
+# In[1]:
 
 
 #
@@ -53,6 +53,7 @@ for qwe in sta:
     y = HI.to_numpy()
     y1 = LO.to_numpy()
     x = DATE.to_numpy()
+    print(date)
 
     
     #define x as 200 equally spaced values between the min and max of original x 
@@ -66,8 +67,8 @@ for qwe in sta:
     
     path1 = '/var/www/html/000/'
     plt.figure(figsize= (10,6))
-    plt.locator_params(axis='x', nbins = date)
-    plt.xlim(1,r)
+    #plt.locator_params(axis='x', nbins = date)
+    plt.xlim(1,date)
     plt.ylim(0, 105)
     plt.xticks(fontsize=12)
     plt.xlabel('Date', fontsize=12, fontweight ='bold')
@@ -78,7 +79,14 @@ for qwe in sta:
     plt.grid(axis = "y", linewidth = 2.0, color = 'black')
     plt.plot(x, y, color = "red", linewidth =3, label ="High")
     plt.plot(x, y1, color = "blue", linewidth =3, label ="Low")
+    plt.autoscale() 
     plt.legend(fontsize=12)
     plt.savefig(f'{path1}temps_{qwe}')
     
+
+
+# In[ ]:
+
+
+
 
