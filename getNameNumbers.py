@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[23]:
 
 
 import datetime
@@ -15,11 +15,10 @@ def wxflow():
     # define variables for day, month, year
     today = date.today()
     todayDate = datetime.date.today()
-    print(todayDate)
     yesterday = today - timedelta(days = 1)
     todayDay = today.strftime("%d")
     todayDay = int(todayDay)
-   
+      
     # Present month
     this_month = (todayDate.strftime("%B"))
     this_month_num = (todayDate.strftime("%m"))
@@ -34,6 +33,8 @@ def wxflow():
     # Yesterday
     yesterdayDay = yesterday.strftime("%d")
     yesterdayDay = int(yesterdayDay)
+    date1 = yesterdayDay + 1
+    print(date1)
     
 
     # Previous month
@@ -68,22 +69,22 @@ def wxflow():
     if todayDay == 1:
         xls_filename = f'{prev_month}_{thisYear}_{platform}{xls_suffix}'
         xls_fullname = f'{path_name}{prev_month}_{thisYear}_{platform}{xls_suffix}'
-        return(xls_filename, xls_fullfile, path_name, yesterdayDay, prev_month, thisYear, lastDaylastMonth)
+        return(xls_filename, xls_fullname, path_name, date1, prev_month, thisYear, lastDaylastMonth)
     
     if todayDay == 1 and this_month == 'January':
         xls_filename = f'December_{prevYear}_{platform}{xls_suffix}'
         xls_fullname = f'{path_name}December_{prevYear}_{platform}{xls_suffix}'
-        return(xls_filename, xls_fullfile, path_name, yesterdayDay, prev_month, prevYear, lastDayprevYear)
+        return(xls_filename, xls_fullname, path_name, date1, prev_month, prevYear, lastDayprevYear)
         
     else:
         xls_filename = f'{this_month}_{thisYear}_{platform}{xls_suffix}'
         xls_fullfile = f'{path_name}{this_month}_{thisYear}_{platform}{xls_suffix}'
     
-        return(xls_filename, xls_fullfile, path_name, todayDay, this_month, thisYear, lastDaythisMonth)     
+        return(xls_filename, xls_fullname, path_name, todayDay, this_month, thisYear, lastDaythisMonth)     
     
 
 
-# In[2]:
+# In[8]:
 
 
 import datetime
@@ -122,6 +123,8 @@ def tempest_ec2():
     print("Yesterday was: ", yesterday)
     yesterdayDay = yesterday.strftime("%d")
     yesterdayDay = int(yesterdayDay)
+    date1 = yesterdayDay + 1
+    print(date1)
     print("The day of the month yesterday was: ", yesterdayDay, "\n")
 
     # Previous month
@@ -157,12 +160,12 @@ def tempest_ec2():
     if todayDay == 1:
         xls_filename = f'{prev_month}_{thisYear}_{platform}{xls_suffix}'
         xls_fullname = f'{path_name}{prev_month}_{thisYear}_{platform}{xls_suffix}'
-        return(xls_filename, xls_fullname, path_name, yesterdayDay, prev_month, thisYear, lastDaylastMonth)
+        return(xls_filename, xls_fullname, path_name, date1, prev_month, thisYear, lastDaylastMonth)
     
     if todayDay == 1 and this_month == 'January':
         xls_filename = f'December_{prevYear}_{platform}{xls_suffix}'
         xls_fullname = f'{path_name}December_{prevYear}_{platform}{xls_suffix}'
-        return(xls_filename, xls_fullname, path_name, yesterdayDay, prev_month, prevYear, lastDayprevYear)
+        return(xls_filename, xls_fullname, path_name, date1, prev_month, prevYear, lastDayprevYear)
         
     else:
         xls_filename = f'{this_month}_{thisYear}_{platform}{xls_suffix}'
@@ -213,6 +216,8 @@ def davis():
     print("Yesterday was: ", yesterday)
     yesterdayDay = yesterday.strftime("%d")
     yesterdayDay = int(yesterdayDay)
+    date1 = yesterdayDay + 1
+    print(date1)
     print("The day of the month yesterday was: ", yesterdayDay, "\n")
 
     # Previous month
@@ -248,12 +253,12 @@ def davis():
         xls_filename = f'{prev_month}_{thisYear}_{platform}{xls_suffix}'
         xls_fullname = f'{path_name}{prev_month}_{thisYear}_{platform}{xls_suffix}'
         print(xls_fullname)
-        return(xls_filename, xls_fullname, path_name, yesterdayDay, prev_month, thisYear, lastDaylastMonth)
+        return(xls_filename, xls_fullname, path_name, date1, prev_month, thisYear, lastDaylastMonth)
     
     if todayDay == 1 and this_month == 'January':
         xls_filename = f'December_{prevYear}_{platform}{xls_suffix}'
         xls_fullname = f'{path_name}December_{prevYear}_{platform}{xls_suffix}'
-        return(xls_filename, xls_fullfile, path_name, yesterdayDay, prev_month, prevYear, lastDayprevYear)
+        return(xls_filename, xls_fullfile, path_name, date1, prev_month, prevYear, lastDayprevYear)
         
     else:
         xls_filename = f'{this_month}_{thisYear}_{platform}{xls_suffix}'
