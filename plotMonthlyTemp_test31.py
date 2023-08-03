@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[2]:
 
 
 import pandas as pd
@@ -15,7 +15,7 @@ import month_Days
 import getNameNumbers
 
 
-# In[1]:
+# In[3]:
 
 
 #
@@ -33,6 +33,7 @@ for qwe in sta:
     xls_filename, xls_fullfile, path_name, date, this_month, thisYear, r = wl[0], wl[1], \
     wl[2], wl[3], wl[4], wl[5], wl[6]   
     
+    
     wxdata = f'{path_name}{this_month}_{thisYear}_{qwe}.xlsx'
     df = pd.read_excel(wxdata, skiprows=[0,1])
     if qwe == 'Davis':
@@ -44,18 +45,16 @@ for qwe in sta:
        
     df = df.drop(df.index[date:r])
     df['Date'] = df['Date'].astype(int)
+    print(df)
     
     HI = df['High']
     LO = df["Low"]
     DATE = df["Date"]
-    print(DATE)
-
+    
     y = HI.to_numpy()
     y1 = LO.to_numpy()
     x = DATE.to_numpy()
-    print(date)
-
-    
+           
     #define x as 200 equally spaced values between the min and max of original x 
     #xnew = np.linspace(x.min(), x.max(), 200) 
 
@@ -67,8 +66,8 @@ for qwe in sta:
     
     path1 = '/var/www/html/000/'
     plt.figure(figsize= (10,6))
-    #plt.locator_params(axis='x', nbins = date)
-    plt.xlim(1,date)
+    plt.locator_params(axis='x', nbins= date)
+    plt.xlim(1, date)
     plt.ylim(0, 105)
     plt.xticks(fontsize=12)
     plt.xlabel('Date', fontsize=12, fontweight ='bold')
@@ -77,9 +76,8 @@ for qwe in sta:
     plt.locator_params(axis='y', nbins=20)
     plt.title(f'{this_month} {thisYear} Temperatures - {qwe}', fontsize=12, fontweight ='bold')
     plt.grid(axis = "y", linewidth = 2.0, color = 'black')
-    plt.plot(x, y, color = "red", linewidth =3, label ="High")
-    plt.plot(x, y1, color = "blue", linewidth =3, label ="Low")
-    plt.autoscale() 
+    plt.plot(x, y, marker = '*', color = "red", linewidth =3, label ="High")
+    plt.plot(x, y1, marker = '*', color = "blue", linewidth =3, label ="Low")
     plt.legend(fontsize=12)
     plt.savefig(f'{path1}temps_{qwe}')
     

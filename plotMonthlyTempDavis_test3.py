@@ -56,14 +56,10 @@ for qwe in sta:
     #y1_smooth = LOspl(xnew)
     
     path1 = '/var/www/html/trclimate/'
-    
-    #sns.set_style("whitegrid")
-    #sns.lineplot(data = df[['High', 'Low']])
-    #sns.lineplot(data=df[['A', 'B', 'C', 'D']])
-          
+                
     plt.figure(figsize= (10,6))
     plt.locator_params(axis='x', nbins = date)
-    plt.xlim(1,date)
+    plt.xlim(1, date - 1)
     plt.xticks(fontsize=12)
     plt.xlabel('Date', fontsize=12, fontweight ='bold')
             
@@ -72,10 +68,10 @@ for qwe in sta:
     plt.ylabel('Temperature (F)', fontsize=12, fontweight ='bold')
     plt.locator_params(axis='y', nbins=20)
     plt.title(f'{month_name} {year} Temperatures', fontsize=12, fontweight ='bold')
-    #plt.grid(True)
+    plt.grid(True)
     plt.grid(axis = "y", linewidth = 2.0, color = 'black')
-    plt.plot(x, y, color = "red", linewidth =3, label ="High")
-    plt.plot(x, y1, color = "blue", linewidth =3, label ="Low")
+    plt.plot(x, y, marker = "x", color = "red", linewidth =3, label ="High")
+    plt.plot(x, y1, marker = "x", color = "blue", linewidth =3, label ="Low")
     plt.legend(fontsize=12)
     plt.savefig(f'{path1}tt_{qwe}')  
 
