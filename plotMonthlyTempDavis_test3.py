@@ -59,7 +59,7 @@ for qwe in sta:
                 
     plt.figure(figsize= (10,6))
     plt.locator_params(axis='x', nbins = date)
-    plt.xlim(1, date - 1)
+    plt.xlim(1, date)
     plt.xticks(fontsize=12)
     plt.xlabel('Date', fontsize=12, fontweight ='bold')
             
