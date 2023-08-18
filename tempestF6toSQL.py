@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[51]:
+# In[52]:
 
 
 import pandas as pd
@@ -81,7 +81,7 @@ strike_count = df['strike_count'].sum()
 gg = getNameNumbers.tempest_ec2()
 dead1, dead2, dead3, date, month, year = gg[0], gg[1], gg[2], gg[3], gg[4], gg[5]
 print(f'The value of date is : {date}')
-yesterday  = (date - 1)
+yesterday  = (date - 2)
 print(f'The value of yesterday is : {yesterday}')
 print(f'This year is : {year}')
 
@@ -96,7 +96,7 @@ database_name     = 'tempestf6'
 database_connection = sqlalchemy.create_engine('mysql+mysqlconnector://{0}:{1}@{2}/{3}'.
                                                format(database_username, database_password, 
                                                       database_ip, database_name), connect_args={'connect_timeout': 30})
-df2.to_sql(con=database_connection, name='tempestf6', if_exists='append')
+df2.to_sql(con=database_connection, name='tempestF6', if_exists='append', index = False)
 
 
 # In[ ]:

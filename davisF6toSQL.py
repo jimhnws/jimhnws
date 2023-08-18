@@ -52,9 +52,10 @@ yesterday  = (date - 1)
 print(f'The value of yesterday is : {yesterday}')
 print(f'This year is : {year}')
 
-df2 = pd.DataFrame(columns = ['Year', 'Month', 'Date', 'High', 'Low', 'Rainfall', 'Max Dew Pt', 'Min Dew Pt'])
-newRow = pd.DataFrame({'Year': year, 'Month': month, 'Date': yesterday, 'High': maxT, 'Low': minT, 'Rainfall' : totR, 'Max Dew Pt' : dewMaxT, 'Min Dew Pt': dewMinT}, index = [yesterday])
+df2 = pd.DataFrame(columns = ['Year', 'Month', 'Date', 'High', 'Low', 'Rainfall', 'Max_Dew_Pt', 'Min_Dew_Pt'])
+newRow = pd.DataFrame({'Year': year, 'Month': month, 'Date': yesterday, 'High': maxT, 'Low': minT, 'Rainfall' : totR, 'Max_Dew_Pt' : dewMaxT, 'Min_Dew_Pt': dewMinT}, index = [yesterday])
 df2 = pd.concat([newRow, df2[:]]).reset_index(drop = True)
+print(df2)
 
 database_username = 'chuckwx'
 database_password = 'jfr716!!00'
@@ -63,7 +64,7 @@ database_name     = 'davisf6'
 database_connection = sqlalchemy.create_engine('mysql+mysqlconnector://{0}:{1}@{2}/{3}'.
                                                format(database_username, database_password, 
                                                       database_ip, database_name), connect_args={'connect_timeout': 30})
-df2.to_sql(con=database_connection, name='davisf6', if_exists='append')
+df2.to_sql(con=database_connection, name='davisF6', if_exists='append', index = False)
 
 
 # In[ ]:

@@ -169,9 +169,6 @@ totR = df['rainfall'].sum()
 # In[ ]:
 
 
-# Write to the appropriate Excel file
-#
-
 import openpyxl
 from openpyxl import load_workbook
 import excelFilename
@@ -220,9 +217,9 @@ f3.value = 'CDD'
 g3 = sheet['G3']
 g3.value = 'Rainfall'
 h3 = sheet['H3']
-h3.value = 'Max Dew Pt'
+h3.value = 'Max_Dew_Pt'
 i3 = sheet['I3']
-i3.value = 'Min Dew Pt'
+i3.value = 'Min_Dew_Pt'
 
 k4 = sheet['K4']
 k4.value = "Highs >=90"
