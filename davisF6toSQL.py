@@ -12,7 +12,6 @@ import mysql.connector
 import sqlite3
 
 path = '/home/ec2-user/'
-#path = '/Users/jameshayes/'
 file_name = 'davisDataDump.csv'
 data_file = f'{path}{file_name}'
 df = pd.read_csv(data_file, index_col=False,names=['temp_hi', 'temp_lo', 'rainfall', 'dew_hi', 'dew_lo'])
@@ -45,15 +44,15 @@ dewMinT = round(dewMin)
 
 totR = df['rainfall'].sum()
 
-gg = getNameNumbers.davis()
-dead1, dead2, dead3, date, month, year = gg[0], gg[1], gg[2], gg[3], gg[4], gg[5]
+gg = getNameNumbers.sqlWrite()
+dead1, dead2, dead3, date, yesterdayDay, month, year, dead4 = gg[0], gg[1], gg[2], gg[3], gg[4], gg[5], gg[6], gg[7]
 print(f'The value of date is : {date}')
 yesterday  = (date - 1)
 print(f'The value of yesterday is : {yesterday}')
 print(f'This year is : {year}')
 
-df2 = pd.DataFrame(columns = ['Year', 'Month', 'Date', 'High', 'Low', 'Rainfall', 'Max_Dew_Pt', 'Min_Dew_Pt'])
-newRow = pd.DataFrame({'Year': year, 'Month': month, 'Date': yesterday, 'High': maxT, 'Low': minT, 'Rainfall' : totR, 'Max_Dew_Pt' : dewMaxT, 'Min_Dew_Pt': dewMinT}, index = [yesterday])
+df2 = pd.DataFrame(columns = ['Year', 'Month', 'Date', 'High', 'Low', 'Rainfall', 'Max_Dew_Pt'])
+newRow = pd.DataFrame({'Year': year, 'Month': month, 'Date': yesterdayDay, 'High': maxT, 'Low': minT, 'Rainfall' : totR, 'Max_Dew_Pt': dewMaxT}, index = [yesterday])
 df2 = pd.concat([newRow, df2[:]]).reset_index(drop = True)
 print(df2)
 
