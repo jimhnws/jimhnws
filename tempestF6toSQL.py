@@ -81,7 +81,7 @@ strike_count = df['strike_count'].sum()
 gg = getNameNumbers.sqlWrite()
 dead1, dead2, dead3, date, yesterdayDay, month, year, dead4 = gg[0], gg[1], gg[2], gg[3], gg[4], gg[5], gg[6], gg[7]
 print(f'The value of date is : {date}')
-yesterday  = (date - 2)
+yesterday  = (date - 1)
 print(f'The value of yesterday is : {yesterday}')
 print(f'This year is : {year}')
 
