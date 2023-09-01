@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[2]:
+# In[1]:
 
 
 import pandas as pd
@@ -45,15 +45,20 @@ dewMinT = round(dewMin)
 totR = df['rainfall'].sum()
 
 gg = getNameNumbers.sqlWrite()
-dead1, dead2, dead3, date, yesterdayDay, month, year, dead4 = gg[0], gg[1], gg[2], gg[3], gg[4], gg[5], gg[6], gg[7]
+
+dead1, dead2, dead3, dead4, month_num, year, date = gg[0], gg[1], gg[2], gg[3], gg[4], gg[5], gg[6]
+print(dead1, dead2, dead3, dead4, month_num, year, date)
+
+print(f'This is the value of dead4: {month_num}')
+print(f'This is the year: {year}')
 print(f'The value of date is : {date}')
 yesterday  = (date - 1)
-print(f'The value of yesterday is : {yesterday}')
-print(f'This year is : {year}')
+print(f'The value of yesterday is: {yesterday}')
+print(f'This date is : {date}')
 
-df2 = pd.DataFrame(columns = ['Year', 'Month', 'Date', 'High', 'Low', 'Rainfall', 'Max_Dew_Pt'])
-newRow = pd.DataFrame({'Year': year, 'Month': month, 'Date': yesterdayDay, 'High': maxT, 'Low': minT, 'Rainfall' : totR, 'Max_Dew_Pt': dewMaxT}, index = [yesterday])
-df2 = pd.concat([newRow, df2[:]]).reset_index(drop = True)
+df2 = pd.DataFrame(columns = ['Year', 'Month', 'Date', 'High', 'Low', 'Rainfall', 'Max_Dew_Point'])
+newRow = pd.DataFrame({'Year': year, 'Month': month_num, 'Date': yesterday, 'High': maxT, 'Low': minT, 'Rainfall' : totR, 'Max_Dew_Point': dewMaxT }, index = [yesterday])
+df2 = pd.concat([newRow, df2]).reset_index(drop = True)
 print(df2)
 
 database_username = 'chuckwx'

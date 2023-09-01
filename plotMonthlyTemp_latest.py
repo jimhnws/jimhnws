@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[3]:
+# In[ ]:
 
 
 import pandas as pd
@@ -12,60 +12,24 @@ import numpy as np
 from scipy.interpolate import make_interp_spline
 import calcTimeNow
 import month_Days
+import getNameNumbers
 
 
-# In[2]:
+# In[ ]:
 
-
-#
-# Make some graphs - temperature line plots first
-# For just one month
-#
-
-# Determine the date
 
 sta = ['Davis', 'Tempest']
 
 for qwe in sta:
 
-    x = calcTimeNow.calcTimeNow()
-    month_name = calcTimeNow.calcMonthNow()
-    year, date = x[2],x[3]
-    year = int(year)
-    date =  int(date)
-    date = date - 1
-        
-    # figure out the month number
-    months = ['January','February', 'March','April','May','June','July','August','September','October','November','December']
+    path1 = '/var/www/html/000/'
 
-    if (year % 400 == 0):
-        leap_year = True
-    elif (year % 100 == 0):
-        leap_year = False
-    elif (year % 4 == 0):
-        leap_year = True
-    else:
-        leap_year = False
+    sta = ['Tempest', 'Davis']
 
-    
-    
-    month31 = ['January','March', 'May', 'July', 'August', 'October', 'December']
-    month30 = ['April', 'June', 'September', 'November']
-    month28 = ['February']
-                        
-    if month_name in month31:
-        r = 31
-    elif month_name in month30:
-        r = 30 
-    elif month_name in month28:
-        if leap_year:
-                r = 29
-        else:
-                r = 28
-    else:
-            r = 31
-    
-    r = r + 1
+    wl = getNameNumbers.tempest_ec2()
+    xls_filename, xls_fullfile, path_name, date, month_name, year, r = wl[0], wl[1], \
+    wl[2], wl[3], wl[4], wl[5], wl[6]   
+   
     
     path = '/home/ec2-user/'
     wxdata = f'{path}{month_name}_{year}_{qwe}.xlsx'
@@ -114,10 +78,4 @@ for qwe in sta:
     plt.plot(x, y1, color = "blue", linewidth =3, label ="Low")
     plt.legend(fontsize=12)
     plt.savefig(f'{path1}temps_{qwe}')
-
-
-# In[ ]:
-
-
-
 
