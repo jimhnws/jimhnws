@@ -73,6 +73,7 @@ a {
     text-decoration: none;
     color: darkblue;
     font-weight: bold;
+
 }
 
 .topbox {
@@ -193,6 +194,20 @@ a {
     text-align: center;
 }
 
-/*--iframe {
-   height: 50%;
-}*/
+iframe {
+    height: 100%;
+    width: 100%;
+}
+
+.rainStuff {
+    width: 100%;
+    background-color: lightgoldenrodyellow;
+    color: yellow;
+    border: 5px Black;
+    padding: 5px;
+    font-size: 5vw;
+    font-weight: 800;
+    margin-top: 1%;
+    text-align: center;
+
+}
