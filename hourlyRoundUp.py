@@ -64,17 +64,14 @@ lastTime = localT.strftime('%I:%M %p')
 
 heat_desc = f'(Feels like {feels_like} degrees)'
 if feels_like < 100:
-    heat_desc = ''
-    
-print(feels_like, heat_desc)    
+    heat_desc = '' 
 
 with open('/var/www/html/000/text975.txt','w') as fd:
     print(f'In Toms River, NJ at {lastTime}','\n', file = fd)
     print(f'The temperature was {temp} degrees {heat_desc}', file = fd)
     print(f'The relative humidity was {rh}%', file = fd)
     print(f'The wind was {wind}', file = fd)
-    print(f'The barometric pressure was {sea_press:.2f} inches and {press_trend}', file = fd)
-    print(f'There was {pcpn_1hr:.2f} inches of rainfall in the last hour', file = fd)
+    print(f'The barometric pressure was {sea_press:.2f} inches and {press_trend}', file = fd)   
 
 
 # In[ ]:
