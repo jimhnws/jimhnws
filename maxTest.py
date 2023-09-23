@@ -21,8 +21,7 @@ start, end = (xy[0], xy[1])
 #
 
 gD = sqlGet.sqlGet()
-
-date, month, month_num, year = gD[3], gD[5], gD[6], gD[7]
+nextDay, date, month, month_num, year = gD[3], gD[4], gD[5], gD[6], gD[7]
 
 
 # In[12]:
@@ -174,6 +173,7 @@ import pandas as pd
 import pymysql as dbapi
 import sys
 import csv
+from tabulate import tabulate
 
 #
 # Get normal highs and lows
@@ -200,7 +200,7 @@ nmlLo = int(dataset[4])
 
 QUERY1 = """SELECT * FROM recHigh 
            WHERE Month = %s 
-           AND Day = %s""" % (month_num, date)
+           AND Day = %s""" % (month_num, nextDay)
 
 
 db = dbapi.connect(host='3.135.162.69',user='chuckwx',passwd='jfr716!!00', database = 'trweather')
@@ -218,7 +218,7 @@ recHighYear = int(recordHigh[4])
 
 QUERY2 = """SELECT * FROM recLow 
            WHERE Month = %s 
-           AND Day = %s""" % (month_num, date)
+           AND Day = %s""" % (month_num, nextDay)
 
 
 db = dbapi.connect(host='3.135.162.69',user='chuckwx',passwd='jfr716!!00', database = 'trweather')
@@ -236,7 +236,7 @@ recLowYear = int(recordLow[4])
 
 QUERY3 = """SELECT * FROM recRain 
            WHERE Month = %s 
-           AND Day = %s""" % (month_num, date)
+           AND Day = %s""" % (month_num, nextDay)
 
 
 db = dbapi.connect(host='3.135.162.69',user='chuckwx',passwd='jfr716!!00', database = 'trweather')
@@ -248,25 +248,48 @@ recordRain = result3[0]
 recRain = recordRain[1]
 recRainYear = int(recordRain[4])
 
-(recRain, recRainYear)
+#
+# Data setup for tabulate
+# 
 
-print(f'This is the daily almanac for {month} {date}, {year}')
-print('\n')
+'''
+climo_data = [["Month", "Day", "Year", "High", "Low", "Avg", "HDD", "CDD", "Rain"],
+             [month, date, year, maxT, minT, avgTemp, hdd, cdd, corR]]
 
-print(f'The high today was {maxT} at {hiTime}')
-print(f'The low today was {minT} at {loTime}')
-print(f'The average temperature was {avgTemp}')
-print(f'The rainfall today was {corR} inches')
-print(f'There were {hdd} heating degree days today')
-print(f'There were {cdd} cooling degree days today')
-print('\n')
-print(f'The record high for today is {recHigh} which occurred in {recHighYear}')
-print(f'The record low for today is {recLow} which occurred in {recLowYear}')
-print(f'The record rainfall for today is {recRain} inches which occurred in {recRainYear}')
+with open('/var/www/html/000/climo.html', 'w') as f:
+    f.write(tabulate(climo_data, headers = 'firstrow', tablefmt = 'html'))
+    
 
+record_data = [["Month", "Day", "Year", "Record High", "Year", "Record Low", "Year", "Record Rainfall", "Year"],
+             [month, nextDay, year, recHigh, recHighYear, recLow, recLowYear, recRain, recRainYear]]
 
-# In[ ]:
+with open('/var/www/html/000/day_records.html', 'w') as f:
+    f.write(tabulate(record_data, headers = 'firstrow', tablefmt = 'html'))
+  
+with open('/var/www/html/000/climo1.html','w') as outfile1: 
+    print(f'This is the daily almanac for {month} {date}, {year}', file = outfile1)
+    print('\n', file = outfile1)
+    print(f'The high today was {maxT} at {hiTime}', file = outfile1)
+    print(f'The low today was {minT} at {loTime}', file = outfile1)
+    print(f'The average temperature was {avgTemp}', file = outfile1)
+    print(f'The rainfall today was {corR} inches', file = outfile1)
+    print(f'There were {hdd} heating degree days today', file = outfile1)
+    print(f'There were {cdd} cooling degree days today', file = outfile1)
 
-
-
+'''
+with open('/var/www/html/000/climo.txt','w') as outfile1: 
+    print(f'Daily almanac for {month} {date}, {year}', file = outfile1)
+    print('\n', file = outfile1)
+    print(f'The high today was {maxT} at {hiTime}', file = outfile1)
+    print(f'The low today was {minT} at {loTime}', file = outfile1)
+    print(f'The average temperature was {avgTemp}', file = outfile1)
+    print(f'The rainfall today was {corR} inches', file = outfile1)
+    print(f'There were {hdd} heating degree days today', file = outfile1)
+    print(f'There were {cdd} cooling degree days today', file = outfile1)
+    print('\n', file = outfile1)
+    print(f'Record information for {month} {nextDay}, {year}', file = outfile1)
+    print('\n', file = outfile1)
+    print(f'The record high for today is {recHigh} in {recHighYear}', file = outfile1)
+    print(f'The record low for today is {recLow} in {recLowYear}', file = outfile1)
+    print(f'The record rainfall for today is {recRain} inches in {recRainYear}', file = outfile1)
 
