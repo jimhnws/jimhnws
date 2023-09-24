@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[ ]:
 
 
 import pandas as pd
@@ -14,7 +14,7 @@ import getDaysInMonth
 import getNameNumbers
 
 
-# In[2]:
+# In[ ]:
 
 
 from matplotlib.ticker import FormatStrFormatter
@@ -45,24 +45,19 @@ for qwe in sta:
         
     #Plot the results in matplotlib
     
-    nrt1 = date - 1
-    print(nrt1)
-    sns.set_style("whitegrid", {'grid.color': 'black'})
+    plt.style.use('fivethirtyeight')  
+    
+    #sns.set_style("whitegrid", {'grid.color': 'black'})
     plt.figure(figsize=(10, 6))
-    plt.xlim(1, date)
+    plt.xlim(1, date - 1)
     plt.xticks(fontsize=12)
     plt.xlabel('Date', fontsize=12, fontweight ='bold')
     plt.yticks(fontsize=12)
-    plt.ylim(0, None)
+    #plt.ylim(0, None)
     sns.barplot(data = df, x = 'Date', y = 'Rainfall', color = 'g')
+    plt.autoscale(enable = True, axis = 'both', tight = True)
     plt.grid(True)
     plt.ylabel('Rainfall (inches)', fontsize=12, fontweight ='bold')
     plt.title(f'{month_name} {year} Rainfall', fontsize=12, fontweight ='bold')
     plt.savefig(f'{path1}rain_{qwe}') 
-
-
-# In[ ]:
-
-
-
 
