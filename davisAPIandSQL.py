@@ -127,7 +127,7 @@ database_name     = 'davisInfo'
 database_connection = sqlalchemy.create_engine('mysql+mysqlconnector://{0}:{1}@{2}/{3}'.
                                                format(database_username, database_password, 
                                                       database_ip, database_name), connect_args={'connect_timeout': 30})
-df.to_sql(con=database_connection, name='davisTest', if_exists='replace')
+df.to_sql(con=database_connection, name='davisDB', if_exists='append')
 
 
 # In[ ]:
@@ -183,6 +183,7 @@ import pymysql as dbapi
 import sys
 import csv
 from tabulate import tabulate
+import sandbox2
 
 #
 # Get normal highs and lows
@@ -235,6 +236,7 @@ db = dbapi.connect(host='3.135.162.69',user='chuckwx',passwd='jfr716!!00', datab
 cur = db.cursor()
 cur.execute(QUERY2)
 result2 = cur.fetchall()
+recYearNum =  len(result2)
 recordLow = result2[0]
 recLow = int(recordLow[1])
 recLowYear = int(recordLow[4])
@@ -253,6 +255,7 @@ db = dbapi.connect(host='3.135.162.69',user='chuckwx',passwd='jfr716!!00', datab
 cur = db.cursor()
 cur.execute(QUERY3)
 result3 = cur.fetchall()
+#sandbox1.recordRain(result3)
 recordRain = result3[0]
 recRain = recordRain[1]
 recRainYear = int(recordRain[4])
