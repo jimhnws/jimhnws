@@ -18,7 +18,7 @@ import sqlite3
 path = '/home/ec2-user/'
 #path = '/Users/jameshayes/'
 file_name = 'tempest_temp.csv'
-full_file = f'{path}{file_name}'
+full_file = ('/home/ec2-user/tempest_temp.csv')
 df = pd.read_csv(full_file, index_col=False)
 
 pd.set_option('display.max_rows', 1440)
@@ -79,14 +79,13 @@ while a < x:
 strike_count = df['strike_count'].sum()
 
 gg = getNameNumbers.sqlWrite()
-dead1, dead2, dead3, date, yesterdayDay, month, year, dead4 = gg[0], gg[1], gg[2], gg[3], gg[4], gg[5], gg[6], gg[7]
-print(f'The value of date is : {date}')
-yesterday  = (date - 1)
-print(f'The value of yesterday is : {yesterday}')
-print(f'This year is : {year}')
+print(gg)
+dead1, dead2, dead3, yesterdayDay, date, month_num, year = gg[0], gg[1], gg[2], gg[3], gg[4], gg[5], gg[6]
+date = int(date)
+print(date, month_num, year)
 
 df2 = pd.DataFrame(columns = ['Year', 'Month', 'Date', 'High', 'Low', 'totR', 'corR', 'Lightning1_5', 'Lightning6_10'])
-newRow = pd.DataFrame({'Year': year, 'Month': month, 'Date': yesterday, 'High': maxT, 'Low': minT, 'totR' : totR, 'corR' : corR, 'Lightning1_5': q, 'Lightning6_10' : r1}, index = [date])
+newRow = pd.DataFrame({'Year': year, 'Month': month_num, 'Date': date, 'High': maxT, 'Low': minT, 'totR' : totR, 'corR' : corR, 'Lightning1_5': q, 'Lightning6_10' : r1}, index = [date])
 df2 = pd.concat([newRow, df2[:]]).reset_index(drop = True)
 print(df2)
 
