@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[86]:
+# In[4]:
 
 
 import sandbox2
@@ -12,10 +12,9 @@ def recordHigh():
     results = sandbox2.sandbox2()
     result1 = results[0]
     recYearNum = len(result1)
-    
+        
     if recYearNum > 1 and recYearNum < 4:
         recHigh = (result1[0][1])
-        print(recHigh)
         i = 0 
         years = []
         while i < recYearNum:
@@ -28,38 +27,38 @@ def recordHigh():
             ax = years[recYearNum - 2]
             bx = years[recYearNum - 1]
             yearx = (f'{ax} and {bx}')
-            print(f'The record high for today is {recHigh} set in {yearx}')
+            highPhrase = (f'The record high for today is {recHigh} set in {yearx}')
         elif recYearNum == 3:
             ax = years[recYearNum - 3]
             bx = years[recYearNum - 2]
             cx = years[recYearNum - 1 ]
             yearx = (f'{ax},{bx} and {cx}')
-            print(f'The record high for today is {recHigh} set in {yearx}')
+            highPhrase = (f'The record high for today is {recHigh} set in {yearx}')
         elif recYearNum == 4:
             ax = years[recYearNum - 4]
             bx = years[recYearNum - 3]
             cx = years[recYearNum - 2 ]
             dx =  years[recYearNum - 1 ]
             yearx = (f'{ax},{bx}, {cx} and {dx}')
-            print(f'The record high for today is {recHigh} set in {yearx}')
+            highPhrase = (f'The record high for today is {recHigh} set in {yearx}')
+        return(recHigh, yearx, highPhrase)
                 
     if recYearNum == 1:
         recHigh1 = (result1[0])
         recHigh = int(recHigh1[1])
         year1x = (result1[0])
         yearx = int(year1x[4])
-        print(f'The record high for today is {recHigh} set in {yearx}')
-        
-        
+        highPhrase = (f'The record high for today is {recHigh} set in {yearx}')
+    return(recHigh, yearx, highPhrase)         
 
 
-# In[ ]:
+# In[5]:
 
 
 recordHigh()
 
 
-# In[84]:
+# In[6]:
 
 
 import sandbox2
@@ -71,11 +70,10 @@ def recordLow():
     result2 = results[1]
         
     recYearNum = len(result2)
-    print(result2, recYearNum)
-
+    print(result2, recYearNum)     
+    
     if recYearNum > 1 and recYearNum < 4:
-        recLow1 = (result2[0][1])
-        print(recLow1)
+        recLow = (result2[0][1])
         i = 0 
         years = []
         while i < recYearNum:
@@ -85,39 +83,47 @@ def recordLow():
         years.reverse()
     
         if recYearNum == 2:
+            recLow = (result2[0][1])
+            print("This is the record low value" ,recLow)
             ax = years[recYearNum - 2]
             bx = years[recYearNum - 1]
             yearx = (f'{ax} and {bx}')
-            print(f'The record low for today is {recLow} set in {yearx}')
+            lowPhrase = (f'The record low for today is {recLow} set in {yearx}')
+            
         elif recYearNum == 3:
             ax = years[recYearNum - 3]
             bx = years[recYearNum - 2]
             cx = years[recYearNum - 1 ]
             yearx = (f'{ax},{bx} and {cx}')
-            print(yearx)
+            lowPhrase = (f'The record low for today is {recLow} set in {yearx}')
+            
         elif recYearNum == 4:
             ax = years[recYearNum - 4]
             bx = years[recYearNum - 3]
             cx = years[recYearNum - 2 ]
             dx =  years[recYearNum - 1 ]
             yearx = (f'{ax},{bx}, {cx} and {dx}')
-            print(f'The record low for today is {recLow} set in {yearx}')
-                
-    if recYearNum == 1:
-        recLow1 = (result2[0])
-        recLow = recLow1[1]
-        year1x = (result2[0])
-        yearx = year1x[4]
-        print(f'The record low for today is {recLow} set in {yearx}')       
+            lowPhrase = (f'The record low for today is {recLow} set in {yearx}')
+        return(recLow, yearx, lowPhrase)    
+    
+        if recYearNum == 1:
+            recLow1 = (result2[0])
+            recLow = int(recLow1[1])
+            year1x = (result2[0])
+            yearx = year1x[4]
+            lowPhrase = (f'The record low for today is {recLow} set in {yearx}')   
+        return(recLow, yearx, lowPhrase)       
+     
+    
 
 
-# In[ ]:
+# In[7]:
 
 
 recordLow()
 
 
-# In[67]:
+# In[55]:
 
 
 import sandbox2
@@ -130,7 +136,16 @@ def recordRain():
     
     recYearNum = len(result3)
     print(result3, recYearNum)
+    recRain = (result3[0][1])
+    print(recRain)
     
+    if recYearNum == 1:
+        recRain = (result3[0][1])
+        yearx = (result3[0][4])
+        print(yearx)
+        rainPhrase = (f'The record rainfall for today is {recRain} set in {yearx}')
+    return(recRain, yearx, rainPhrase)   
+                
     if recYearNum > 1 and recYearNum < 4:
         recRain = (result3[0][1])
         i = 0 
@@ -142,35 +157,48 @@ def recordRain():
         years.reverse()
     
     if recYearNum == 2:
+        recRain = (result3[0][1])
         ax = years[recYearNum - 2]
         bx = years[recYearNum - 1]
         yearx = (f'{ax} and {bx}')
-        print(f'The record rainfall for today is {recRain} set in {yearx}')
+        print(yearx)
+        rainPhrase = (f'The record rainfall for today is {recRain} set in {yearx}')
+        
     elif recYearNum == 3:
+        recRain = (result3[0][1])
         ax = years[recYearNum - 3]
         bx = years[recYearNum - 2]
         cx = years[recYearNum - 1 ]
         yearx = (f'{ax},{bx} and {cx}')
-        print(f'The record rainfall for today is {recRain} set in {yearx}')
+        print(yearx)
+        rainPhrase = (f'The record rainfall for today is {recRain} set in {yearx}')
+        
     elif recYearNum == 4:
+        recRain = (result3[0][1])
         ax = years[recYearNum - 4]
         bx = years[recYearNum - 3]
         cx = years[recYearNum - 2 ]
         dx =  years[recYearNum - 1 ]
         yearx = (f'{ax},{bx}, {cx} and {dx}')
-        print(f'The record rainfall for today is {recRain} set in {yearx}')
-    
-        
-    if recYearNum == 1:
-        recRain1 = result3[0]
-        recRain = recRain1[1]
-        year1x = result3[0]
-        yearx = year1x[4]
-        print(f'The record rainfall for today is {recRain} set in {yearx}')
+        print(yearx)
+        rainPhrase = (f'The record rainfall for today is {recRain} set in {yearx}')
+    return(recRain, yearx, rainPhrase)      
+
+
+# In[56]:
+
+
+recordRain()
 
 
 # In[ ]:
 
 
-recordRain()
+
+
+
+# In[ ]:
+
+
+
 

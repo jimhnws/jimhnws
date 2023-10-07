@@ -1,15 +1,12 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[52]:
+# In[ ]:
 
 
 import pandas as pd
 import dataFile
 import getNameNumbers
-import sqlalchemy
-import mysql.connector
-import sqlite3
 import getDays
 
 #
@@ -17,7 +14,6 @@ import getDays
 #
 
 path = '/home/ec2-user/'
-#path = '/Users/jameshayes/'
 file_name = 'tempest_temp.csv'
 full_file = ('/home/ec2-user/tempest_temp.csv')
 df = pd.read_csv(full_file, index_col=False)
@@ -27,6 +23,13 @@ pd.set_option('display.max_columns', 35)
 pd.set_option('display.width', 1500)
 pd.set_option('display.colheader_justify', 'center')
 pd.set_option('display.precision', 2)
+
+
+# In[52]:
+
+
+import pandas as pd
+from pandas import DataFrame, Series
 
 max_temp  = (df.sort_values(by='temperature', ascending=False))
 max_T = max_temp.iloc[:1]
@@ -76,9 +79,15 @@ while a < x:
             r1 = "No"
         a += 1    
   
- 
 strike_count = df['strike_count'].sum()
-print(minT)
+
+
+# In[ ]:
+
+
+import pandas as pd
+from pandas import DataFrame, Series
+import getDays
 
 todayInfo = getDays.getToday()
 yesterdayInfo = getDays.getYesterday()
@@ -101,6 +110,18 @@ newRow = pd.DataFrame({'Year': year, 'Month': month_num, 'Date': yesterday, 'Hig
 df2 = pd.concat([newRow, df2[:]]).reset_index(drop = True)
 print(df2)
 
+
+# In[ ]:
+
+
+import pandas as pd
+from pandas import DataFrame, Series
+import sqlalchemy
+import mysql.connector
+import sqlite3
+
+print("I made it this far")
+
 '''
 database_username = 'chuckwx'
 database_password = 'jfr716!!00'
@@ -111,16 +132,4 @@ database_connection = sqlalchemy.create_engine('mysql+mysqlconnector://{0}:{1}@{
                                                       database_ip, database_name), connect_args={'connect_timeout': 30})
 df2.to_sql(con=database_connection, name='tempestF6', if_exists='append', index = False)
 '''
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
 

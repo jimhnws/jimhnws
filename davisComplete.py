@@ -5,7 +5,6 @@
 
 
 import calcOneDay
-import sqlGet
 import getDays
 from datetime import datetime, timedelta
 
@@ -26,8 +25,6 @@ yesterday = int(yesterday)
 nextDay = tomorrowInfo[2]
 nextDay = int(nextDay)
 
-#print(month, month_num, date, year, nextDay)
-
 
 # In[21]:
 
@@ -40,7 +37,6 @@ from datetime import datetime
 import requests
 import json
 import dataFile
-
 
 parameters = {
   "api-key": "vy8jbrjsxlbwgojepq3vfyfqfywyhvbd", 
@@ -317,8 +313,6 @@ from tabulate import tabulate
 
 #
 # Get normal highs and lows
-
-print(month_num)
 #
 
 QUERY = """SELECT * FROM avgHiLo 
@@ -407,6 +401,8 @@ import pymysql as dbapi
 import sys
 import csv
 from tabulate import tabulate
+import sandbox1
+import sandbox2
 
 '''
 climo_data = [["Month", "Day", "Year", "High", "Low", "Avg", "HDD", "CDD", "Rain"],
@@ -434,8 +430,17 @@ with open('/var/www/html/000/climoTest1.html','w') as outfile1:
     print(f'There were {hdd} heating degree days today', file = outfile1)
     print(f'There were {cdd} cooling degree days today', file = outfile1)
 '''
+
+highData = sandbox1.recordHigh()
+lowData = sandbox1.recordLow()
+rainData = sandbox1.recordRain()
+
+highPhrase = highData[2]
+lowPhrase = lowData[2]
+rainPhrase = rainData[2]
+
 with open('/var/www/html/000/climoDavisText.txt','w') as outfile1: 
-    print(f'Daily almanac for {month} {date}, {year}', file = outfile1)
+    print(f'Daily almanac for {month} {yesterday}, {year}', file = outfile1)
     print('\n', file = outfile1)
     print(f'The high yesterday was {maxT} degrees', file = outfile1)
     print(f'The low yesterday was {minT} degrees', file = outfile1)
@@ -445,9 +450,9 @@ with open('/var/www/html/000/climoDavisText.txt','w') as outfile1:
     print(f'There were {cdd} cooling degree days', file = outfile1)
     print('\n', file = outfile1)
     
-    print(f'Record information for {month} {nextDay}, {year}', file = outfile1)
+    print(f'Record information for {month} {date}, {year}', file = outfile1)
     print('\n', file = outfile1)
-    print(f'The record high for today is {recHigh} in {recHighYear}', file = outfile1)
-    print(f'The record low for today is {recLow} in {recLowYear}', file = outfile1)
-    print(f'The record rainfall for today is {recRain} inches in {recRainYear}', file = outfile1)  
+    print(highPhrase, file = outfile1)
+    print(lowPhrase, file = outfile1)
+    print(rainPhrase, file = outfile1)  
 
