@@ -163,6 +163,28 @@ if cdd < 0:
     cdd = 0  
 
 
+# In[ ]:
+
+
+import sqlalchemy
+import mysql.connector
+import sqlite3
+
+df2 = pd.DataFrame(columns = ['Year', 'Month', 'Date', 'High', 'Low', 'Rainfall', 'Max_Dew_Point'])
+newRow = pd.DataFrame({'Year': year, 'Month': month_num, 'Date': yesterday, 'High': maxT, 'Low': minT, 'Rainfall' : rain, 'Max_Dew_Point': dewMaxT }, index = [yesterday])
+df2 = pd.concat([newRow, df2]).reset_index(drop = True)
+print(df2)
+
+database_username = 'chuckwx'
+database_password = 'jfr716!!00'
+database_ip       = '3.135.162.69'
+database_name     = 'davisf6'
+database_connection = sqlalchemy.create_engine('mysql+mysqlconnector://{0}:{1}@{2}/{3}'.
+                                               format(database_username, database_password, 
+                                                      database_ip, database_name), connect_args={'connect_timeout': 30})
+df2.to_sql(con=database_connection, name='davisTest', if_exists='append', index = False)
+
+
 # In[27]:
 
 
@@ -431,6 +453,11 @@ with open('/var/www/html/000/climoTest1.html','w') as outfile1:
     print(f'There were {cdd} cooling degree days today', file = outfile1)
 '''
 
+nmlData = sandbox2.sandbox2()
+print("This is the value of nmlData: ", nmlData)
+nmlHi = nmlData[3]
+nmlLo = nmlData[4]
+
 highData = sandbox1.recordHigh()
 lowData = sandbox1.recordLow()
 rainData = sandbox1.recordRain()
@@ -450,7 +477,10 @@ with open('/var/www/html/000/climoDavisText.txt','w') as outfile1:
     print(f'There were {cdd} cooling degree days', file = outfile1)
     print('\n', file = outfile1)
     
-    print(f'Record information for {month} {date}, {year}', file = outfile1)
+    print(f'Normal and Record information for {month} {date}, {year}', file = outfile1)
+    print('\n', file = outfile1)
+    print(f'The normal high for today is {nmlHi} degrees', file = outfile1)
+    print(f'The normal low for today is {nmlLo} degrees' , file = outfile1)
     print('\n', file = outfile1)
     print(highPhrase, file = outfile1)
     print(lowPhrase, file = outfile1)
