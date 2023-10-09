@@ -46,6 +46,7 @@ for qwe in sta:
     y1 = LO.to_numpy()
     x = DATE.to_numpy()
         
+    print(x, y, y1)    
     #define x as 200 equally spaced values between the min and max of original x 
     #xnew = np.linspace(x.min(), x.max(), 200) 
 
@@ -56,10 +57,12 @@ for qwe in sta:
     #y1_smooth = LOspl(xnew)
     
     path1 = '/var/www/html/trclimate/'
-                
+        
+    plt.style.use('fivethirtyeight')               
+       
     plt.figure(figsize= (10,6))
     plt.locator_params(axis='x', nbins = date)
-    plt.xlim(1, date)
+    plt.xlim(1, date - 1)
     plt.xticks(fontsize=12)
     plt.xlabel('Date', fontsize=12, fontweight ='bold')
             

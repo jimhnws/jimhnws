@@ -121,6 +121,16 @@ df['localTime'] = df['timeGroup'].dt.strftime('%I:%M %p')
 df = df.loc[:,['timestamp', 'temp_hi', 'temp_hi_at','temp_lo', 'temp_lo_at', 'rainfall_in', 'dew_point_hi', 'dew_point_lo',  'rain_rate_hi_in', 'rain_rate_hi_at', 'timeGroup', 'localTime']]
 
 
+database_username = 'chuckwx'
+database_password = 'jfr716!!00'
+database_ip       = '3.135.162.69'
+database_name     = 'davisInfo'
+database_connection = sqlalchemy.create_engine('mysql+mysqlconnector://{0}:{1}@{2}/{3}'.
+                                               format(database_username, database_password, 
+                                                      database_ip, database_name), connect_args={'connect_timeout': 30})
+df.to_sql(con=database_connection, name='davisTestB', if_exists='replace')
+
+
 # In[22]:
 
 
