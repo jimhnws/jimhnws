@@ -59,7 +59,7 @@ def recordHigh():
 recordHigh()
 
 
-# In[74]:
+# In[2]:
 
 
 import sandbox2
@@ -71,7 +71,8 @@ def recordLow():
     result2 = results[1]
         
     recYearNum = len(result2)
-    print(result2, recYearNum)   
+    print(result2, recYearNum) 
+    
     
     if recYearNum == 1:
         recLow = (result2[0][1])
@@ -79,9 +80,10 @@ def recordLow():
         print(recLow, yearx)
         lowPhrase = (f'The record low for today is {recLow} set in {yearx}')   
         print(lowPhrase)
-    return(recLow, yearx, lowPhrase)        
+    #return(recLow, yearx, lowPhrase)        
     
     if recYearNum > 1 and recYearNum < 4:
+        print("FUCK YOU")
         recLow = (result2[0][1])
         i = 0 
         years = []
@@ -91,34 +93,38 @@ def recordLow():
         
         years.reverse()
     
-        if recYearNum == 2:
-            recLow = (result2[0][1])
-            print("This is the record low value" ,recLow)
-            ax = years[recYearNum - 2]
-            bx = years[recYearNum - 1]
-            yearx = (f'{ax} and {bx}')
-            lowPhrase = (f'The record low for today is {recLow} set in {yearx}')
-            print("This is the value for lowPhrase: ", lowPhrase)
+    if recYearNum == 2:
+        recLow = (result2[0][1])
+        print(recLow)
+        ax = years[recYearNum - 2]
+        bx = years[recYearNum - 1]
+        yearx = (f'{ax} and {bx}')
+        lowPhrase = (f'The record low for today is {recLow} set in {yearx}')
+        print("This is the value for lowPhrase: ", lowPhrase)
+    return(recLow, yearx, lowPhrase)   
             
-        elif recYearNum == 3:
-            ax = years[recYearNum - 3]
-            bx = years[recYearNum - 2]
-            cx = years[recYearNum - 1 ]
-            yearx = (f'{ax},{bx} and {cx}')
-            lowPhrase = (f'The record low for today is {recLow} set in {yearx}')
+    if recYearNum == 3:
+        recLow = (result2[0][1])
+        ax = years[recYearNum - 3]
+        bx = years[recYearNum - 2]
+        cx = years[recYearNum - 1 ]
+        yearx = (f'{ax},{bx} and {cx}')
+        lowPhrase = (f'The record low for today is {recLow} set in {yearx}')
+    return(recLow, yearx, lowPhrase)   
             
-        elif recYearNum == 4:
-            ax = years[recYearNum - 4]
-            bx = years[recYearNum - 3]
-            cx = years[recYearNum - 2 ]
-            dx =  years[recYearNum - 1 ]
-            yearx = (f'{ax},{bx}, {cx} and {dx}')
-            lowPhrase = (f'The record low for today is {recLow} set in {yearx}')
-        return(recLow, yearx, lowPhrase)               
+    if recYearNum == 4:
+        recLow = (result2[0][1])
+        ax = years[recYearNum - 4]
+        bx = years[recYearNum - 3]
+        cx = years[recYearNum - 2 ]
+        dx =  years[recYearNum - 1 ]
+        yearx = (f'{ax},{bx}, {cx} and {dx}')
+        lowPhrase = (f'The record low for today is {recLow} set in {yearx}')
+    return(recLow, yearx, lowPhrase)            
     
 
 
-# In[75]:
+# In[3]:
 
 
 recordLow()
