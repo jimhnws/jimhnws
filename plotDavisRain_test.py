@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[36]:
+# In[84]:
 
 
 import pandas as pd
@@ -20,8 +20,6 @@ import pymysql as dbapi
 
 todayInfo = getDays.getToday()
 yesterdayInfo = getDays.getYesterday()
-print(todayInfo)
-print(yesterdayInfo)
 tomorrowInfo = getDays.getTomorrow()
 
 month, month_num, date, year = todayInfo[0], todayInfo[1], todayInfo[2], todayInfo[3]
@@ -58,10 +56,9 @@ df
 #
 
 df = pd.DataFrame(records, columns = ['index', 'Year', 'Month', 'Date', 'High', 'Low', 'Rainfall', 'Max_Dew_Point'])
-df
 
 
-# In[37]:
+# In[95]:
 
 
 import pandas as pd
@@ -78,33 +75,31 @@ for qwe in sta:
     df['Date'] = df['Date'].astype(int)
     df['High'] = df["High"].astype(int)
     df['Low'] = df["Low"].astype(int)
-    df['rainfall'] = df["Rainfall"].astype(float)
-        
-    HI = df['High']
-    LO = df["Low"]
-    RAINFALL = df["Rainfall"]
-    DATE = df["Date"]
-    
-    y = HI.to_numpy()
-    y1 = LO.to_numpy()
-    x = DATE.to_numpy()     
-    rainfall = RAINFALL.to_numpy()
-                
-    path1 = '/var/www/html/trclimate/'
-        
-    plt.style.use('fivethirtyeight')               
-    plt.figure(figsize= (10,6))
-    plt.xticks(fontsize = 12)
-    plt.xlabel('Date', fontsize=12, fontweight ='bold')    
-    
-    plt.grid(axis = "y", linewidth = 2.0, color = 'black')
-    plt.ylabel('Rainfall (inches)', fontsize=12, fontweight ='bold')
-   
-    plt.bar(x, rainfall, color = "green", width= 0.6)
+    df['Rainfall'] = df["Rainfall"].astype(float)   
+            
+    path1 = '/var/www/html/trclimate/'    
+           
+    #sns.set_style("whitegrid", {'grid.color': 'black'})
+    sns.set_style("darkgrid", {'grid.color': 'blue'})
+    plt.figure(figsize=(10, 6))
+    plt.xlim(1, date)
+    plt.xticks(fontsize=12)
+    plt.xlabel('Date', fontsize=12, fontweight ='bold')
+    plt.yticks(fontsize=12)
+    sns.barplot(data = df, x = 'Date', y = 'Rainfall', color = 'g', errorbar = None, orient = "vertical")
+    plt.autoscale(enable = True, axis = 'both', tight = True)
     plt.grid(True)
+    plt.ylabel('Rainfall (inches)', fontsize=12, fontweight ='bold')
     plt.title(f'{month} {year} Rainfall', fontsize=12, fontweight ='bold')
-    #plt.autoscale(enable = True, axis = 'both', tight = True)    
-    plt.savefig(f'{path1}Rain_test_{qwe}')  
+    plt.savefig(f'{path1}Rain_test_{qwe}') 
+    #plt.show()   
+    
+
+
+# In[ ]:
+
+
+
 
 
 # In[ ]:
