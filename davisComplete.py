@@ -1,12 +1,13 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[20]:
+# In[2]:
 
 
 import calcOneDay
 import getDays
 from datetime import datetime, timedelta
+import calcTimeNow
 
 # Calculate the time and date for end of day calculations
 
@@ -15,8 +16,6 @@ start, end = (xy[0], xy[1])
 
 todayInfo = getDays.getToday()
 yesterdayInfo = getDays.getYesterday()
-print(todayInfo)
-print(yesterdayInfo)
 tomorrowInfo = getDays.getTomorrow()
 
 month, month_num, date, year = todayInfo[0], todayInfo[1], todayInfo[2], todayInfo[3]
@@ -128,7 +127,7 @@ database_name     = 'davisInfo'
 database_connection = sqlalchemy.create_engine('mysql+mysqlconnector://{0}:{1}@{2}/{3}'.
                                                format(database_username, database_password, 
                                                       database_ip, database_name), connect_args={'connect_timeout': 30})
-df.to_sql(con=database_connection, name='davisTestB', if_exists='replace')
+df.to_sql(con=database_connection, name='davisTestB', if_exists='append')
 
 
 # In[22]:
@@ -180,10 +179,9 @@ import sqlalchemy
 import mysql.connector
 import sqlite3
 
-df2 = pd.DataFrame(columns = ['Year', 'Month', 'Date', 'High', 'Low', 'Rainfall', 'Max_Dew_Point'])
-newRow = pd.DataFrame({'Year': year, 'Month': month_num, 'Date': yesterday, 'High': maxT, 'Low': minT, 'Rainfall' : rain, 'Max_Dew_Point': dewMaxT }, index = [yesterday])
+df2 = pd.DataFrame(columns = ['Year', 'Month', 'Date', 'High', 'Low', 'Average', 'HDD', 'CDD', 'Rainfall', 'Max_Dew_Point'])
+newRow = pd.DataFrame({'Year': year, 'Month': month_num, 'Date': yesterday, 'High': maxT, 'Low': minT, 'Average': avgTemp, 'HDD': hdd, 'CDD': cdd, 'Rainfall' : rain, 'Max_Dew_Point': dewMaxT }, index = [yesterday])
 df2 = pd.concat([newRow, df2]).reset_index(drop = True)
-print(df2)
 
 database_username = 'chuckwx'
 database_password = 'jfr716!!00'
@@ -192,146 +190,38 @@ database_name     = 'davisf6'
 database_connection = sqlalchemy.create_engine('mysql+mysqlconnector://{0}:{1}@{2}/{3}'.
                                                format(database_username, database_password, 
                                                       database_ip, database_name), connect_args={'connect_timeout': 30})
-df2.to_sql(con=database_connection, name='davisTest', if_exists='append', index = False)
+df2.to_sql(con=database_connection, name='davisUpdate', if_exists='append', index = False)
 
 
-# In[27]:
+# In[3]:
 
-
-import openpyxl
-from openpyxl import load_workbook
-import excelFilename
-import calcTimeNow
-import getNameNumbers
 
 #
-# Create the month name for the xlsx filename
+# Get the data from the mySQL table for yesterday
 #
 
-#gg = getNameNumbers.sqlWrite()
-#xls_filename, xls_fullfile, path_name = gg[0], gg[1], gg[2]
-#print(xls_filename, xls_fullfile, path_name)
+import pymysql as dbapi
 
-xls_filename = 'davisTest.xlsx'
-path_name = '/home/ec2-user/'
-xls_fullfile = f'{path_name}{xls_filename}'
-print(xls_fullfile)
-
-wb = openpyxl.load_workbook(xls_fullfile)
-sheet = wb.active
-
-# Write headers first...
-a1 = sheet['A1']
-a1.value = "Year"
-b1 = sheet['B1']
-b1.value = year
-c1 = sheet['C1']
-c1.value = 'Month'
-d1 = sheet['D1']
-d1.value = month
-
-a3 = sheet['A3']
-a3.value = "Date"
-b3 = sheet['B3']
-b3.value = 'High'
-c3 = sheet['C3']
-c3.value = 'Low'
-d3 = sheet['D3']
-d3.value = 'Average'
-
-e3 = sheet['E3']
-e3.value = "HDD"
-f3 = sheet['F3']
-f3.value = 'CDD'
-g3 = sheet['G3']
-g3.value = 'Rainfall'
-h3 = sheet['H3']
-h3.value = 'Max_Dew_Pt'
-i3 = sheet['I3']
-i3.value = 'Min_Dew_Pt'
-
-k4 = sheet['K4']
-k4.value = "Highs >=90"
-k5 = sheet['K5']
-k5.value = "Highs <= 32"
-k6 = sheet['K6']
-k6.value = 'Lows <= 32'
-k7 = sheet['K7']
-k7.value = 'Lows <= 0'
-
-k13 = sheet['K14']
-k13.value = "Total Rainfall"
-k14 = sheet['K15']
-k14.value = "rain>=0.01"
-k15 = sheet['K16']
-k15.value = 'rain>=0.10'
-k16 = sheet['K17']
-k16.value = 'rain>=0.50'
-k17= sheet['K18']
-k17.value = 'rain>=1.00'
-k23 = sheet['K24']
-k23.value = 'Monthly Average'
-k24 = sheet['K25']
-k24.value = 'Departure'
-
-m3 = sheet['M4']
-m3.value = "High"
-m4 = sheet['M5']
-m4.value = "Low"
-m13 = sheet['M14']
-m13.value = "Max Rain"
-m23 = sheet['M24']
-m23.value = "Monthy Rainfall"
-m24 = sheet['M25']
-m24.value = "Departure"
-
-o3 = sheet['O4']
-o3.value = "Date"
-o4 = sheet['O5']
-o4.value = "Date"
+QUERY2 = """SELECT * FROM davisUpdate 
+         WHERE Month = %s""" % (month_num)
 
 
-# Calculate the date and write the data...
-offset_day = (int(date) + 2)
+html_path = '/var/www/html/000/'
+db = dbapi.connect(host='3.135.162.69',user='chuckwx',passwd='jfr716!!00', database = 'davisf6')
 
-date1 = sheet.cell(row = offset_day, column = 1)
-date1.value = yesterday
-maxTT = sheet.cell(row = offset_day, column = 2)
-maxTT.value = maxT
-minTT = sheet.cell(row = offset_day, column = 3)
-minTT.value = minT
-avgT = sheet.cell(row = offset_day, column = 4)
-avgT.value = avgTemp
-hdd1 = sheet.cell(row = offset_day, column = 5)
-hdd1.value = hdd
-cdd1 = sheet.cell(row = offset_day, column = 6)
-cdd1.value = cdd
-totRR = sheet.cell(row = offset_day, column = 7)
-totRR.value = rain
-dewMaxTT = sheet.cell(row = offset_day, column = 8)
-dewMaxTT.value = dewMaxT
-dewMinTT = sheet.cell(row = offset_day, column = 9)
-dewMinTT.value = dewMinT
+cur = db.cursor()
+cur.execute(QUERY2)
+dateResult = cur.fetchall()
 
-wb.save(xls_fullfile)
+colNames = (['index', 'Year', 'Month', 'Date', 'High', 'Low', 'Average', 'HDD', 'CDD', 'Rainfall', 'Max_Dew_Point']) 
+df3 = pd.DataFrame(dateResult, columns = colNames) 
+df3 = df3.drop(df3.columns[[0, 1]], axis = 1)
+df3 = df3.reindex(columns=['Date', 'High', 'Low', 'Average', 'HDD', 'CDD', 'Rainfall', 'Max_Dew_Point'])
+
+df3.to_html(f'{html_path}throttled.html', index = False) 
 
 
 # In[ ]:
-
-
-import setUpHTML
-
-# Read the Excel file as a possible pandas dataframe and html file
-
-html_path = '/var/www/html/000/'
-
-df1 = pd.read_excel(xls_fullfile, skiprows = 2, names = ['Date','High','Low','Average','HDD','CDD','Rainfall','Max Dew Pt','Min Dew Pt','dead2','dead3','dead4','dead5','dead6','dead7'])
-df1 = df1.drop(df1.columns[[9,10,11,12,13,14]], axis = 1)
-df1
-df1.to_html(f'{html_path}throttle.html', index = False) 
-
-
-# In[7]:
 
 
 import numpy as np
@@ -436,41 +326,17 @@ from tabulate import tabulate
 import sandbox1
 import sandbox2
 
-'''
-climo_data = [["Month", "Day", "Year", "High", "Low", "Avg", "HDD", "CDD", "Rain"],
-             [month, date, year, maxT, minT, avgTemp, hdd, cdd, corR]]
-
-with open('/var/www/html/000/climo.html', 'w') as f:
-    f.write(tabulate(climo_data, headers = 'firstrow', tablefmt = 'html'))
-    
-
-record_data = [["Month", "Day", "Year", "Record High", "Year", "Record Low", "Year", "Record Rainfall", "Year"],
-             [month, nextDay, year, recHigh, recHighYear, recLow, recLowYear, recRain, recRainYear]]
-            
-
-
-with open('/var/www/html/000/day_records.html', 'w') as f:
-    f.write(tabulate(record_data, headers = 'firstrow', tablefmt = 'html'))'
-
-with open('/var/www/html/000/climoTest1.html','w') as outfile1: 
-    print(f'This is the daily almanac for {month} {date}, {year}', file = outfile1)
-    print('\n', file = outfile1)
-    print(f'The high today was {maxT} at {hiTime}', file = outfile1)
-    print(f'The low today was {minT} at {loTime}', file = outfile1)
-    print(f'The average temperature was {avgTemp}', file = outfile1)
-    print(f'The rainfall today was {corR} inches', file = outfile1)
-    print(f'There were {hdd} heating degree days today', file = outfile1)
-    print(f'There were {cdd} cooling degree days today', file = outfile1)
-'''
-
 nmlData = sandbox2.sandbox2()
 print("This is the value of nmlData: ", nmlData)
 nmlHi = nmlData[3]
 nmlLo = nmlData[4]
 
 highData = sandbox1.recordHigh()
+print("THIS IS THE HIGH DATA: ", highData)
 lowData = sandbox1.recordLow()
+print("THIS IS THE LOW DATA: ", lowData)
 rainData = sandbox1.recordRain()
+print("THIS IS THE RAIN DATA: ", rainData)
 
 highPhrase = highData[2]
 lowPhrase = lowData[2]
@@ -483,8 +349,16 @@ with open('/var/www/html/000/climoDavisText.txt','w') as outfile1:
     print(f'The low yesterday was {minT} degrees', file = outfile1)
     print(f'The average temperature was {avgTemp} degrees', file = outfile1)
     print(f'The rainfall yesterday was {("%.2f" % rain)} inches', file = outfile1)
-    print(f'There were {hdd} heating degree days', file = outfile1)
-    print(f'There were {cdd} cooling degree days', file = outfile1)
+    if hdd == 0:
+        print('')
+    else:
+        print(f'There were {hdd} heating degree days', file = outfile1)
+    if cdd == 0:
+        print('')
+    else:
+        print(f'There were {cdd} cooling degree days', file = outfile1)
+            
+    
     print('\n', file = outfile1)
     
     print(f'Normal and Record information for {month} {date}, {year}', file = outfile1)
@@ -495,4 +369,10 @@ with open('/var/www/html/000/climoDavisText.txt','w') as outfile1:
     print(highPhrase, file = outfile1)
     print(lowPhrase, file = outfile1)
     print(rainPhrase, file = outfile1)  
+
+
+# In[ ]:
+
+
+
 

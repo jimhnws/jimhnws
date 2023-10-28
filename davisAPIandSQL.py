@@ -296,8 +296,15 @@ with open('/var/www/html/000/climoDavisText.txt','w') as outfile1:
     print(f'The low today was {minT}', file = outfile1)
     print(f'The average temperature was {avgTemp}', file = outfile1)
     print(f'The rainfall today was {("%.2f" % rain)} inches', file = outfile1)
-    print(f'There were {hdd} heating degree days today', file = outfile1)
-    print(f'There were {cdd} cooling degree days today', file = outfile1)
+    if hdd == 0:
+        print('')
+    else:
+            print(f'There were {hdd} heating degree days', file = outfile1)
+    if cdd == 0:
+        print('')
+    else:
+        print(f'There were {cdd} cooling degree days', file = outfile1)
+            
     print('\n', file = outfile1)
     print(f'Record information for {month} {nextDay}, {year}', file = outfile1)
     print('\n', file = outfile1)
