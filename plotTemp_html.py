@@ -1,27 +1,25 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[13]:
 
 
 import getDays
+import daysAndDates
 
-todayInfo = getDays.getToday()
-yesterdayInfo = getDays.getYesterday()
-print(todayInfo)
-print(yesterdayInfo)
-tomorrowInfo = getDays.getTomorrow()
+#
+# Calculating some date/time stuff
+#
 
-month, month_num, date, year = todayInfo[0], todayInfo[1], todayInfo[2], todayInfo[3]
-yesterday = yesterdayInfo[2]
-yesterday = int(yesterday)
+dayInfo = daysAndDates.daysAndDates()
+month, month_num, date, year = dayInfo[0], dayInfo[1], dayInfo[2], dayInfo[3]
+yesterday = int(dayInfo[4])
+nextDay = int(dayInfo[5])
 month_num = int(month_num)
-nextDay = tomorrowInfo[2]
-nextDay = int(nextDay)
 date = int(date)
 
 
-# In[2]:
+# In[14]:
 
 
 import pandas as pd
@@ -42,7 +40,7 @@ path1 = '/var/www/html/000/'
 # Get data from the Davis F6 table first
 #
 
-QUERY = """SELECT * FROM davisF6 
+QUERY = """SELECT * FROM davisUpdate 
            WHERE month = %s""" % (month_num)
 
 
@@ -56,7 +54,7 @@ records = cur.fetchall()
 # Now the Tempest F6 table
 #
 
-QUERY1 = """SELECT * FROM tempestF6 
+QUERY1 = """SELECT * FROM tempestCompF6 
            WHERE month = %s""" % (month_num)
 
 
@@ -67,7 +65,7 @@ cur.execute(QUERY1)
 records1 = cur.fetchall()
 
 
-# In[4]:
+# In[15]:
 
 
 import pandas as pd
@@ -88,13 +86,15 @@ for qwe in sta:
     #
 
     if qwe == 'Davis':
-        df = pd.DataFrame(records, columns = ['index', 'Year', 'Month', 'Date', 'High', 'Low', 'Rainfall', 'Max_Dew_Point'])
+        df = pd.DataFrame(records, columns = ['index', 'Year', 'Month', 'Date', 'High', 'Low', 'Average', 'HDD', 'CDD', 'Rainfall', 'Max_Dew_Point'])
         df = df.drop(df.columns[[0,6,7]], axis=1)
     else:
-        df = pd.DataFrame(records1, columns = ['index', 'Year', 'Month', 'Date', 'High', 'Low', 'totR', 'corR', 'Lightning1_5', 'Lightning6_10'])
+        df = pd.DataFrame(records1, columns = ['index', 'Year', 'Month', 'Date', 'High', 'Low', 'Average', 'HDD', 'CDD', 'totR', 'corR', 'Lightning1_5', 'Lightning6_10'])
         df = df.drop(df.columns[[0,6,7,8,9]], axis=1) 
 
 
+    print(df)    
+        
     df['Date'] = df['Date'].astype(int)
     df['High'] = df['High'].astype(int)
     df['Low'] = df['Low'].astype(int)
@@ -105,12 +105,14 @@ for qwe in sta:
 
     y = HI.to_numpy()
     y1 = LO.to_numpy()
-    x = DATE.to_numpy()
+    
+    
+    print(HI, LO, DATE)
     
     fig = px.line(
     df,
     x='Date',
-    y= ['High','Low'],        
+    y=['High','Low'],        
     color_discrete_map={
                  "High": "red",
                  "Low": "blue"
@@ -118,14 +120,17 @@ for qwe in sta:
     
     fig.update_traces(line={'width': 5})
     
+    
     fig.update_layout(
     title = f'{month} {year} Temperatures - {qwe}',
     yaxis_title = "Temperature (F)", title_x = 0.5,
+    legend_title = "Temperature", 
     xaxis = dict(
         tickmode = 'linear',
         tickfont = dict(size = 16), 
         tick0 = 1,
-        dtick = 1),
+        dtick = 1),        
+        
     yaxis_range = [0,100], 
         yaxis = dict(
         tickmode = 'linear',

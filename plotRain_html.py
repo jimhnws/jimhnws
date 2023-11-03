@@ -5,23 +5,21 @@
 
 
 import getDays
+import daysAndDates
 
-todayInfo = getDays.getToday()
-yesterdayInfo = getDays.getYesterday()
-print(todayInfo)
-print(yesterdayInfo)
-tomorrowInfo = getDays.getTomorrow()
+#
+# Calculating some date/time stuff
+#
 
-month, month_num, date, year = todayInfo[0], todayInfo[1], todayInfo[2], todayInfo[3]
-yesterday = yesterdayInfo[2]
-yesterday = int(yesterday)
+dayInfo = daysAndDates.daysAndDates()
+month, month_num, date, year = dayInfo[0], dayInfo[1], dayInfo[2], dayInfo[3]
+yesterday = int(dayInfo[4])
+nextDay = int(dayInfo[5])
 month_num = int(month_num)
-nextDay = tomorrowInfo[2]
-nextDay = int(nextDay)
 date = int(date)
 
 
-# In[2]:
+# In[25]:
 
 
 import pandas as pd
@@ -40,7 +38,7 @@ import pymysql as dbapi
 # Now the Tempest F6 table
 #
 
-QUERY = """SELECT * FROM tempestF6 
+QUERY = """SELECT * FROM tempestCompF6 
            WHERE month = %s""" % (month_num)
 
 
@@ -53,14 +51,17 @@ records = cur.fetchall()
 qwe = ['Davis']
 
 if qwe == 'Davis':
-        df = pd.DataFrame(records, columns = ['index', 'Year', 'Month', 'Date', 'High', 'Low', 'Rainfall', 'Max_Dew_Point'])
+        df = pd.DataFrame(records, columns = ['index', 'Year', 'Month', 'Date', 'High', 'Low', 'Average', 'HDD', 'CDD','Rainfall', 'Max_Dew_Point'])
         df = df.drop(df.columns[[0,6,7]], axis=1)
 else:
-        df = pd.DataFrame(records, columns = ['index', 'Year', 'Month', 'Date', 'High', 'Low', 'totR', 'corR', 'Lightning1_5', 'Lightning6_10'])
-        df = df.drop(df.columns[[0,4,5,8,9]], axis=1)    
+        df = pd.DataFrame(records, columns = ['index', 'Year', 'Month', 'Date', 'High', 'Low', 'Average', 'HDD', 'CDD', 'totR', 'corR', 'Lightning1_5', 'Lightning6_10'])
+        df = df.drop(df.columns[[0,4,5,6,7,8,11,12]], axis=1)    
+        
+        
+print(df)        
 
 
-# In[4]:
+# In[26]:
 
 
 import pandas as pd

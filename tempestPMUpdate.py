@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[3]:
+# In[ ]:
 
 
 import calcOneDay
@@ -20,7 +20,7 @@ logger.setLevel(logging.INFO)
 
 formatter = logging.Formatter('%(asctime)s:%(levelname)s:%(message)s')
 
-file_handler = logging.FileHandler('/home/ec2-user/tempestComp.log')
+file_handler = logging.FileHandler('/home/ec2-user/tempestPMUpdate.log')
 file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
 
@@ -37,7 +37,7 @@ yesterday = int(dayInfo[4])
 nextDay = int(dayInfo[5])
 
 
-# In[4]:
+# In[ ]:
 
 
 import datetime
@@ -72,14 +72,14 @@ goGetDeviceSummary = (f'{protocol}{urlSiteDevice}{deviceID}{preStart}{start_time
 r =  requests.get(goGetDeviceSummary)
 
 path = '/home/ec2-user/'
-file_name = 'tempest_temp.csv'
+file_name = 'tempest_Update.csv'
 full_file = f'{path}{file_name}'
 
 with open(full_file,'w') as fd:
      fd.write(r.text)
 
 
-# In[5]:
+# In[ ]:
 
 
 import pandas as pd
@@ -91,7 +91,7 @@ import math
 # Read in Tempest data from csv into a Pandas DataFrame
 #
 
-df = pd.read_csv('/home/ec2-user/tempest_temp.csv', index_col=False)
+df = pd.read_csv('/home/ec2-user/tempest_Update.csv', index_col=False)
 
 #
 # Calculate needed F6 data
@@ -158,70 +158,7 @@ if cdd < 0:
     cdd = 0         
 
 
-# In[6]:
-
-
-import sqlalchemy
-import mysql.connector
-import sqlite3
-
-#
-# Rearrangethe Pandas DataFrame to match the SQL table
-#
-
-df2 = pd.DataFrame(columns = ['Year', 'Month', 'Date', 'High', 'Low', 'Average', 'HDD', 'CDD', 'totR', 'corR', 'Lightning1_5', 'Lightning6_10'])
-newRow = pd.DataFrame({'Year': year, 'Month': month_num, 'Date': yesterday, 'High': maxT, 'Low': minT, 'Average': avgTemp, 'HDD': hdd, 'CDD': cdd, 'totR': totR, 'corR': corR, 'Lightning1_5': q, 'Lightning6_10': r1 }, index = [yesterday])
-df2 = pd.concat([newRow, df2]).reset_index(drop = True)
-
-#
-# Write the F6 data to the tempestCompF6 table
-#
-
-database_username = 'chuckwx'
-database_password = 'jfr716!!00'
-database_ip       = '3.135.162.69'
-database_name     = 'tempestf6'
-database_connection = sqlalchemy.create_engine('mysql+mysqlconnector://{0}:{1}@{2}/{3}'.
-                                               format(database_username, database_password, 
-                                                      database_ip, database_name), connect_args={'connect_timeout': 30})
-df2.to_sql(con=database_connection, name='tempestCompF6', if_exists='append', index = False)
-
-
-# In[7]:
-
-
-import pymysql as dbapi
-import pandas as pd
-
-#
-# Get the data from the mySQL table for yesterday
-#
-
-#
-# Pop data out of the SQL table, read it into a Pandas DataFrame, and 
-# create an HTML table for display
-#
-
-QUERY2 = """SELECT * FROM tempestCompF6 
-         WHERE Month = %s""" % (month_num)
-
-
-db = dbapi.connect(host='3.135.162.69',user='chuckwx',passwd='jfr716!!00', database = 'tempestf6')
-html_path = '/var/www/html/000/'
-
-cur = db.cursor()
-cur.execute(QUERY2)
-dateResult = cur.fetchall()
-
-colNames = (['index', 'Year', 'Month', 'Date', 'High', 'Low', 'Average', 'HDD', 'CDD', 'totR', 'corR', 'Lightning1_5', 'Lightning6_10']) 
-df3 = pd.DataFrame(dateResult, columns = colNames) 
-df3 = df3.drop(df3.columns[[0, 1]], axis = 1)
-df3 = df3.reindex(columns=['Date', 'High', 'Low', 'Average', 'HDD', 'CDD', 'totR', 'corR', 'Lightning1_5', 'Lightning6_10'])
-
-df3.to_html(f'{html_path}tempest_Throttle.html', index = False) 
-
-
-# In[8]:
+# In[ ]:
 
 
 import numpy as np
@@ -307,7 +244,7 @@ recRain = recordRain[1]
 recRainYear = int(recordRain[4])
 
 
-# In[9]:
+# In[ ]:
 
 
 import numpy as np
@@ -343,12 +280,12 @@ rainPhrase = rainData[2]
 #
 
 with open('/var/www/html/000/climoTempestText.txt','w') as outfile1: 
-    print(f'Daily almanac for {month} {yesterday}, {year}', file = outfile1)
+    print(f'Daily almanac for {month} {date}, {year}', file = outfile1)
     print('\n', file = outfile1)
-    print(f'The high yesterday was {maxT} degrees', file = outfile1)
-    print(f'The low yesterday was {minT} degrees', file = outfile1)
+    print(f'The high so far today was {maxT} degrees', file = outfile1)
+    print(f'The low so dar today was {minT} degrees', file = outfile1)
     print(f'The average temperature was {avgTemp} degrees', file = outfile1)
-    print(f'The rainfall yesterday was {("%.2f" % corR)} inches', file = outfile1)
+    print(f'The rainfall so far today was {("%.2f" % corR)} inches', file = outfile1)
     if hdd == 0:
         print('')
     else:
@@ -369,10 +306,4 @@ with open('/var/www/html/000/climoTempestText.txt','w') as outfile1:
     print(highPhrase, file = outfile1)
     print(lowPhrase, file = outfile1)
     print(rainPhrase, file = outfile1)  
-
-
-# In[ ]:
-
-
-
 
