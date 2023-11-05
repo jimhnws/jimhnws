@@ -257,6 +257,8 @@ import csv
 from tabulate import tabulate
 import sandbox1
 import sandbox2
+from gtts import gTTS 
+import os
 
 #
 # Retrieve normal and record data that has been checked for 
@@ -306,4 +308,38 @@ with open('/var/www/html/000/climoTempestText.txt','w') as outfile1:
     print(highPhrase, file = outfile1)
     print(lowPhrase, file = outfile1)
     print(rainPhrase, file = outfile1)  
+    
+
+maxT = str(maxT)   
+minT = str(minT)
+avgTemp = str(avgTemp)
+totR = str(totR)
+nmlHi = str(nmlHi)
+nmlLo = str(nmlLo)
+
+# The text that you want to convert to audio 
+mytext = 'Daily almanac for ' + month + ' ' + date + '  ' + year + ','
+mytext1 = 'The high today was ' + maxT + ','
+mytext2 = 'The low today was ' + minT + ', '  
+mytext4 = 'The rainfall today was ' +  totR + ',' + ','
+mytext5 = 'The normal high for today is ' + nmlHi + ','
+mytext6 = 'The normal low for today is ' + nmlLo + ','
+mytext7 = highPhrase + ','
+mytext8 = lowPhrase + ','
+mytext9 = rainPhrase
+
+cliMsg = (mytext + mytext1 + mytext2 + mytext4 + mytext5 + mytext6 + mytext7 + mytext8 + mytext9)
+    
+# Language in which you want to convert 
+language = 'en'
+  
+# Passing the text and language to the engine,  
+# here we have marked slow=False. Which tells  
+# the module that the converted audio should  
+# have a high speed 
+myobj = gTTS(text=cliMsg, lang=language, slow=False) 
+  
+# Saving the converted audio in a mp3 file named 
+# welcome  
+myobj.save("/var/www/html/000/almanac.mp3") 
 

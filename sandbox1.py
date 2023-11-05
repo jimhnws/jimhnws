@@ -176,7 +176,7 @@ def recordRain():
     if recYearNum == 1:
         recRain = (result3[0][1])
         yearx = (result3[0][4])
-        rainPhrase = (f'The record rainfall for today is {("%.2f" % recRain)} set in {yearx}')
+        rainPhrase = (f'The record rainfall for today is {("%.2f" % recRain)} inches set in {yearx}')
         logging.debug(f'Rain Phrase is: {rainPhrase}')
         
     return(recRain, yearx, rainPhrase)   
@@ -196,7 +196,7 @@ def recordRain():
         ax = years[recYearNum - 2]
         bx = years[recYearNum - 1]
         yearx = (f'{ax} and {bx}')
-        rainPhrase = (f'The record rainfall for today is {("%.2f" % recRain)} set in {yearx}')
+        rainPhrase = (f'The record rainfall for today is {("%.2f" % recRain)} inches set in {yearx}')
         logging.debug(f'Rain Phrase is: {rainPhrase}')
         
     elif recYearNum == 3:
@@ -205,7 +205,7 @@ def recordRain():
         bx = years[recYearNum - 2]
         cx = years[recYearNum - 1 ]
         yearx = (f'{ax},{bx} and {cx}')
-        rainPhrase = (f'The record rainfall for today is {("%.2f" % recRain)} set in {yearx}')
+        rainPhrase = (f'The record rainfall for today is {("%.2f" % recRain)} inches set in {yearx}')
         logging.debug(f'Rain Phrase is: {rainPhrase}')
         
     elif recYearNum == 4:
@@ -215,7 +215,7 @@ def recordRain():
         cx = years[recYearNum - 2 ]
         dx =  years[recYearNum - 1 ]
         yearx = (f'{ax},{bx}, {cx} and {dx}')
-        rainPhrase = (f'The record rainfall for today is {("%.2f" % recRain)} set in {yearx}')
+        rainPhrase = (f'The record rainfall for today is {("%.2f" % recRain)} inches set in {yearx}')
         logging.debug(f'Rain Phrase is: {rainPhrase}')
         
     return(recRain, yearx, rainPhrase)      
