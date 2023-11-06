@@ -1,6 +1,23 @@
 <html>
 
 <head>
+    <script>
+        function getData(reqMonth, reqYear) {
+            if (str == "") {
+                document.getElementById("dataReturn.txt").innerHTML = "";
+                return;
+            } else {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("dataReturn.txt").innerHTML = this.responseText;
+                    }
+                };
+                xmlhttp.open("GET", "backUp.php?q=" + str, true);
+                xmlhttp.send();
+            }
+        }
+    </script>
 
 </head>
 
@@ -8,14 +25,13 @@
 
     <form>
         Toms River:
-        <select name="choice" onchange="showChoice(this.value)">
-            <option value="Option"> Select an option</option>
-            <option value="Graph">Temperature graph</option>
-            <option value="Daily Almanac">Daily Almanac</option>
-            <option value="Monthly Summaries">Monthly Summaries </option>
+        <select id="needData">
+            <option value=""> Select an option</option>
+            <option value="1">Choose Month</option>
         </select>
     </form>
 
+    <div id="dataReturn"><b>Data will be listed here.</b></div>
 
 </body>
 
