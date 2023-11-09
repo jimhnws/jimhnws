@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[13]:
+# In[1]:
 
 
 import getDays
@@ -17,9 +17,10 @@ yesterday = int(dayInfo[4])
 nextDay = int(dayInfo[5])
 month_num = int(month_num)
 date = int(date)
+month_abbrev = month[0:3]
 
 
-# In[14]:
+# In[2]:
 
 
 import pandas as pd
@@ -65,7 +66,7 @@ cur.execute(QUERY1)
 records1 = cur.fetchall()
 
 
-# In[15]:
+# In[13]:
 
 
 import pandas as pd
@@ -90,10 +91,7 @@ for qwe in sta:
         df = df.drop(df.columns[[0,6,7]], axis=1)
     else:
         df = pd.DataFrame(records1, columns = ['index', 'Year', 'Month', 'Date', 'High', 'Low', 'Average', 'HDD', 'CDD', 'totR', 'corR', 'Lightning1_5', 'Lightning6_10'])
-        df = df.drop(df.columns[[0,6,7,8,9]], axis=1) 
-
-
-    print(df)    
+        df = df.drop(df.columns[[0,6,7,8,9]], axis=1)  
         
     df['Date'] = df['Date'].astype(int)
     df['High'] = df['High'].astype(int)
@@ -104,27 +102,48 @@ for qwe in sta:
     DATE = df['Date']
 
     y = HI.to_numpy()
-    y1 = LO.to_numpy()
+    y1 = LO.to_numpy() 
     
-    
-    print(HI, LO, DATE)
-    
-    fig = px.line(
-    df,
-    x='Date',
-    y=['High','Low'],        
-    color_discrete_map={
-                 "High": "red",
-                 "Low": "blue"
-             })
-    
-    fig.update_traces(line={'width': 5})
-    
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(
+       x=df['Date'],
+       y=df['High'],
+       name="High",
+       marker = {'color' : 'red'}))
+
+    fig.add_trace(go.Scatter(
+       x=df['Date'],
+       y=df['Low'],
+       name="Low",
+       marker = {'color' : 'blue'}))
+
+    fig.update_layout(
+        title_text = f'{month_abbrev} {year} {qwe}', title_x = 0.5, title_font_family = "Arial Black", 
+        yaxis_title = "Temperature", 
+        yaxis = dict(
+            tickfont_family="Arial Black"),
+        xaxis_title = "Date", font_family="Arial Black", 
+        xaxis = dict(
+            tickmode = 'linear',
+            tickfont = dict(size = 16), 
+            tickfont_family="Arial Black",
+            tick0 = 1,
+            dtick = 1),
+        legend = dict(
+            font_family="Arial Black"),
+            legend_title = "Temperature",
+        font = dict(
+            size=20
+        )    
+    )
+
+    fig.update_xaxes(showgrid = True, linewidth=1, linecolor='black')
+    fig.update_yaxes(showgrid = True, linewidth=1, linecolor='black')
+    fig.update_xaxes(showgrid = True, gridwidth=1, gridcolor='black')
+    fig.update_yaxes(showgrid = True, gridwidth=1, gridcolor='black')     
+
     
     fig.update_layout(
-    title = f'{month} {year} Temperatures - {qwe}',
-    yaxis_title = "Temperature (F)", title_x = 0.5,
-    legend_title = "Temperature", 
     xaxis = dict(
         tickmode = 'linear',
         tickfont = dict(size = 16), 
@@ -141,6 +160,7 @@ for qwe in sta:
         
     #fig.show()    
     fig.write_html(f'/var/www/html/000/newTemps1_{qwe}.html', auto_open = True)    
+    fig.write_image(f'/var/www/html/000/newTemps1_{qwe}.png', engine="kaleido")
 
 
 # In[ ]:
