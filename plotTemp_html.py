@@ -66,7 +66,7 @@ cur.execute(QUERY1)
 records1 = cur.fetchall()
 
 
-# In[13]:
+# In[8]:
 
 
 import pandas as pd
@@ -109,13 +109,16 @@ for qwe in sta:
        x=df['Date'],
        y=df['High'],
        name="High",
-       marker = {'color' : 'red'}))
+       marker = {'color' : 'red'},
+       line = {'width': 4} ))
 
     fig.add_trace(go.Scatter(
        x=df['Date'],
        y=df['Low'],
        name="Low",
-       marker = {'color' : 'blue'}))
+       marker = {'color' : 'blue'},
+       line = {'width': 4}))       
+                 
 
     fig.update_layout(
         title_text = f'{month_abbrev} {year} {qwe}', title_x = 0.5, title_font_family = "Arial Black", 
@@ -161,6 +164,12 @@ for qwe in sta:
     #fig.show()    
     fig.write_html(f'/var/www/html/000/newTemps1_{qwe}.html', auto_open = True)    
     fig.write_image(f'/var/www/html/000/newTemps1_{qwe}.png', engine="kaleido")
+
+
+# In[ ]:
+
+
+
 
 
 # In[ ]:

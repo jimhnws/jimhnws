@@ -285,7 +285,7 @@ with open('/var/www/html/000/climoTempestText.txt','w') as outfile1:
     print(f'Daily almanac for {month} {date}, {year}', file = outfile1)
     print('\n', file = outfile1)
     print(f'The high so far today was {maxT} degrees', file = outfile1)
-    print(f'The low so dar today was {minT} degrees', file = outfile1)
+    print(f'The low so far today was {minT} degrees', file = outfile1)
     print(f'The average temperature was {avgTemp} degrees', file = outfile1)
     print(f'The rainfall so far today was {("%.2f" % corR)} inches', file = outfile1)
     if hdd == 0:
