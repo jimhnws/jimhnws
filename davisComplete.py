@@ -1,31 +1,43 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[2]:
+# In[3]:
 
 
 import calcOneDay
 import getDays
 from datetime import datetime, timedelta
 import calcTimeNow
+import daysAndDates
+import logging
+
+#
+# Set up some logging
+#
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+
+formatter = logging.Formatter('%(levelname)s:%(name)s:%(message)s')
+
+file_handler = logging.FileHandler('/home/ec2-user/davisComplete99.log')
+file_handler.setFormatter(formatter)
+
+logger.addHandler(file_handler)
+
 
 # Calculate the time and date for end of day calculations
 
 xy = calcOneDay.calcOneDay()
 start, end = (xy[0], xy[1])
+dayInfo = daysAndDates.daysAndDates()
 
-todayInfo = getDays.getToday()
-yesterdayInfo = getDays.getYesterday()
-tomorrowInfo = getDays.getTomorrow()
-
-month, month_num, date, year = todayInfo[0], todayInfo[1], todayInfo[2], todayInfo[3]
-yesterday = yesterdayInfo[2]
-yesterday = int(yesterday)
-nextDay = tomorrowInfo[2]
-nextDay = int(nextDay)
+month, month_num, date, year = dayInfo[0], dayInfo[1], dayInfo[2], dayInfo[3]
+yesterday = int(dayInfo[4])
+nextDay = int(dayInfo[5])
 
 
-# In[21]:
+# In[6]:
 
 
 import collections
@@ -49,7 +61,7 @@ parameters = {
 parameters = collections.OrderedDict(sorted(parameters.items()))
 
 for key in parameters:
-    print("Parameter name: \"{}\" has value \"{}\"".format(key, parameters[key]))
+    logger.info("Parameter name: \"{}\" has value \"{}\"".format(key, parameters[key]))
 
 apiSecret = parameters["api-secret"];
 parameters.pop("api-secret", None);
@@ -58,8 +70,7 @@ data = ""
 for key in parameters:
     data = data + key + str(parameters[key])
 
-print("Data string to hash is: \"{}\"".format(data))
-print('\n')
+logger.info('Data string to hash is: \"{}\"'.format(data))   
 
 """
 Calculate the HMAC SHA-256 hash that will be used as the API Signature.
@@ -73,8 +84,8 @@ apiSignature = hmac.new(
 """
 Let's see what the final API Signature looks like.
 """
-print("API Signature is: \"{}\"".format(apiSignature))
-print('\n')
+
+logger.info('API Signature is: \"{}\"'.format(apiSignature))
 
 # Building the URL to get the station
 
@@ -86,9 +97,7 @@ add_t = ('&t='+ str(int(time.time())))
 start1 = "&start-timestamp=" + start
 end1 = "&end-timestamp=" + end
 
-#
 URLfinal = (first_part + api_key + add_t + start1 + end1 + add_apisig + apiSignature)
-# print(URLfinal)
 
 r =  requests.get(URLfinal)
 davisAPI = (r.json())
@@ -201,6 +210,7 @@ df2.to_sql(con=database_connection, name='davisUpdate', if_exists='append', inde
 #
 
 import pymysql as dbapi
+from pretty_html_table import build_table
 
 QUERY2 = """SELECT * FROM davisUpdate 
          WHERE Month = %s""" % (month_num)
@@ -217,8 +227,12 @@ colNames = (['index', 'Year', 'Month', 'Date', 'High', 'Low', 'Average', 'HDD', 
 df3 = pd.DataFrame(dateResult, columns = colNames) 
 df3 = df3.drop(df3.columns[[0, 1]], axis = 1)
 df3 = df3.reindex(columns=['Date', 'High', 'Low', 'Average', 'HDD', 'CDD', 'Rainfall', 'Max_Dew_Point'])
+df3.to_html(f'{html_path}throttled.html', index = False)     
 
-df3.to_html(f'{html_path}throttled.html', index = False) 
+html_table_blue_light = build_table(df3, 'blue_light')
+
+with open('f'{html_path}davisLocal.html', 'w') as f:
+          f.write(html_table_blue_light)   
 
 
 # In[ ]:
@@ -241,7 +255,7 @@ QUERY = """SELECT * FROM avgHiLo
            WHERE Month = %s 
            AND Day = %s""" % (month_num, date)
 
-print(QUERY)
+logger.info(QUERY)
 
 
 db = dbapi.connect(host='3.135.162.69',user='chuckwx',passwd='jfr716!!00', database = 'trweather')
@@ -306,7 +320,7 @@ db = dbapi.connect(host='3.135.162.69',user='chuckwx',passwd='jfr716!!00', datab
 cur = db.cursor()
 cur.execute(QUERY3)
 result3 = cur.fetchall()
-#sandbox1.recordRain(result3)
+
 recordRain = result3[0]
 recRain = recordRain[1]
 recRainYear = int(recordRain[4])
@@ -327,16 +341,16 @@ import sandbox1
 import sandbox2
 
 nmlData = sandbox2.sandbox2()
-print("This is the value of nmlData: ", nmlData)
+logger.info("This is the value of nmlData: ", nmlData)
 nmlHi = nmlData[3]
 nmlLo = nmlData[4]
 
 highData = sandbox1.recordHigh()
-print("THIS IS THE HIGH DATA: ", highData)
+logger.info("THIS IS THE HIGH DATA: ", highData)
 lowData = sandbox1.recordLow()
-print("THIS IS THE LOW DATA: ", lowData)
+logger.info("THIS IS THE LOW DATA: ", lowData)
 rainData = sandbox1.recordRain()
-print("THIS IS THE RAIN DATA: ", rainData)
+logger.info("THIS IS THE RAIN DATA: ", rainData)
 
 highPhrase = highData[2]
 lowPhrase = lowData[2]
