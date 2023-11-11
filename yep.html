@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Loading images...</title>
+</head>
+
+<body>
+    <p id="demo"></p>
+    <div id='elementID'> </div>
+
+    <script>
+        function display_image(src, width, height, alt) {
+            var a = document.createElement("img");
+            a.src = src;
+            a.width = width;
+            a.height = height;
+            a.alt = alt;
+            document.body.appendChild(a);
+        }
+        display_image('http://3.135.162.69/monthlyTemps_db.png',
+            500,
+            300,
+            'JavaScriptImage');
+
+        function display_image(src, width, height, alt) {
+            var a = document.createElement("img");
+            a.src = src;
+            a.width = width;
+            a.height = height;
+            a.alt = alt;
+
+            document.body.appendChild(a);
+        }
+        display_image('http://3.135.162.69/monthlyRain_db.png',
+            500,
+            300,
+            'JavaScriptImage');
+    </script>
+    <script>
+        fetch('http://3.135.162.69/monthly.html')
+            .then(response => response.text())
+            .then(text => document.getElementById('elementID').innerHTML = text);
+    </script>
+
+</body>
+
+</html>
