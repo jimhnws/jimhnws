@@ -1,13 +1,14 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[2]:
+# In[35]:
 
 
 import sandbox2
 import sqlGet
 import logging
 
+'''
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 formatter = logging.Formatter('%(levelname)s:%(name)s:%(message)s')
@@ -15,6 +16,7 @@ file_handler = logging.FileHandler('/home/ec2-user/sandbox1.log')
 file_handler.setFormatter(formatter)
 
 logger.addHandler(file_handler)
+'''
 
 def recordHigh():
     
@@ -67,13 +69,13 @@ def recordHigh():
     return(recHigh, yearx, highPhrase)         
 
 
-# In[3]:
+# In[36]:
 
 
 recordHigh()
 
 
-# In[4]:
+# In[38]:
 
 
 import sandbox2
@@ -83,26 +85,26 @@ import logging
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
+'''
 formatter = logging.Formatter('%(levelname)s:%(name)s:%(message)s')
 file_handler = logging.FileHandler('/home/ec2-user/sandbox1.log')
 file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
+'''
 
 def recordLow():
     
     results = sandbox2.sandbox2()
     result2 = results[1]
         
-    recYearNum = len(result2)
-    
-    
+    recYearNum = len(result2)        
     
     if recYearNum == 1:
         recLow = (result2[0][1])
         yearx =  (result2[0][4])
         lowPhrase = (f'The record low for today is {recLow} set in {yearx}')   
         
-    #return(recLow, yearx, lowPhrase)        
+        return(recLow, yearx, lowPhrase)        
     
     if recYearNum > 1 and recYearNum < 4:
         recLow = (result2[0][1])
@@ -122,16 +124,17 @@ def recordLow():
         yearx = (f'{ax} and {bx}')
         lowPhrase = (f'The record low for today is {recLow} set in {yearx}')
         
-    return(recLow, yearx, lowPhrase)   
+        return(recLow, yearx, lowPhrase)   
             
     if recYearNum == 3:
         recLow = (result2[0][1])
         ax = years[recYearNum - 3]
         bx = years[recYearNum - 2]
         cx = years[recYearNum - 1 ]
-        yearx = (f'{ax},{bx} and {cx}')
+        yearx = (f'{ax}, {bx} and {cx}')
         lowPhrase = (f'The record low for today is {recLow} set in {yearx}')
-    return(recLow, yearx, lowPhrase)   
+        
+        return(recLow, yearx, lowPhrase)   
             
     if recYearNum == 4:
         recLow = (result2[0][1])
@@ -139,31 +142,34 @@ def recordLow():
         bx = years[recYearNum - 3]
         cx = years[recYearNum - 2 ]
         dx =  years[recYearNum - 1 ]
-        yearx = (f'{ax},{bx}, {cx} and {dx}')
+        yearx = (f'{ax}, {bx}, {cx} and {dx}')
         lowPhrase = (f'The record low for today is {recLow} set in {yearx}')
-    return(recLow, yearx, lowPhrase)            
+        
+        return(recLow, yearx, lowPhrase)            
     
 
 
-# In[5]:
+# In[39]:
 
 
 recordLow()
 
 
-# In[10]:
+# In[21]:
 
 
 import sandbox2
 import sqlGet
 import logging 
 
+'''
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 formatter = logging.Formatter('%(levelname)s:%(name)s:%(message)s')
 file_handler = logging.FileHandler('/home/ec2-user/sandbox1.log')
 file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
+'''
 
 def recordRain():
     
@@ -172,15 +178,8 @@ def recordRain():
     
     recYearNum = len(result3)
     recRain = (result3[0][1])
-        
-    if recYearNum == 1:
-        recRain = (result3[0][1])
-        yearx = (result3[0][4])
-        rainPhrase = (f'The record rainfall for today is {("%.2f" % recRain)} inches set in {yearx}')
-        logging.debug(f'Rain Phrase is: {rainPhrase}')
-        
-    return(recRain, yearx, rainPhrase)   
-                
+    print(recYearNum)
+                    
     if recYearNum > 1 and recYearNum < 4:
         recRain = (result3[0][1])
         i = 0 
@@ -199,7 +198,9 @@ def recordRain():
         rainPhrase = (f'The record rainfall for today is {("%.2f" % recRain)} inches set in {yearx}')
         logging.debug(f'Rain Phrase is: {rainPhrase}')
         
-    elif recYearNum == 3:
+        return(recRain, yearx, rainPhrase)   
+        
+    if recYearNum == 3:
         recRain = (result3[0][1])
         ax = years[recYearNum - 3]
         bx = years[recYearNum - 2]
@@ -208,7 +209,9 @@ def recordRain():
         rainPhrase = (f'The record rainfall for today is {("%.2f" % recRain)} inches set in {yearx}')
         logging.debug(f'Rain Phrase is: {rainPhrase}')
         
-    elif recYearNum == 4:
+        return(recRain, yearx, rainPhrase)   
+        
+    if recYearNum == 4:
         recRain = (result3[0][1])
         ax = years[recYearNum - 4]
         bx = years[recYearNum - 3]
@@ -218,10 +221,20 @@ def recordRain():
         rainPhrase = (f'The record rainfall for today is {("%.2f" % recRain)} inches set in {yearx}')
         logging.debug(f'Rain Phrase is: {rainPhrase}')
         
-    return(recRain, yearx, rainPhrase)      
+        return(recRain, yearx, rainPhrase)      
+
+        
+    if recYearNum == 1:
+        recRain = (result3[0][1])
+        yearx = (result3[0][4])
+        print(yearx)
+        rainPhrase = (f'The record rainfall for today is {("%.2f" % recRain)} inches set in {yearx}')
+        logging.debug(f'Rain Phrase is: {rainPhrase}')
+        
+        return(recRain, yearx, rainPhrase)   
 
 
-# In[11]:
+# In[22]:
 
 
 recordRain()

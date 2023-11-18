@@ -48,10 +48,10 @@ $chuck = $result->fetch_all(MYSQLI_ASSOC);
 $chuckwx = json_encode($chuck);
 //echo '<prev>'; print_r($chuckwx); echo '</prev>';
 
-$command = escapeshellcmd("/usr/bin/python3 /home/ec2-user/readCSVfromPHP.py '$chuckwx'"); 
-echo shell_exec($command);
+$output = shell_exec('/var/www/html/000/testBlast.sh 2>&1');
+var_dump($output);
 
-$file = fopen("/var/www/html/000/monthly.csv", "w") or die("Unable to open file");
+$file = fopen("/var/www/html/000/monthly.txt", "w") or die("Unable to open file");
 
 fwrite($file, $chuckwx);
 fclose($file);
