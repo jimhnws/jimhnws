@@ -96,6 +96,10 @@ tot_rain = df['precip'].sum()
 totR = round((tot_rain*0.03937), 2)
 nc_Rain = df['local_daily_precip_final'].iloc[-1]
 ncR = round((nc_Rain*0.03937), 2)
+latestRain = df.tail(60)
+hourlyRate = latestRain['precip'].sum()
+hourlyRate = round((hourlyRate*0.03937), 2)
+print(hourlyRate)
 
 storm = (df['strike_distance'].iloc[-1])
 if storm > 0 and storm < 8:
@@ -113,5 +117,5 @@ lastTime = localT.strftime('%I:%M %p')
 # write the data to a csv file with an html suffix
 
 with open('/home/ec2-user/HiLoRain_tempest.csv', 'w') as outfile:
-    print(f'{maxT},{minT},{totR},{ncR},{status},{lastTime}',file = outfile)
+    print(f'{maxT},{minT},{totR},{("%.2f" % hourlyRate)},{ncR},{status},{lastTime}',file = outfile)
 

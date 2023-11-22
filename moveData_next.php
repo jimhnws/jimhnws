@@ -48,15 +48,17 @@ $chuck = $result->fetch_all(MYSQLI_ASSOC);
 $chuckwx = json_encode($chuck);
 //echo '<prev>'; print_r($chuckwx); echo '</prev>';
 
-$output = shell_exec('/var/www/html/000/testBlast.sh 2>&1');
-var_dump($output);
-
 $file = fopen("/var/www/html/000/monthly.txt", "w") or die("Unable to open file");
 
 fwrite($file, $chuckwx);
 fclose($file);
-     
+
 $conn->close();
+
+$output = shell_exec('/var/www/html/000/testBlast.sh 2>&1');
+//var_dump($output);
+
+sleep(3);
 
 $image='<img src="http://3.135.162.69/monthlyTemps_db.png"/>';
 $image1 = '<img src="http://3.135.162.69/monthlyRain_db.png"/>';
