@@ -98,6 +98,11 @@ if ($result->num_rows > 0) {
 
 
 $conn->close();
+
+$output = shell_exec('/var/www/html/000/dailyProcess.sh 2>&1');
+var_dump($output);
+header("Location: http://3.135.162.69/dailyTest.html");
+
 ?>
 
 </body>

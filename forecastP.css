@@ -8,7 +8,6 @@ html {
     background-color: royalblue;
     color: black;
     font-family: sans-serif;
-    font-size: 2.0vw;
     font-weight: 300;
     text-rendering: optimizeLegibility;
 
@@ -46,6 +45,9 @@ h4 {
     padding: 10px;
 }
 
+table {
+    margin: 0 auto;
+}
 
 tr {
     font-size: 1.5vw;
@@ -61,11 +63,21 @@ td {
     font-weight: bold;
 }
 
+th {
+    font-size: 1.5vw;
+    color: black;
+    text-align: center;
+    padding: 7px;
+    font-weight: bold;
+    background-color: lightblue;
+}
+
 p {
     font-size: 2.0vw;
     font-weight: bold;
     color: black;
     text-align: center;
+
 
 }
 
@@ -74,6 +86,10 @@ a {
     color: darkblue;
     font-weight: bold;
 
+}
+
+li {
+    list-style-type: none;
 }
 
 .topbox {
@@ -222,5 +238,116 @@ iframe {
     display: flex;
     align-items: center;
     justify-content: center;
+
+}
+
+.tested {
+    width: 35%;
+    background-color: lightgoldenrodyellow;
+    color: yellow;
+    border: 10px white;
+    padding: 10px;
+    font-size: 5vw;
+    font-weight: 800;
+    text-align: center;
+    margin: auto;
+    margin-top: 1%;
+
+}
+
+.temps {
+    font-size: 10vw;
+    width: 40%;
+    height: 40%;
+    background-color: white;
+    color: crimson;
+    border: 5px darkblue solid;
+    padding: 10px;
+    font-family: Times;
+    font-weight: 800;
+    margin-left: 1%;
+    text-align: center;
+    line-height: 150%;
+    position: absolute;
+    top: 15%;
+    left: 10%;
+
+}
+
+.rh {
+    font-size: 10vw;
+    width: 40%;
+    height: 40%;
+    background-color: white;
+    color: green;
+    border: 5px darkblue solid;
+    padding: 10px;
+    font-family: Times;
+    font-weight: 800;
+    margin-left: 1%;
+    text-align: center;
+    line-height: 150%;
+    position: absolute;
+    bottom: 5%;
+    left: 10%
+}
+
+.winds {
+    font-size: 10vw;
+    width: 40%;
+    height: 40%;
+    background-color: white;
+    color: darkblue;
+    border: 5px darkblue solid;
+    padding: 10px;
+    font-family: Times;
+    font-weight: 800;
+    text-align: center;
+    line-height: 150%;
+    position: absolute;
+    top: 15%;
+    right: 10%
+}
+
+.baro {
+    font-size: 10vw;
+    width: 40%;
+    height: 40%;
+    background-color: white;
+    color: black;
+    border: 5px darkblue solid;
+    padding: 10px;
+    font-family: Times;
+    font-weight: 800;
+    text-align: center;
+    line-height: 150%;
+    position: absolute;
+    bottom: 5%;
+    right: 10%
+}
+
+.timed {
+    width: 50%;
+    color: black;
+    background-color: lightblue;
+    font-size: 3vw;
+    font-weight: 800;
+    text-align: center;
+    line-height: 150%;
+    margin: auto;
+    margin-top: 1%;
+    height: 10%;
+
+}
+
+.dailyTable {
+    color: black;
+    background-color: white;
+    text-align: center;
+    margin: auto;
+    height: 100vh;
+    width: 100%;
+    padding: 5px;
+    font-size: 3vw;
 
 }
