@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[7]:
+# In[2]:
 
 
 import pandas as pd
@@ -19,11 +19,7 @@ from pandas import json_normalize
 
 colNames = ['Rainfall', 'High', 'Low', 'Year', 'Month', 'Day']
 df = pd.read_json('/var/www/html/000/monthly.txt')
-print(df)
-html_table_blue_light = build_table(df, 'blue_light')
-
-with open('/var/www/html/000/monthlyTable.html', 'w') as f:
-    f.write(html_table_blue_light)
+df = df.drop(df.columns[[0]], axis=1)
 
 #
 # Get month name from the month number and year
@@ -31,14 +27,24 @@ with open('/var/www/html/000/monthlyTable.html', 'w') as f:
 
 xd = (df.loc[df['Month']].values[0])
 sd = (df.loc[df['Month']].values[0])
+print(sd)
 
-month_num = int(xd[5])
+month_num = int(xd[4])
 month_name = calendar.month_name[month_num]
-year = int(sd[4])
-print(year)
+year = int(sd[3])
+print(month_num, month_name, year)
+
+df = df.reindex(columns=['Year', 'Month', 'Day', 'HiTemp', 'LowTemp', 'Rain'])
+df = df.fillna(0)
+print(df)
+                         
+html_table_blue_light = build_table(df, 'blue_light', text_align='center')
+
+with open('/var/www/html/000/monthlyTable.html', 'w') as f:
+    f.write(html_table_blue_light)
 
 
-# In[24]:
+# In[3]:
 
 
 import pandas as pd
@@ -58,30 +64,29 @@ y = HI.to_numpy()
 y1 = LO.to_numpy()
 x = DAY.to_numpy()
             
-plt.style.use('seaborn-v0_8-dark')
+plt.style.use('seaborn-v0_8-white')
     
-#path1 = '/Users/jameshayes/'
 path1 = '/var/www/html/000/'
-plt.figure(figsize= (9,5))
+plt.figure(figsize= (6,4))
 plt.locator_params(axis = 'x', nbins = 31)
 plt.xlim(1,31)
 plt.ylim(0, 105)
-plt.xticks(fontsize=12)
-plt.xlabel('Date', fontsize=12, fontweight ='bold')
+plt.xticks(fontsize=10, rotation='vertical')
+plt.xlabel('Date', fontsize=10, fontweight ='bold')
 plt.yticks(fontsize=12)
-plt.ylabel('Temperature (F)', fontsize=12, fontweight ='bold')
+plt.ylabel('Temperature (F)', fontsize=10, fontweight ='bold')
 plt.locator_params(axis='y', nbins=20)
 plt.title(f'{month_name} {year} Temperatures', fontsize=12, fontweight ='bold')
-plt.grid(axis = "y", linewidth = 1.0, color = 'gray')
-plt.grid(axis = "x", linewidth = 1.0, color = 'gray')   
-plt.plot(x, y, marker = "x", color = "red", linewidth =3, label ="High")
-plt.plot(x, y1, marker = "x", color = "blue", linewidth =3, label ="Low")
+#plt.grid(axis = "y", linewidth = 1.0, color = 'gray')
+#plt.grid(axis = "x", linewidth = 1.0, color = 'gray')   
+plt.plot(x, y, color = "red", linewidth =3, label ="High")
+plt.plot(x, y1, color = "blue", linewidth =3, label ="Low")
 plt.legend(fontsize = 12)
 plt.savefig(f'{path1}monthlyTemps_db')
 #plt.show()
 
 
-# In[26]:
+# In[4]:
 
 
 import pandas as pd
@@ -101,19 +106,19 @@ DAY = df['Day']
 y = RAINFALL.to_numpy()
 x = DAY.to_numpy()
 
-plt.style.use('seaborn-v0_8-dark')
+plt.style.use('seaborn-v0_8-white')
     
-plt.figure(figsize= (9,5))
+plt.figure(figsize= (6,4))
 plt.locator_params(axis = 'x', nbins = 31)
 plt.xlim(1, 31)
-plt.xticks(fontsize=12)
+plt.xticks(fontsize=10, rotation='vertical') 
 plt.xlabel('Date', fontsize=12, fontweight ='bold')
 plt.yticks(fontsize=12)
 plt.ylabel('Rainfall (inches)', fontsize=12, fontweight ='bold')
 plt.locator_params(axis='y', nbins=20)
 plt.title(f'{month_name} {year} Rainfall', fontsize=12, fontweight ='bold')
-plt.grid(axis = "y", linewidth = 1.0, color = 'gray')
-plt.grid(axis = "x", linewidth = 1.0, color = 'gray')
+#plt.grid(axis = "y", linewidth = 1.0, color = 'gray')
+#plt.grid(axis = "x", linewidth = 1.0, color = 'gray')
 
 
 plt.bar(df['Day'], df['Rain'], color ='green', width = 0.7)

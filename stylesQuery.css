@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: white;
+    color: black;
+    font-family: "Times New Roman";
+    font-size: 2vw;
+    font-weight: 300;
+    text-rendering: optimizeLegibility;
+
+}
+
+.form {
+    color: black;
+
+}
+
+h1 {
+    color: black;
+    font-size: 2vw;
+    text-align: center;
+}
+
+h2 {
+    color: black;
+    font-size: 2vw;
+    text-align: center;
+}
+
+h3 {
+    font-size: 4vw;
+    color: black;
+    text-align: center;
+    padding: 10px;
+}
+
+tr {
+    font-size: 20px;
+    color: blue;
+
+}
+
+td {
+    font-size: 24px;
+    color: black;
+    text-align: center;
+    padding: 5px;
+    font-weight: bold;
+}
+
+p {
+    font-size: 1.5vw;
+    font-weight: bold;
+    color: blue;
+    margin-left: 1%;
+}
+
+a {
+    text-decoration: none;
+    color: darkblue;
+    font-weight: bold;
+    text-align: center;
+    margin: auto;
+}
+
+.topBox {
+    border: 5px outset darkblue;
+    background-color: rgb(245, 245, 107);
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 4vw;
+    border-radius: 40px;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 1%;
+
+}
+
+.query_box {
+    font-size: 1.5vw;
+    color: darkblue;
+    background-color: white;
+    width: 10%;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px darkblue solid;
+    height: auto;
+    margin-left: 1%;
+    padding: 3px;
+}
+
+span {
+    font-size: 1.5vw;
+    font-weight: bold;
+    color: blue;
+    text-align: center;
+    white-space: pre;
+}
+
+input {
+    color: blue;
+
+}
+
+.righter {
+    position: absolute;
+    top: 1%;
+    left: 13%;
+}
