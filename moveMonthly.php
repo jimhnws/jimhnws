@@ -55,17 +55,22 @@ $conn->close();
 $output = shell_exec('/var/www/html/000/testBlast.sh 2>&1');
 //var_dump($output);
 
-sleep(1);
-
-//$image='<img src="http://3.135.162.69/monthlyTemps_db.png">';
-////$image1 = '<img src="http://3.135.162.69/monthlyRain_db.png">';
-//echo $image;
-//echo $image1;
+sleep(2);
 
 ?>
 
 <div class="righter">
     <iframe src="http://3.135.162.69/monthlyTable.html" name="targetframe" allowTransparency="true" scrolling="no" frameborder="0" width="500" height="700">
+    </iframe>
+</div>
+
+<div class="image1">
+    <iframe src="http://3.135.162.69/monthlyTemps_db.png" name="targetframe" allowTransparency="true" scrolling="no" frameborder="0" width="1000" height="1000">
+    </iframe>
+</div>
+
+<div class="image2">
+    <iframe src="http://3.135.162.69/monthlyRain_db.png" name="targetframe" allowTransparency="true" scrolling="no" frameborder="0" width="1000" height="1000">
     </iframe>
 </div>
 

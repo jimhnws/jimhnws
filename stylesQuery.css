@@ -15,7 +15,7 @@ html {
 }
 
 .form {
-    color: black;
+    color: darkblue;
 
 }
 
@@ -82,7 +82,7 @@ a {
 }
 
 .query_box {
-    font-size: 1.5vw;
+    font-size: 2vw;
     color: darkblue;
     background-color: white;
     width: 10%;
@@ -110,6 +110,19 @@ input {
 
 .righter {
     position: absolute;
-    top: 1%;
+    top: 0;
     left: 13%;
+
+}
+
+.image1 {
+    position: absolute;
+    top: 0;
+    left: 45%;
+}
+
+.image2 {
+    position: absolute;
+    top: 50%;
+    left: 45%;
 }
