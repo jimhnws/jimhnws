@@ -65,14 +65,16 @@ sleep(2);
 </div>
 
 <div class="image1">
-    <iframe src="http://3.135.162.69/monthlyTemps_db.png" name="targetframe" allowTransparency="true" scrolling="no" frameborder="0" width="1000" height="1000">
+    <iframe src="http://3.135.162.69/allInOne.png" name="targetframe" allowTransparency="true" scrolling="no" frameborder="0" width="1000" height="800">
     </iframe>
 </div>
 
+<!--
 <div class="image2">
     <iframe src="http://3.135.162.69/monthlyRain_db.png" name="targetframe" allowTransparency="true" scrolling="no" frameborder="0" width="1000" height="1000">
     </iframe>
 </div>
+    -->
 
 </body>
 </html>

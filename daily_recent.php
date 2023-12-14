@@ -1,32 +1,26 @@
 <!DOCTYPE html>
-<html>
-<head>
-<style>
-table {
-  width: 50%;
-  border-collapse: collapse;
-}
+<html lang="en">
+    <link rel="stylesheet" href="valTest.css">
+    <link rel="stylesheet" href="normalize.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-table, td, th {
-  border: 2px solid black;
-  padding: 5px;
-  background-color: white;
-  
-}
-
-th {text-align: left;}
-</style>
 </head>
 
 <body>
 
-<form action="daily_recent.php" method="post">
-    
-    <input type="text" name="Year"  placeholder="Year (yyyy)"/>
-    <input type="text" name="Month" placeholder="Month (1-12)" />
-    <input type="text" name="Date"   placeholder="Date (1-31)" />
-    <input type="submit" name="submit" />
-</form>
+    <p>Daily Almanac</p>
+    <div class="testBox">
+
+    <form action="daily_recent.php" method="post">
+      <label>Please enter numbers as shown</label>
+      <input type="text" name="Year"  placeholder="Year (yyyy)"/>
+      <input type="text" name="Month" placeholder="Month (1-12)" />
+      <input type="text" name="Date"   placeholder="Date (1-31)" />
+      <input type="submit" name="submit" />
+    </form>
+    </div>
 
 <?php
 
@@ -35,14 +29,14 @@ th {text-align: left;}
 if($_POST['Month'] and $_POST['Year'] and $_POST['Date']){
     $year = $_POST['Year'];
     $month = $_POST['Month'];
-    $date = $_POST['Date'];
-    
+    $day = $_POST['Date'];
+        
 }
 
 $servername = "3.135.162.69";
 $username = "chuckwx";
 $password = "jfr716!!00";
-$dbname = "davisf6";
+$dbname = "trweather";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -51,12 +45,12 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT * from davisUpdate WHERE Year = $year AND Month = $month AND Date = $date";
+$sql = "SELECT * from trw WHERE Year = $year AND Month = $month AND Day = $day";
 $result = $conn->query($sql);
 
 $chuck = $result->fetch_all(MYSQLI_ASSOC);
 $chuckwx = json_encode($chuck);
-echo '<prev>'; print_r($chuckwx); echo '</prev>';
+//echo '<prev>'; print_r($chuckwx); echo '</prev>';
 
 $file = fopen("/var/www/html/000/daily.txt", "w") or die("Unable to open file");
 
@@ -64,19 +58,6 @@ fwrite($file, $chuckwx);
 fclose($file);
 
 $conn->close();
-
-echo "<table>
-<tr>
-<th>Year</th>
-<th>Month</th>
-<th>Date</th>
-<th>High</th>
-<th>Low</th>
-<th>Average</th>
-<th>HDD</th>
-<th>CDD</th>
-<th>Rainfall</th>
-</tr>";
 
 if ($result->num_rows > 0) {
     // output data of each row
@@ -96,14 +77,18 @@ if ($result->num_rows > 0) {
     echo "0 results";
   }
 
-
 $conn->close();
 
 $output = shell_exec('/var/www/html/000/dailyProcess.sh 2>&1');
-var_dump($output);
-header("Location: http://3.135.162.69/dailyTest.html");
+//var_dump($output);
+//header("Location: http://3.135.162.69/dailyTest.html");
 
 ?>
+
+<div class="righter">
+    <iframe src="http://3.135.162.69/dailyTest.html" name="targetframe" allowTransparency="true" scrolling="no" frameborder="0" width="1500" height="1500">
+    </iframe>
+</div>
 
 </body>
 </html>
