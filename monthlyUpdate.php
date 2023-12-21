@@ -47,6 +47,7 @@
                 <option value="2009">2009</option>
                 <option value="2010">2010</option>
                 <option value="2011">2011</option>
+                <option value="2012">2012</option>
                 <option value="2013">2013</option>
                 <option value="2014">2014</option>
                 <option value="2015">2015</option>
@@ -117,25 +118,33 @@ sleep(2);
 
 ?>
 
-<div class="righter">
-    <iframe src="http://3.135.162.69/monthlyTable.html" name="targetframe" allowTransparency="true" scrolling="no" frameborder="0" width="500" height="700">
-    </iframe>
-</div>
+<div id="display" style="width: 80%;position: absolute;top: 0;left: 13%;"></div>
+<script>
+  function load_anotherpage() {
+    document.getElementById("display").innerHTML =
+      '<embed type="text/html" src="http://3.135.162.69/try1.html" width="500" height="700">';
+  }  
+
+  load_anotherpage();
+</script>  
 
 <div class="image1">
     <iframe src="http://3.135.162.69/allInOne.png" name="targetframe" allowTransparency="true" scrolling="no" frameborder="0" width="1000" height="800">
     </iframe>
 </div>
 
-<!--
-<div class="image2">
-    <iframe src="http://3.135.162.69/monthlyRain_db.png" name="targetframe" allowTransparency="true" scrolling="no" frameborder="0" width="1000" height="1000">
-    </iframe>
-</div>
-    -->
-            
-    </body>
+<div id="display1" style="width: 70%;position: absolute;top: 79%;left: 12%;"></div>
+<script>
+  function load_anotherpage() {
+    document.getElementById("display1").innerHTML =
+      '<embed type="text/html" src="http://3.135.162.69/try2.html" width="80%" height="200">';
+  }
+
+  load_anotherpage();
+</script>
+
+</body>
 </html>
 
+
        
-   

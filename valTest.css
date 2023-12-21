@@ -1,0 +1,196 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: white;
+    color: black;
+    font-family: sans-serif;
+    font-size: 2vw;
+    font-weight: 300;
+    text-rendering: optimizeLegibility;
+
+}
+
+h1 {
+    color: black;
+    font-size: 2vw;
+    text-align: center;
+}
+
+h2 {
+    color: black;
+    font-size: 2vw;
+    text-align: center;
+}
+
+h3 {
+    font-size: 4vw;
+    color: black;
+    text-align: center;
+    padding: 10px;
+}
+
+tr {
+    font-size: 20px;
+    color: blue;
+
+}
+
+td {
+    font-size: 24px;
+    color: black;
+    text-align: center;
+    padding: 5px;
+    font-weight: bold;
+}
+
+p {
+    font-size: 1.5vw;
+    font-weight: bold;
+    color: blue;
+    margin-left: 1%;
+
+
+}
+
+a {
+    text-decoration: none;
+    color: darkblue;
+    font-weight: bold;
+    text-align: center;
+    margin: auto;
+}
+
+.topBox {
+    border: 5px outset darkblue;
+    background-color: rgb(245, 245, 107);
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 4vw;
+    border-radius: 40px;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 1%;
+
+}
+
+.greeting {
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 40px;
+}
+
+.curmon {
+    border: 5px outset darkblue;
+    background-color: lightyellow;
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 32px;
+    margin: auto;
+    width: 90%;
+    margin-top: 50px;
+}
+
+label {
+    display: block;
+    font: 1.5vw;
+}
+
+input,
+label {
+    margin: .2rem 0;
+}
+
+.image {
+    border: 5px outset darkblue;
+    background-color: white;
+    font-size: 1vw;
+    float: right;
+    margin-right: 10%;
+    width: 40%;
+    padding: 5px;
+    font-weight: 400;
+    margin-top: 2%
+}
+
+figcaption {
+    font-size: 1vw;
+    padding: 3px;
+    text-align: center;
+    font-weight: bold;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.query_box {
+    font-size: 2vw;
+    color: darkblue;
+    background-color: lightgoldenrodyellow;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    border: 3px darkblue solid;
+    max-width: 50%;
+    height: auto;
+}
+
+.testBox {
+    color: darkblue;
+    background-color: lightblue;
+    width: 10%;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 800;
+    border: 2px darkblue solid;
+    height: auto;
+    margin-left: 1%;
+
+}
+
+label {
+    font-size: 1vw;
+    color: blue;
+}
+
+span {
+    font-size: 1.5vw;
+    font-weight: bold;
+    color: blue;
+    text-align: center;
+    white-space: pre;
+}
+
+input {
+    color: blue;
+
+}
+
+.query_boxMonth {
+    font-size: 1.5vw;
+    color: darkblue;
+    background-color: white;
+    width: 10%;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px darkblue solid;
+    height: auto;
+    left: 5%;
+}
+
+.righter {
+    position: absolute;
+    top: 0;
+    left: 15%
+}

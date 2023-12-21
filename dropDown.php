@@ -17,6 +17,16 @@
         <form action="dropDown.php" method="post">
             <label>Year</label>
             <select id="Year" name="Year">
+                <option value="1978">1978</option>
+                <option value="1979">1979</option>
+                <option value="1980">1980</option>
+                <option value="1981">1981</option>
+                <option value="1982">1982</option>
+                <option value="1983">1983</option>
+                <option value="1984">1984</option>
+                <option value="1985">1985</option>
+                <option value="1986">1986</option>
+                <option value="1989">1989</option>
                 <option value="1990">1990</option>
                 <option value="1991">1991</option>
                 <option value="1992">1992</option>
