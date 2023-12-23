@@ -5,9 +5,9 @@
 }
 
 html {
-    background-color: black;
+    background-color: lightblue;
     color: black;
-    font-family: sans-serif;
+    font-family: "Times New Roman";
     font-size: 2vw;
     font-weight: 300;
     text-rendering: optimizeLegibility;
@@ -27,17 +27,10 @@ h2 {
 }
 
 h3 {
-    font-size: 5vw;
+    font-size: 4vw;
     color: black;
     text-align: center;
     padding: 10px;
-    width: 65%;
-    background-color: lightgoldenrodyellow;
-    margin: auto;
-    font-weight: bold;
-    border: 5px outset darkblue;
-    margin-bottom: 2%;
-    border-radius: 15px;
 }
 
 tr {
@@ -57,10 +50,10 @@ td {
 p {
     font-size: 4vw;
     font-weight: bold;
-    padding: 10px;
     color: black;
-    text-align: justify;
-    background-color: lightskyblue;
+    text-align: center;
+    background-color: white;
+    padding: 10px;
 
 }
 
@@ -81,7 +74,6 @@ a {
     font-weight: bold;
     text-align: center;
     margin: auto;
-    font-size: 4vw;
 }
 
 .topBox {
@@ -131,7 +123,7 @@ a {
 
 .calendar {
     /*border: 3px outset darkblue;*/
-    background-color: lightskyblue;
+    background-color: lightblue;
     text-align: center;
     font-size: 3vw;
     margin: auto;
@@ -200,9 +192,9 @@ label {
 
 
 .tabler_index {
-    font-size: 6vw;
+    font-size: 1.5vw;
     color: black;
-    background-color: lightskyblue;
+    background-color: lightblue;
     margin: auto;
     width: 100%;
     text-align: center;
@@ -267,9 +259,8 @@ label {
     font-size: 24px;
     color: black;
     background-color: lightyellow;
-    margin: auto;
-    width: 100%;
     text-align: center;
+    margin: auto;
     text-decoration: none;
     border: 3px darkblue solid;
 
@@ -307,11 +298,11 @@ label {
 }
 
 .leftSide {
-    background-color: lightskyblue;
+    background-color: lightblue;
     color: black;
     padding: 2px;
     font-weight: bold;
-    font-size: 6vw;
+    font-size: 5vw;
     /*border: 5px outset darkblue;*/
     text-align: center;
     width: 100%;
@@ -334,60 +325,92 @@ figcaption {
     font-weight: bold;
 }
 
+/*
 img {
-    max-width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: auto;
+
+}
+*/
+
+.query_box {
+    font-size: 2vw;
+    color: darkblue;
+    background-color: lightgoldenrodyellow;
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    border: 3px darkblue solid;
+    max-width: 50%;
     height: auto;
 }
 
 .highClouds {
-    background-color: lightskyblue;
-    color: black;
-    padding: 2px;
-    font-weight: bold;
-    font-size: 6vw;
-    /*border: 5px outset darkblue;*/
-    text-align: center;
+    background-color: white;
+    color: lightgoldenrodyellow;
+    font-size: 5vw;
+    font-weight: 300;
+    width: 100%;
 
 }
 
 .midClouds {
-    background-color: lightskyblue;
+    background-color: white;
     color: black;
-    padding: 2px;
-    font-weight: bold;
-    font-size: 6vw;
-    /*border: 5px outset darkblue;*/
-    text-align: center;
+    font-size: 5vw;
+    font-weight: 300;
 
 }
 
 .lowClouds {
-    background-color: lightskyblue;
+    background-color: white;
     color: black;
-    padding: 2px;
-    font-weight: bold;
-    font-size: 6vw;
-    /*border: 5px outset darkblue;*/
-    text-align: center;
+    font-size: 2vw;
+    font-weight: 300;
 
 }
 
-/* Rounded border */
-hr.rounded {
-    border-top: 15px solid black;
-    border-radius: 5px;
-}
-
-figure {
-    padding: 1px;
-    margin: auto;
-}
-
-figcaption {
-    background-color: black;
-    color: white;
+.YIR {
+    background-color: lightblue;
+    color: darkblue;
     font-size: 5vw;
-    padding: 2px;
-    text-align: center;
+    font-weight: 300;
 
+}
+
+.rightSide {
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    font-size: 1.5vw;
+    text-align: center;
+    width: 14%;
+    margin-left: 82%;
+    border: 3px darkblue solid;
+    position: absolute;
+    top: 16%;
+    right: 1%;
+    font-size: 2vw;
+
+}
+
+.fire {
+    font-size: 1.5vw;
+    color: black;
+    background-color: lightblue;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    border: 3px darkblue solid;
+    height: auto;
+}
+
+.commands {
+    font-weight: bold;
 }
