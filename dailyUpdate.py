@@ -18,6 +18,7 @@ import calendar
 from PIL import Image
 from pretty_html_table import build_table
 import sys
+import shutil
 
 #
 # Read JSON request into a pandas Dataframe
@@ -25,6 +26,15 @@ import sys
 
 colNames = ['index', 'Rain', 'HiTemp', 'LowTemp', 'Year', 'Month', 'Day']
 df = pd.read_json('/var/www/html/000/daily.txt')
+
+if df.empty:
+    print("The dataset is empty")
+    file1 = ('/var/www/html/000/NoData.html')
+    file2 = ('/var/www/html/000/dailyTest.html')
+    shutil.copyfile(file1, file2)
+    
+    sys.exit()      
+    
 df = df.drop(df.columns[[0,7]], axis=1)
 
 Date = (df['Day']).astype(int)
@@ -238,9 +248,7 @@ if year < 1989:
     rain = "M"
 else:
     rain = float(df['Rainfall'])
-    rain = format(rain, ".2f")
-    
-print(rain)    
+    rain = format(rain, ".2f") 
 
 with open('/var/www/html/000/dailyTest.html', 'w') as f:
     
