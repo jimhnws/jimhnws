@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[43]:
+# In[1]:
 
 
 import sqlalchemy
@@ -62,6 +62,7 @@ df['newDate'] = pd.to_datetime(df[['Year', 'Month', 'Day']])
 df['new_date'] = df['newDate'].dt.date
 df['new_date'].astype('str')
 df['new_date'] = df['new_date'].apply(str).str.replace('2023-', '')
+df['new_date'] = df['new_date'].apply(str).str.replace('2024-', '')
 
 sns.set_style('darkgrid')
 

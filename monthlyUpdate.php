@@ -59,6 +59,7 @@
                 <option value="2021">2021</option>
                 <option value="2022">2022</option>
                 <option value="2023">2023</option>
+                <option value="2024">2024</option>
             </select><br>
             <label>Month</label>
             <select id="Month" name="Month">
@@ -97,7 +98,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT * from trweather WHERE Month = $month AND Year = $year";
+$sql = "SELECT * from trw WHERE Month = $month AND Year = $year";
 $result = $conn->query($sql);
 
 $chuck = $result->fetch_all(MYSQLI_ASSOC);

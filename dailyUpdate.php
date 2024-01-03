@@ -56,7 +56,8 @@
                 <option value="2020">2020</option>
                 <option value="2021">2021</option>
                 <option value="2022">2022</option>
-                <option value="2023">2023</option>
+                <option value="2023">2023</option>  
+                <option value="2024">2024</option>
             </select>
             <label>Month</label>
             <select id="Month" name="Month">
@@ -182,14 +183,6 @@ $output = shell_exec('/var/www/html/000/dailyProcess.sh 2>&1');
 
   load_anotherpage();
 </script>
-
-
-<!--
-<div class="righter">
-    <iframe src="http://3.135.162.69/dailyTest.html" name="targetframe" allowTransparency="true" scrolling="no" frameborder="0" width="1500" height="1500">
-    </iframe>
-</div>
-    -->
 
 </body>
 </html>

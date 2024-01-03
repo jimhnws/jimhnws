@@ -16,7 +16,7 @@ import os
 # Read JSON request into a pandas Dataframe
 #
 
-df = pd.read_json('/var/www/html/000/monthly.txt')
+df = pd.read_json('/var/www/html/000/all.txt')
 pd.options.display.float_format = '{:,.2f}'.format
 
 #
@@ -54,7 +54,7 @@ if df.empty:
 # Calculating some needed variables for later
 #
 
-df = df.drop(df.columns[[0]], axis=1)
+df = df.drop(df.columns[[0,7]], axis=1)
 date = ((df['Day'])).astype(int)
 month_num  = (df['Month']).astype(int)
 month_num = month_num[0]
@@ -112,7 +112,6 @@ df.insert(11, 'Rainfall', rain)
 df.insert(12, 'Date', date)
 
 df = df.reindex(columns=['Year', 'Month', 'Date', 'High', 'Low', 'Average', 'HDD', 'CDD','Rainfall'])
-df = df.drop(df.columns[[0,1]], index = None, axis=1)
 
 avgData = np.array([monthYear, month_High_avg, month_Low_avg, month_avg, totHDD, totCDD, sumRain])
 throttle = ['Month', 'High', 'Low', 'Average', 'HDD', 'CDD', 'Rainfall']
@@ -129,10 +128,10 @@ df3 = df2.transpose()
 html_table_blue_light = build_table(df, 'blue_light', text_align='center')
 html_table_green_light = build_table(df3, 'green_light', text_align='center')
 
-with open('/var/www/html/000/try1.html', 'w') as fd1:
+with open('/var/www/html/000/try3.html', 'w') as fd1:
           fd1.write(html_table_blue_light)   
         
-with open('/var/www/html/000/try2.html', 'w') as fd2:
+with open('/var/www/html/000/try4.html', 'w') as fd2:
           fd2.write(html_table_green_light)          
 
 

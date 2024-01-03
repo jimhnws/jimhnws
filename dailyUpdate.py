@@ -36,6 +36,8 @@ if df.empty:
     sys.exit()      
     
 df = df.drop(df.columns[[0,7]], axis=1)
+print(df)
+
 
 Date = (df['Day']).astype(int)
 month_num  = (df['Month']).astype(int)
@@ -50,12 +52,15 @@ date = Date[0]
 # In[ ]:
 
 
+import math
+import numpy as np
+
 lastDay = calendar.monthrange(year,month_num)
 lastDay1 = lastDay[1]
 
 High = (df['HiTemp']).round(0).astype(int)
 Low = (df['LowTemp']).round(0).astype(int)
-Avg = ((High + Low)/2).round(0).astype(int)
+Avg = ((High + Low)/2).astype(int).apply(np.ceil)
 HDD = (65 - Avg).round(0).astype(int)
 HDD = HDD.where(HDD > 0, 0) 
 CDD = (Avg - 65).round(0).astype(int)
@@ -81,7 +86,7 @@ df = df.reindex(columns=['Year', 'Month', 'Date', 'High', 'Low', 'Average', 'HDD
 df = df.drop(df.columns[[0,1,2]], index = None, axis=1)
 
 
-# In[2]:
+# In[1]:
 
 
 import numpy as np
@@ -95,6 +100,8 @@ from tabulate import tabulate
 import sqlGet
 import getDays
 import logging
+
+print("this is the date", date)
 
 #
 # Get the record high for the date
@@ -241,7 +248,6 @@ avg = int(df['Average'])
 hdd = int(df['HDD'])
 cdd = int(df['CDD'])
 rain = float(df['Rainfall'])
-print(rain)
 
 if year < 1989:
     rain = str(rain)

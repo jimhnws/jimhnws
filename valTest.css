@@ -184,9 +184,9 @@ input {
     text-align: center;
     text-decoration: none;
     font-weight: bold;
-    border: 2px darkblue solid;
+    border: 5px darkblue solid;
     height: auto;
-    left: 5%;
+    left: 12%;
 }
 
 .righter {
