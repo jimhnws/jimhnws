@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[7]:
+# In[2]:
 
 
 import json
@@ -13,13 +13,13 @@ from datetime import datetime
 import time
 
 
-# In[8]:
+# In[3]:
 
 
 # Get the first part of the gridded forecast...
 
 file_path = '/var/www/html/000/' 
-file_name = 'skyviewfcst.txt'
+file_name = 'skylinefcst.txt'
 full_file = file_path + file_name
 
 urlTest1 = 'https://api.weather.gov/points/40.3422,-76.7151' # here
@@ -36,6 +36,7 @@ x1 = r1.json()
 secondHack = x1['properties']['periods']
 w = len(secondHack)
 j = 0
+
 print('Here is the forecast for Skyline View, PA','\n')
 
 with open(full_file, 'w') as outfile: 
@@ -90,7 +91,7 @@ with open(full_file, 'w') as outfile:
     
         print(f'{dayFcst}', file = outfile)
     
-        j+= 1
+        j+= 1       
 
 
 # In[ ]:
