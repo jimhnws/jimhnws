@@ -148,26 +148,6 @@ fclose($file);
 
 $conn->close();
 
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-    echo "<tr>"; 
-    echo "<td>" . $row["Year"] . "</td>";
-    echo "<td>" . $row["Month"] . "</td>"; 
-    echo "<td>" . $row["Date"]. "</td>";
-    echo "<td>" . $row["High"]. "</td>"; 
-    echo "<td>" . $row["Low"]. "</td>";
-    echo "<td>" . $row["Average"] . "</td>";
-    echo "<td>" . $row["HDD"]. "</td>"; 
-    echo "<td>" . $row["CDD"]. "</td>";
-    echo "<td>" . $row["Rainfall"] . "</td>";
-    }
-  } else {
-    echo "";
-  }
-
-$conn->close();
-
 $output = shell_exec('/var/www/html/000/dailyProcess.sh 2>&1');
 //var_dump($output);
 //header("Location: http://3.135.162.69/dailyTest.html");
