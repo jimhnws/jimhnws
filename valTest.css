@@ -127,7 +127,7 @@ figcaption {
 }
 
 img {
-    max-width: 100%;
+    max-width: 90%;
     height: auto;
 }
 
@@ -155,6 +155,7 @@ img {
     border: 2px darkblue solid;
     height: auto;
     margin-left: 1%;
+    padding: 3px;
 
 }
 
@@ -193,4 +194,17 @@ input {
     position: absolute;
     top: 0;
     left: 15%
+}
+
+.testBox1 {
+    color: darkblue;
+    background-color: lightblue;
+    width: 12%;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 800;
+    border: 2px darkblue solid;
+    height: auto;
+    margin-left: 1%;
+
 }
