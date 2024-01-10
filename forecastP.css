@@ -257,7 +257,7 @@ iframe {
 
 .temps {
     font-size: 10vw;
-    width: 40%;
+    width: 30%;
     height: 40%;
     background-color: white;
     color: crimson;
@@ -270,13 +270,13 @@ iframe {
     line-height: 150%;
     position: absolute;
     top: 15%;
-    left: 10%;
+    left: 2%;
 
 }
 
 .rh {
     font-size: 10vw;
-    width: 40%;
+    width: 30%;
     height: 40%;
     background-color: white;
     color: green;
@@ -289,12 +289,12 @@ iframe {
     line-height: 150%;
     position: absolute;
     bottom: 5%;
-    left: 10%
+    left: 2%
 }
 
 .winds {
     font-size: 10vw;
-    width: 40%;
+    width: 30%;
     height: 40%;
     background-color: white;
     color: darkblue;
@@ -306,12 +306,12 @@ iframe {
     line-height: 150%;
     position: absolute;
     top: 15%;
-    right: 10%
+    left: 33%
 }
 
 .baro {
-    font-size: 10vw;
-    width: 40%;
+    font-size: 9vw;
+    width: 30%;
     height: 40%;
     background-color: white;
     color: black;
@@ -323,13 +323,13 @@ iframe {
     line-height: 150%;
     position: absolute;
     bottom: 5%;
-    right: 10%
+    left: 33%;
 }
 
 .timed {
     width: 50%;
-    color: black;
-    background-color: lightblue;
+    color: white;
+    background-color: black;
     font-size: 3vw;
     font-weight: 800;
     text-align: center;
@@ -339,6 +339,43 @@ iframe {
     height: 10%;
 
 }
+
+.totR {
+    font-size: 10vw;
+    width: 30%;
+    height: 40%;
+    background-color: white;
+    color: darkgreen;
+    border: 5px darkblue solid;
+    padding: 10px;
+    font-family: Times;
+    font-weight: 800;
+    text-align: center;
+    line-height: 150%;
+    position: absolute;
+    bottom: 5%;
+    right: 7%;
+}
+
+.hrain {
+    font-size: 10vw;
+    width: 30%;
+    height: 40%;
+    background-color: white;
+    color: rgb(10, 186, 10);
+    border: 5px darkblue solid;
+    padding: 10px;
+    font-family: Times;
+    font-weight: 800;
+    text-align: center;
+    line-height: 150%;
+    position: absolute;
+    top: 15%;
+    right: 7%;
+    border: 5px darkblue solid;
+    padding: 10px;
+}
+
 
 .dailyTable {
     color: black;
