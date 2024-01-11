@@ -222,8 +222,7 @@ with open('/var/www/html/000/currentDavis.html', 'w') as f:
     <div class="baro">
     <li>{("%.2f" % final_baro)}{baro_letter}</li>
     </div>
-    
-    
+        
     <div class="hrain">
     <li>{"%.2f" % rain_rate}"</li>
     </div>
@@ -231,8 +230,64 @@ with open('/var/www/html/000/currentDavis.html', 'w') as f:
     <div class="totR">
     <li>{("%.2f" % rainfall)}"</li>
     </div>
+      
+    </body>
+    </html>'''
+    f.write(message)
+
+
+# In[ ]:
+
+
+#
+# Build a smaller version for trclimate.org
+#
+
+with open('/var/www/html/000/currentDavis1.html', 'w') as f:
+#with open('/Users/jameshayes/testCurrent.html', 'w') as f:
+
+    message = f'''
+    <DOCTYPE html>
+    <html>
+    <link rel="stylesheet" type="text/css" href="forecastSmaller.css">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="refresh" content="60";>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest Conditions</title>
     
-  
+    </head>
+    <body>
+    
+    <div class="timed"
+    <li> In Toms River, NJ at {lastTime}</li><br><br><br>
+    </div>
+    
+    <div class="temps">
+    <li>{temp} F</li>
+    </div>
+    
+    <div class="rh">
+    <li>{hum}%</li>
+    </div>
+    
+    <div class="winds">
+    <li>{wind}</li>
+    </div>
+    
+    <div class="baro">
+    <li>{("%.2f" % final_baro)}{baro_letter}</li>
+    </div>
+        
+    <div class="hrain">
+    <li>{"%.2f" % rain_rate}"</li>
+    </div>
+    
+    <div class="totR">
+    <li>{("%.2f" % rainfall)}"</li>
+    </div>
+      
     </body>
     </html>'''
     f.write(message)

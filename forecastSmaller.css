@@ -105,86 +105,6 @@ li {
     width: 40%;
 }
 
-.nationalCenters {
-    width: 100%;
-    border: 5px outset Black;
-    background-color: lightgoldenrodyellow;
-    color: black;
-    padding: 5px;
-    font-size: 5vw;
-    font-weight: 800;
-    margin-top: 1%;
-    margin-bottom: 2%;
-    text-align: center;
-
-}
-
-.wfo {
-    width: 100%;
-    background-color: lightgoldenrodyellow;
-    border: 5px outset Black;
-    color: black;
-    padding: 5px;
-    font-size: 5vw;
-    font-weight: 800;
-    margin-top: 1%;
-    margin-bottom: 2%;
-    text-align: center;
-
-
-}
-
-.wfo1 {
-    width: 100%;
-    background-color: lightgoldenrodyellow;
-    border: 5px outset Black;
-    color: black;
-    padding: 5px;
-    font-size: 5vw;
-    font-weight: 800;
-    text-align: center;
-    margin-top: 1%;
-    margin-bottom: 2%;
-
-}
-
-.localStuff {
-    width: 100%;
-    background-color: lightgoldenrodyellow;
-    color: black;
-    border: 5px outset Black;
-    padding: 5px;
-    font-size: 5vw;
-    font-weight: 800;
-    margin-top: 1%;
-    text-align: center;
-
-}
-
-.em {
-    display: flex;
-    flex-direction: column;
-    background-color: black;
-    color: black;
-    padding: 3px;
-    font-size: 3vw;
-    font-weight: 800;
-    width: 100%;
-    text-align: center;
-
-}
-
-.rightside {
-    width: 100%;
-    height: fit-content;
-    background-color: rgb(2, 2, 2);
-    color: yellow;
-    font-size: 1vw;
-    font-weight: 800;
-    text-align: center;
-
-}
-
 .drillDown {
     width: 100%;
     height: auto;
@@ -256,8 +176,8 @@ iframe {
 }
 
 .temps {
-    font-size: 10vw;
-    width: 30%;
+    font-size: 5vw;
+    width: 25%;
     height: 40%;
     background-color: white;
     color: crimson;
@@ -267,16 +187,16 @@ iframe {
     font-weight: 800;
     margin-left: 1%;
     text-align: center;
-    line-height: 150%;
+    line-height: 70%;
     position: absolute;
-    top: 13%;
-    left: 4%;
+    top: 22%;
+    left: 11%;
 
 }
 
 .rh {
-    font-size: 10vw;
-    width: 30%;
+    font-size: 5vw;
+    width: 25%;
     height: 40%;
     background-color: white;
     color: green;
@@ -286,15 +206,15 @@ iframe {
     font-weight: 800;
     margin-left: 1%;
     text-align: center;
-    line-height: 150%;
+    line-height: 80%;
     position: absolute;
-    bottom: 7%;
-    left: 4%
+    bottom: 1%;
+    left: 11%;
 }
 
 .winds {
-    font-size: 10vw;
-    width: 30%;
+    font-size: 5vw;
+    width: 25%;
     height: 40%;
     background-color: white;
     color: darkblue;
@@ -303,15 +223,15 @@ iframe {
     font-family: Times;
     font-weight: 800;
     text-align: center;
-    line-height: 150%;
+    line-height: 70%;
     position: absolute;
-    top: 13%;
-    left: 35%
+    top: 22%;
+    left: 37%
 }
 
 .baro {
-    font-size: 9vw;
-    width: 30%;
+    font-size: 5vw;
+    width: 25%;
     height: 40%;
     background-color: white;
     color: black;
@@ -320,30 +240,29 @@ iframe {
     font-family: Times;
     font-weight: 800;
     text-align: center;
-    line-height: 175%;
+    line-height: 95%;
     position: absolute;
-    bottom: 7%;
-    left: 35%;
+    bottom: 1%;
+    left: 37%;
 }
 
 .timed {
     width: 50%;
     color: white;
-    background-color: black;
     font-size: 3vw;
     font-weight: 800;
     text-align: center;
-    line-height: 105%;
+    line-height: 35%;
     margin: auto;
     margin-top: 1%;
-    height: 9%;
+    height: 15%;
     padding: 5px;
 
 }
 
 .totR {
-    font-size: 10vw;
-    width: 30%;
+    font-size: 5vw;
+    width: 25%;
     height: 40%;
     background-color: white;
     color: darkgreen;
@@ -352,15 +271,15 @@ iframe {
     font-family: Times;
     font-weight: 800;
     text-align: center;
-    line-height: 150%;
+    line-height: 75%;
     position: absolute;
-    bottom: 7%;
-    right: 5%;
+    bottom: 1%;
+    right: 13%;
 }
 
 .hrain {
-    font-size: 10vw;
-    width: 30%;
+    font-size: 5vw;
+    width: 25%;
     height: 40%;
     background-color: white;
     color: rgb(10, 186, 10);
@@ -369,12 +288,12 @@ iframe {
     font-family: Times;
     font-weight: 800;
     text-align: center;
-    line-height: 150%;
+    line-height: 60%;
     position: absolute;
-    top: 13%;
-    right: 5%;
+    top: 22%;
+    right: 13%;
     border: 5px darkblue solid;
-    padding: 10px;
+
 }
 
 
