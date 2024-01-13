@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[3]:
+# In[8]:
 
 
 import calcOneDay
@@ -15,6 +15,7 @@ import logging
 # Set up some logging
 #
 
+'''
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
@@ -24,7 +25,7 @@ file_handler = logging.FileHandler('/home/ec2-user/davisComplete99.log')
 file_handler.setFormatter(formatter)
 
 logger.addHandler(file_handler)
-
+'''
 
 # Calculate the time and date for end of day calculations
 
@@ -35,6 +36,7 @@ dayInfo = daysAndDates.daysAndDates()
 month, month_num, date, year = dayInfo[0], dayInfo[1], dayInfo[2], dayInfo[3]
 yesterday = int(dayInfo[4])
 nextDay = int(dayInfo[5])
+print(month, month_num, date, year)
 
 
 # In[6]:
@@ -202,13 +204,14 @@ database_connection = sqlalchemy.create_engine('mysql+mysqlconnector://{0}:{1}@{
 df2.to_sql(con=database_connection, name='davisUpdate', if_exists='append', index = False)
 
 
-# In[3]:
+# In[1]:
 
 
 #
 # Get the data from the mySQL table for yesterday
 #
 
+import pandas as pd
 import pymysql as dbapi
 from pretty_html_table import build_table
 
@@ -224,18 +227,19 @@ cur.execute(QUERY2)
 dateResult = cur.fetchall()
 
 colNames = (['index', 'Year', 'Month', 'Date', 'High', 'Low', 'Average', 'HDD', 'CDD', 'Rainfall', 'Max_Dew_Point']) 
+pd.options.display.float_format = '{:,.2f}'.format
 df3 = pd.DataFrame(dateResult, columns = colNames) 
 df3 = df3.drop(df3.columns[[0, 1]], axis = 1)
 df3 = df3.reindex(columns=['Date', 'High', 'Low', 'Average', 'HDD', 'CDD', 'Rainfall', 'Max_Dew_Point'])
 df3.to_html(f'{html_path}throttled.html', index = False)     
 
-html_table_blue_light = build_table(df3, 'blue_light')
+html_table_blue_light = build_table(df3, 'blue_light', text_align='center')
 
-with open('f'{html_path}davisLocal.html', 'w') as f:
+with open(f'{html_path}davisLocal.html', 'w') as f:
           f.write(html_table_blue_light)   
 
 
-# In[ ]:
+# In[1]:
 
 
 import numpy as np

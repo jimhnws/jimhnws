@@ -29,20 +29,20 @@ df = df.iloc[::-1]
 newDate = df['Month'] + df['Day']
 
 
-# In[44]:
+# In[2]:
 
 
 import pandas as pd
 from pandas import DataFrame, Series
 
 df = df.drop(df.columns[[0, 2, 3]], axis = 1)       
+path1 = '/Users/jameshayes/'
 path2 = '/var/www/html/000/'
-print(df)
 
 df.to_html(path2 + 'Rain30' + '.html', index = False, justify = 'center')          
 
 
-# In[45]:
+# In[3]:
 
 
 import pandas as pd
@@ -52,6 +52,7 @@ import matplotlib.dates as mdates
 import numpy as np
 import seaborn as sns
 
+path1 = '/Users/jameshayes/'
 path2 = '/var/www/html/000/'
 
 year = (df['Year']).astype(str)
