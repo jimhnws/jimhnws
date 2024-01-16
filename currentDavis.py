@@ -137,12 +137,13 @@ if wind_direct > 247 and wind_direct < 293:
     wind_dir = 'W'
 if wind_direct > 292 and wind_direct < 348:
     wind_dir = 'NW'   
-if wind_direct > 348 and wind_direct < 360:
+if wind_direct > 348 and wind_direct <= 360:
     wind_dir = 'N' 
 
 wind = f'{wind_dir} {wind_speed}'    
 if wind_speed < 1.5:
     wind = 'Calm'   
+    
 
 
 # In[232]:
@@ -167,13 +168,13 @@ baro_trend = float(baro_trend)
 # Codify the barometric pressure trend
 #
 
-if baro_trend > 0:
+if baro_trend > 0.02:
     baro_letter = "R"
 
-if baro_trend < 0:
+if baro_trend < -0.02:
     baro_letter = "F"
     
-if baro_trend == 0:
+else:
     baro_letter = "S"
         
 
@@ -291,16 +292,4 @@ with open('/var/www/html/000/currentDavis1.html', 'w') as f:
     </body>
     </html>'''
     f.write(message)
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
 

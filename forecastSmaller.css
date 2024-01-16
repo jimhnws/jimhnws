@@ -178,7 +178,7 @@ iframe {
 .temps {
     font-size: 5vw;
     width: 25%;
-    height: 40%;
+    height: 25%;
     background-color: white;
     color: crimson;
     border: 5px darkblue solid;
@@ -187,17 +187,17 @@ iframe {
     font-weight: 800;
     margin-left: 1%;
     text-align: center;
-    line-height: 70%;
+    line-height: 100%;
     position: absolute;
-    top: 22%;
-    left: 11%;
+    top: 16%;
+    left: 23%;
 
 }
 
 .rh {
     font-size: 5vw;
     width: 25%;
-    height: 40%;
+    height: 25%;
     background-color: white;
     color: green;
     border: 5px darkblue solid;
@@ -208,14 +208,14 @@ iframe {
     text-align: center;
     line-height: 80%;
     position: absolute;
-    bottom: 1%;
-    left: 11%;
+    top: 16%;
+    left: 48%;
 }
 
 .winds {
-    font-size: 5svw;
+    font-size: 5vw;
     width: 25%;
-    height: 40%;
+    height: 25%;
     background-color: white;
     color: darkblue;
     border: 5px darkblue solid;
@@ -225,25 +225,25 @@ iframe {
     text-align: center;
     line-height: 70%;
     position: absolute;
-    top: 22%;
-    left: 37%
+    bottom: 34%;
+    left: 24%
 }
 
 .baro {
-    font-size: 5vw;
+    font-size: 4vw;
     width: 25%;
-    height: 40%;
+    height: 25%;
     background-color: white;
     color: black;
     border: 5px darkblue solid;
-    padding: 5px;
+    padding: 10px;
     font-family: Times;
     font-weight: 800;
     text-align: center;
     line-height: 95%;
     position: absolute;
-    bottom: 1%;
-    left: 37%;
+    bottom: 34%;
+    left: 49%;
 }
 
 .timed {
@@ -263,7 +263,7 @@ iframe {
 .totR {
     font-size: 5vw;
     width: 25%;
-    height: 40%;
+    height: 25%;
     background-color: white;
     color: darkgreen;
     border: 5px darkblue solid;
@@ -273,14 +273,14 @@ iframe {
     text-align: center;
     line-height: 75%;
     position: absolute;
-    bottom: 1%;
-    right: 13%;
+    bottom: 9%;
+    left: 49%;
 }
 
 .hrain {
     font-size: 5vw;
     width: 25%;
-    height: 40%;
+    height: 25%;
     background-color: white;
     color: rgb(10, 186, 10);
     border: 5px darkblue solid;
@@ -290,8 +290,8 @@ iframe {
     text-align: center;
     line-height: 60%;
     position: absolute;
-    top: 22%;
-    right: 13%;
+    bottom: 9%;
+    left: 24%;
     border: 5px darkblue solid;
 
 }
