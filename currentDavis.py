@@ -91,7 +91,6 @@ med_baro = pres_data[0]
 final_baro = (med_baro['bar_sea_level'])
 final_baro = ("%.2f" % final_baro)
 baro_trend = (med_baro['bar_trend'])
-print(baro_trend)
 c = (b['data'])
 d = c[0]
 
@@ -169,14 +168,19 @@ baro_trend = float(baro_trend)
 #
 
 if baro_trend > 0.02:
+    print(baro_trend)
     baro_letter = "R"
+    print(baro_letter)
 
-if baro_trend < -0.02:
+elif baro_trend < -0.02:
+    print(baro_trend)
     baro_letter = "F"
+    print(baro_letter)
     
 else:
+    print(baro_trend)
     baro_letter = "S"
-        
+    print(baro_letter)        
 
 #
 # Time info
