@@ -267,7 +267,6 @@ db = dbapi.connect(host='3.135.162.69',user='chuckwx',passwd='jfr716!!00', datab
 cur = db.cursor()
 cur.execute(QUERY)
 result = cur.fetchall()
-print(result)
 
 dataset = result[0]
 nmlHi = int(dataset[3])

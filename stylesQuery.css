@@ -5,7 +5,7 @@
 }
 
 html {
-    background-color: white;
+    background-color: lightblue;
     color: black;
     font-family: "Times New Roman";
     font-size: 2vw;
@@ -15,7 +15,7 @@ html {
 }
 
 .form {
-    color: darkblue;
+    color: black;
 
 }
 
@@ -53,10 +53,13 @@ td {
 }
 
 p {
-    font-size: 1.5vw;
+    font-size: 4vw;
     font-weight: bold;
-    color: blue;
-    margin-left: 1%;
+    color: black;
+    text-align: center;
+    background-color: white;
+    padding: 10px;
+
 }
 
 a {
@@ -81,41 +84,149 @@ a {
 
 }
 
-.query_boxMonth {
-    font-size: 1.5vw;
-    color: darkblue;
+.descript {
+    border: 5px outset darkblue;
+    background-color: lightyellow;
+    text-align: justify;
+    font-size: 18px;
+    margin: auto;
+    width: 85%;
+    padding: 5px;
+    margin-top: 10%;
+    font-weight: 400;
+}
+
+label {
+    display: block;
+    font: 3rem sans-serif;
+}
+
+input,
+label {
+    margin: .4rem 0;
+}
+
+.tabler {
+    font-size: 2vw;
+    color: black;
+    background-color: lightyellow;
+    margin: auto;
+    width: 30%;
+    text-align: center;
+    text-decoration: none;
+    border: 3px darkblue solid;
+}
+
+.descript1 {
+    border: 5px outset darkblue;
+    background-color: lightgoldenrodyellow;
+    text-align: justify;
+    font-size: 5vw;
+    width: 100%;
+    padding: 5px;
+    font-weight: 400;
+    margin-top: 2%
+}
+
+.image {
+    border: 5px outset darkblue;
     background-color: white;
-    width: 10%;
+    font-size: 1vw;
+    float: right;
+    margin-right: 10%;
+    width: 40%;
+    padding: 5px;
+    font-weight: 400;
+    margin-top: 2%
+}
+
+
+.tabler_index {
+    font-size: 1.5vw;
+    color: black;
+    background-color: lightskyblue;
+    margin: auto;
+    width: 100%;
     text-align: center;
     text-decoration: none;
     font-weight: bold;
-    border: 2px darkblue solid;
+    border: 3px darkblue solid;
+    max-width: 100%;
     height: auto;
-    margin-left: 1%;
-    padding: 3px;
 }
 
-span {
+.tablerMET {
     font-size: 1.5vw;
-    font-weight: bold;
-    color: blue;
+    color: black;
+    background-color: lightyellow;
+    margin: auto;
+    width: 100%;
+    height: auto;
     text-align: center;
-    white-space: pre;
+    text-decoration: none;
+    border: 3px darkblue solid;
+    margin-bottom: 15px;
 }
 
-input {
-    color: blue;
+.tablerMonth {
+    font-size: 24px;
+    color: black;
+    background-color: lightyellow;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    border: 3px darkblue solid;
 
 }
 
-.righter {
-    position: absolute;
-    top: 0;
-    left: 40%
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.5px;
+    margin: 4px 2px;
+    cursor: pointer;
 }
 
-.image1 {
-    position: absolute;
-    top: 0;
-    left: 50%;
+#aboutpic {
+    max-width: 25%;
+    max-height: 90%;
+    margin: auto;
+
+}
+
+figcaption {
+    font-size: 1vw;
+    padding: 3px;
+    text-align: center;
+    font-weight: bold;
+}
+
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: auto;
+
+}
+
+.query_box {
+    font-size: 2vw;
+    color: darkblue;
+    background-color: darkblue;
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    border: 3px darkblue solid;
+    max-width: 50%;
+    height: auto;
 }

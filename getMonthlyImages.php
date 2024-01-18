@@ -2,8 +2,12 @@
 
 <head>
     <html lang="en">
-    <link rel="stylesheet" href="valTest.css">
+    
     <link rel="stylesheet" href="normalize.css">
+    
+    <link rel="stylesheet" media="screen and (min-width: 900px)" href="valTest.css" />
+    <link rel="stylesheet" media="screen and (max-width: 600px) " href="valTestMobile.css" />
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +15,7 @@
 </head>
 
 <body>
+    
     <p>Get Monthly Images</p>
     <br>
         <div class="testBox1">
@@ -61,7 +66,7 @@
                 <option value="2022">2022</option>
                 <option value="2023">2023</option>
                 <option value="2024">2024</option>
-            </select><br>
+            </select><br><br>
             <label>Month</label>
             <select id='Month' name='Month'>
                 <option value="Jan">Jan</option>
@@ -76,7 +81,7 @@
                 <option value="Oct">Oct</option>
                 <option value="Nov">Nov</option>
                 <option value="Dec">Dec</option>
-            </select><br><br>
+            </select><br>
             <input type="submit" value="Submit">
                            
          </form>
@@ -106,7 +111,9 @@ $newRainImage = $siteID1.$monthYear.$newRain;
 
 ?>
 
-<div id="x" style="width: 40%;position: absolute;top: 0%;left: 17%;"></div>
+<div class="sizeIt">
+
+<div id="x"></div>
 <script>
     
     t = "<?php echo"$tempImage"?>"; 
@@ -125,8 +132,11 @@ $newRainImage = $siteID1.$monthYear.$newRain;
     src.appendChild(img);
   
  </script>  
+ </div>
 
- <div id="y" style="width: 40%;position: absolute;top: 0%;right: 4%;"></div>  
+ <div class="sizeIt2">
+
+ <div id="y"></div>  
  <script>
 
     var img = document.createElement("img");
@@ -140,7 +150,7 @@ $newRainImage = $siteID1.$monthYear.$newRain;
     src.appendChild(img);
 
 </script>  
-
+</div>
 
 </body>
 </html>

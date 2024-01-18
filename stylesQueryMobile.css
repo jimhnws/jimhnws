@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: lightblue;
+    color: black;
+    font-family: "Times New Roman";
+    font-size: 4vw;
+    font-weight: 300;
+    text-rendering: optimizeLegibility;
+
+}
+
+p {
+    font-size: 11vw;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    padding: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: darkblue;
+    font-weight: bold;
+    text-align: center;
+    margin: auto;
+}
+
+input,
+label {
+    margin: 1rem 0;
+}
+
+label {
+    font-size: 11vw;
+    color: black;
+    font-weight: bold;
+}
+
+input {
+    color: black;
+    font-size: 8vw;
+    background-color: lightgoldenrodyellow;
+    font-weight: bold;
+
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: auto;
+
+}
+
+.sizeIt1 {
+    width: 100%;
+    position: absolute;
+    top: 39%;
+    left: 0;
+
+
+}
+
+/*
+.sizeIt2 {
+    width: 10%;
+    position: absolute;
+    top: 145%;
+    left: 5%;
+}
+*/
+
+.query_boxMonth {
+    font-size: 7vw;
+    color: darkblue;
+    background-color: white;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 800;
+    border: 3px darkblue solid;
+    padding: 5px;
+    height: auto;
+    margin: auto;
+}
+
+.image1 {
+    position: absolute;
+    top: 150%;
+    left: 1%;
+}

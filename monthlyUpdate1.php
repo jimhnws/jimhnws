@@ -3,7 +3,8 @@
     <head>
     <meta charset="utf-8" />  
     <meta name="viewport" content="width=device-width, initial-scale=1" />  
-    <link rel="stylesheet" href="stylesQuery.css" />
+    <link rel="stylesheet" media="screen and (min-width: 900px)" href="stylesQuery.css" />
+    <link rel="stylesheet" media="screen and (max-width: 600px) " href="stylesQueryMobile.css" />
     <link rel="stylesheet" href="normalize.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Get Monthly Data from the Database</title>
@@ -13,7 +14,7 @@
 
     <p>Monthly Almanac</p>
     <div class = "query_boxMonth">
-        <form action=" monthlyUpdate.php" method="post">
+        <form action=" monthlyUpdate1.php" method="post">
         <label>Year</label>
             <select id="Year" name="Year">
                 <option value="1978">1978</option>
@@ -119,22 +120,28 @@ sleep(2);
 
 ?>
 
-<div id="display" style="width: 80%;position: absolute;top: 0;left: 13%;"></div>
+<div class="sizeIt1">
+
+<div id="display"></div>
 <script>
   function load_anotherpage() {
     document.getElementById("display").innerHTML =
-      '<embed type="text/html" src="http://3.135.162.69/try1.html" width="500" height="700">';
+      '<embed type="text/html" src="http://3.135.162.69/try1.html">';
   }  
 
   load_anotherpage();
 </script>  
+</div>
 
+<!--
 <div class="image1">
     <iframe src="http://3.135.162.69/allInOne.png" name="targetframe" allowTransparency="true" scrolling="no" frameborder="0" width="1000" height="800">
     </iframe>
 </div>
+   
 
-<div id="display1" style="width: 70%;position: absolute;top: 79%;left: 12%;"></div>
+<div class="sizeIt2">
+<div id="display1"></div>
 <script>
   function load_anotherpage() {
     document.getElementById("display1").innerHTML =
@@ -143,9 +150,6 @@ sleep(2);
 
   load_anotherpage();
 </script>
-
+-->
 </body>
 </html>
-
-
-       

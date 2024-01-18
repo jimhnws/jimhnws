@@ -126,7 +126,7 @@ df3 = df2.transpose()
 # Creating and writing table components for display 
 #
 
-html_table_blue_light = build_table(df, 'blue_light', text_align='center')
+html_table_blue_light = build_table(df, 'blue_light', text_align='center', width = 'auto')
 html_table_green_light = build_table(df3, 'green_light', text_align='center')
 
 with open('/var/www/html/000/try1.html', 'w') as fd1:
