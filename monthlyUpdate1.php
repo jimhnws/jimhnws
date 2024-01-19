@@ -16,7 +16,7 @@
     <div class = "query_boxMonth">
         <form action=" monthlyUpdate1.php" method="post">
         <label>Year</label>
-            <select id="Year" name="Year">
+            <select id="Year" name="Year" style="font-size: 5vw;">
                 <option value="1978">1978</option>
                 <option value="1979">1979</option>
                 <option value="1980">1980</option>
@@ -63,7 +63,7 @@
                 <option value="2024">2024</option>
             </select><br>
             <label>Month</label>
-            <select id="Month" name="Month">
+            <select id="Month" name="Month" style="font-size: 5vw;">
                 <option value="1">Jan</option>
                 <option value="2">Feb</option>
                 <option value="3">Mar</option>
@@ -120,13 +120,14 @@ sleep(2);
 
 ?>
 
+
 <div class="sizeIt1">
 
 <div id="display"></div>
 <script>
   function load_anotherpage() {
     document.getElementById("display").innerHTML =
-      '<embed type="text/html" src="http://3.135.162.69/try1.html">';
+      '<embed type="text/html" src="http://3.135.162.69/try1.html" width="600" height="1200">';
   }  
 
   load_anotherpage();

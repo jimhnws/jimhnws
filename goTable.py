@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[218]:
+# In[6]:
 
 
 import json
@@ -33,7 +33,7 @@ if df.empty:
     Image1copy.save('/var/www/html/000/allInOne.png')     
     
     with open('/var/www/html/000/try1.html', 'w') as f:
-        html_table_blue_light = build_table(df, 'blue_light', text_align='center')
+        html_table_blue_light = build_table(df, 'blue_light', text_align='center', width="50px")
         f.write(html_table_blue_light)   
     
     with open('/var/www/html/000/try2.html', 'w') as fd2:        
@@ -67,7 +67,7 @@ monthYear = month_abbrev + " " + yearStr
 monthYear = monthYear[0]
 
 
-# In[219]:
+# In[ ]:
 
 
 import pandas as pd
@@ -136,14 +136,14 @@ with open('/var/www/html/000/try2.html', 'w') as fd2:
           fd2.write(html_table_green_light)          
 
 
-# In[213]:
+# In[ ]:
 
 
-'''
 import plotly.graph_objects as go
 import pandas as pd
 
 fig = go.Figure(data=[go.Table(
+    columnwidth = [5,5,5,10,5,5,10],
     header=dict(values=list(df.columns),
                 fill_color='lightblue',
                 font_size=14,
@@ -157,13 +157,12 @@ fig = go.Figure(data=[go.Table(
                align='center'))
 ])    
 
-fig.update_layout(width=1000, height=800)
+fig.update_layout(width=500, height=1200)
 
-fig.write_html(f'/Users/jameshayes/throttle1.html')
-'''
+fig.write_html(f'/var/www/html/000/throttleYes.html')
 
 
-# In[214]:
+# In[7]:
 
 
 '''
@@ -179,13 +178,13 @@ fig = go.Figure(data=[go.Table(
                align='center'))
 ])    
 
-fig.update_layout(width=1000, height=300)
+fig.update_layout(width=400, height=600)
 
 fig.write_html(f'/Users/jameshayes/throttle2.html')
 '''
 
 
-# In[ ]:
+# In[8]:
 
 
 import plotly.graph_objects as go
@@ -283,4 +282,10 @@ fig.update_yaxes(showline=True, linewidth=1.5, linecolor='black',
 
 fig.write_html(f'/var/www/html/000/allInOne.html', auto_open = True)    
 fig.write_image(f'/var/www/html/000/allInOne.png', engine="kaleido")
+
+
+# In[ ]:
+
+
+
 
