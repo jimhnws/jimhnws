@@ -197,7 +197,8 @@ with open('/var/www/html/000/currentDavis.html', 'w') as f:
     message = f'''
     <DOCTYPE html>
     <html>
-    <link rel="stylesheet" type="text/css" href="forecastP.css">
+    <link rel="stylesheet" media="screen and (min-width: 900px)" href="forecastP.css" />
+    <link rel="stylesheet" media="screen and (max-width: 600px) " href="forecastSmaller.css" />
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="refresh" content="60";>

@@ -176,8 +176,8 @@ iframe {
 }
 
 .temps {
-    font-size: 5vw;
-    width: 25%;
+    font-size: 15vw;
+    width: 49%;
     height: 25%;
     background-color: white;
     color: crimson;
@@ -185,18 +185,17 @@ iframe {
     padding: 10px;
     font-family: Times;
     font-weight: 800;
-    margin-left: 1%;
     text-align: center;
-    line-height: 100%;
+    line-height: 250%;
     position: absolute;
     top: 16%;
-    left: 23%;
+    left: 1%;
 
 }
 
 .rh {
-    font-size: 5vw;
-    width: 25%;
+    font-size: 15vw;
+    width: 49%;
     height: 25%;
     background-color: white;
     color: green;
@@ -204,17 +203,16 @@ iframe {
     padding: 10px;
     font-family: Times;
     font-weight: 800;
-    margin-left: 1%;
     text-align: center;
-    line-height: 80%;
+    line-height: 250%;
     position: absolute;
     top: 16%;
-    left: 48%;
+    right: 1%;
 }
 
 .winds {
-    font-size: 5vw;
-    width: 25%;
+    font-size: 15vw;
+    width: 49%;
     height: 25%;
     background-color: white;
     color: darkblue;
@@ -223,15 +221,15 @@ iframe {
     font-family: Times;
     font-weight: 800;
     text-align: center;
-    line-height: 70%;
+    line-height: 250%;
     position: absolute;
     bottom: 34%;
-    left: 24%
+    left: 1%
 }
 
 .baro {
-    font-size: 4vw;
-    width: 25%;
+    font-size: 14vw;
+    width: 49%;
     height: 25%;
     background-color: white;
     color: black;
@@ -240,29 +238,30 @@ iframe {
     font-family: Times;
     font-weight: 800;
     text-align: center;
-    line-height: 95%;
+    line-height: 260%;
     position: absolute;
     bottom: 34%;
-    left: 49%;
+    right: 1%
 }
 
 .timed {
-    width: 50%;
+    width: 100%;
     color: white;
-    font-size: 3vw;
+    font-size: 6vw;
     font-weight: 800;
     text-align: center;
-    line-height: 35%;
+    line-height: 230%;
     margin: auto;
-    margin-top: 1%;
-    height: 15%;
+    margin-top: 3%;
+    height: 10%;
     padding: 5px;
+    background-color: black;
 
 }
 
 .totR {
-    font-size: 5vw;
-    width: 25%;
+    font-size: 15vw;
+    width: 49%;
     height: 25%;
     background-color: white;
     color: darkgreen;
@@ -271,15 +270,15 @@ iframe {
     font-family: Times;
     font-weight: 800;
     text-align: center;
-    line-height: 75%;
+    line-height: 250%;
     position: absolute;
     bottom: 9%;
-    left: 49%;
+    right: 1%;
 }
 
 .hrain {
-    font-size: 5vw;
-    width: 25%;
+    font-size: 15vw;
+    width: 49%;
     height: 25%;
     background-color: white;
     color: rgb(10, 186, 10);
@@ -288,10 +287,10 @@ iframe {
     font-family: Times;
     font-weight: 800;
     text-align: center;
-    line-height: 60%;
+    line-height: 250%;
     position: absolute;
     bottom: 9%;
-    left: 24%;
+    left: 1%;
     border: 5px darkblue solid;
 
 }

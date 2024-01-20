@@ -103,24 +103,21 @@ month_avg = avg.mean().round(1)
 totHDD = hdd.sum()
 totCDD = cdd.sum()
 
-df.insert(6, 'Average', avg)
+df.insert(6, 'Avg', avg)
 df.insert(7, 'HDD', hdd)
 df.insert(8, 'CDD', cdd)
 df.insert(9, 'High', high)
 df.insert(10, 'Low', low)
-df.insert(11, 'Rainfall', rain)
-df.insert(12, 'Date', date)
+df.insert(11, 'Date', date)
 
-df = df.reindex(columns=['Year', 'Month', 'Date', 'High', 'Low', 'Average', 'HDD', 'CDD','Rainfall'])
+df = df.reindex(columns=['Year', 'Month', 'Date', 'High', 'Low', 'Avg', 'HDD', 'CDD','Rain'])
 df = df.drop(df.columns[[0,1]], index = None, axis=1)
+print(df)
 
 avgData = np.array([monthYear, month_High_avg, month_Low_avg, month_avg, totHDD, totCDD, sumRain])
-throttle = ['Month', 'High', 'Low', 'Average', 'HDD', 'CDD', 'Rainfall']
+throttle = ['Month', 'Hi', 'Lo', 'Avg', 'HDD', 'CDD', 'Rain']
 df2 = pd.DataFrame(avgData, throttle)
 df3 = df2.transpose()
-
-#df.to_html(f'/Users/jameshayes/try1.html', index = False)
-#df3.to_html(f'/Users/jameshayes/try2.html', index = False)
 
 #
 # Creating and writing table components for display 
@@ -149,7 +146,7 @@ fig = go.Figure(data=[go.Table(
                 font_size=14,
                 line_color='black',
                 align='center'),
-    cells=dict(values=[df.Date, df.High, df.Low, df.Average, df.HDD, df.CDD, df.Rainfall],
+    cells=dict(values=[df.Date, df.High, df.Low, df.Avg, df.HDD, df.CDD, df.Rain],
                fill_color='white',
                line_color='black',
                font_size=14,
@@ -157,31 +154,9 @@ fig = go.Figure(data=[go.Table(
                align='center'))
 ])    
 
-fig.update_layout(width=500, height=1200)
+fig.update_layout(width=430, height=1200)
 
 fig.write_html(f'/var/www/html/000/throttleYes.html')
-
-
-# In[7]:
-
-
-'''
-import plotly.graph_objects as go
-import pandas as pd
-
-fig = go.Figure(data=[go.Table(
-    cells=dict(values=[df3.Month, df3.High, df3.Low, df3.Average, df3.HDD, df3.CDD, df3.Rain],
-               fill_color='white',
-               line_color='black',
-               font_size=14,
-               height=30,
-               align='center'))
-])    
-
-fig.update_layout(width=400, height=600)
-
-fig.write_html(f'/Users/jameshayes/throttle2.html')
-'''
 
 
 # In[8]:
@@ -193,7 +168,7 @@ from plotly.subplots import make_subplots
 fig = go.Figure()
 fig.add_trace(go.Bar(
        x=df['Date'],
-       y=df['Rainfall'],
+       y=df['Rain'],
        name="Rainfall",
        yaxis='y2',
        opacity=0.8,
@@ -259,13 +234,7 @@ fig.update_layout(
         tick0 = 1,
         dtick = 1),
     
-      legend=dict(
-#            yanchor="top",
-#            y=0.99,
-#            xanchor="left",
-#            x=0.01,
-#            bordercolor="Black",
-#            borderwidth=1
+        legend=dict(
     
             orientation="h",
             entrywidth=70,
@@ -273,7 +242,7 @@ fig.update_layout(
             y=1.00,
             xanchor="right",
             x=1
-))                
+))               
  
 fig.update_xaxes(showline=True, linewidth=1.5, linecolor='black', 
                )

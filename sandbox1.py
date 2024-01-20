@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[35]:
+# In[48]:
 
 
 import sandbox2
@@ -48,14 +48,14 @@ def recordHigh():
             ax = years[recYearNum - 3]
             bx = years[recYearNum - 2]
             cx = years[recYearNum - 1 ]
-            yearx = (f'{ax},{bx} and {cx}')
+            yearx = (f'{ax}, {bx} and {cx}')
             highPhrase = (f'The record high for today is {recHigh} set in {yearx}')
         elif recYearNum == 4:
             ax = years[recYearNum - 4]
             bx = years[recYearNum - 3]
             cx = years[recYearNum - 2 ]
             dx =  years[recYearNum - 1 ]
-            yearx = (f'{ax},{bx}, {cx} and {dx}')
+            yearx = (f'{ax}, {bx}, {cx} and {dx}')
             highPhrase = (f'The record high for today is {recHigh} set in {yearx}')
         return(recHigh, yearx, highPhrase)
                 
@@ -69,13 +69,13 @@ def recordHigh():
     return(recHigh, yearx, highPhrase)         
 
 
-# In[36]:
+# In[49]:
 
 
 recordHigh()
 
 
-# In[38]:
+# In[50]:
 
 
 import sandbox2
@@ -149,13 +149,13 @@ def recordLow():
     
 
 
-# In[39]:
+# In[51]:
 
 
 recordLow()
 
 
-# In[21]:
+# In[53]:
 
 
 import sandbox2
@@ -205,7 +205,7 @@ def recordRain():
         ax = years[recYearNum - 3]
         bx = years[recYearNum - 2]
         cx = years[recYearNum - 1 ]
-        yearx = (f'{ax},{bx} and {cx}')
+        yearx = (f'{ax}, {bx} and {cx}')
         rainPhrase = (f'The record rainfall for today is {("%.2f" % recRain)} inches set in {yearx}')
         logging.debug(f'Rain Phrase is: {rainPhrase}')
         
@@ -217,7 +217,7 @@ def recordRain():
         bx = years[recYearNum - 3]
         cx = years[recYearNum - 2 ]
         dx =  years[recYearNum - 1 ]
-        yearx = (f'{ax},{bx}, {cx} and {dx}')
+        yearx = (f'{ax}, {bx}, {cx} and {dx}')
         rainPhrase = (f'The record rainfall for today is {("%.2f" % recRain)} inches set in {yearx}')
         logging.debug(f'Rain Phrase is: {rainPhrase}')
         
@@ -234,7 +234,7 @@ def recordRain():
         return(recRain, yearx, rainPhrase)   
 
 
-# In[22]:
+# In[54]:
 
 
 recordRain()
