@@ -22,14 +22,14 @@ table {
 }
 
 tr {
-    font-size: 1.5vw;
+    font-size: 4vw;
     color: blue;
     border: 1px solid blue;
 
 }
 
 td {
-    font-size: 1.5vw;
+    font-size: 3.5vw;
     color: black;
     text-align: center;
     padding: 5px;
@@ -38,7 +38,7 @@ td {
 }
 
 th {
-    font-size: 1.5vw;
+    font-size: 3.5vw;
     color: black;
     text-align: center;
     padding: 7px;
@@ -47,7 +47,7 @@ th {
 }
 
 p {
-    font-size: 2vw;
+    font-size: 5vw;
     font-weight: bold;
     color: black;
     text-align: center;

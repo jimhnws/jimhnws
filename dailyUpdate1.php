@@ -18,7 +18,7 @@
 
         <form action="dailyUpdate1.php" method="post">
             <label>Year</label>
-            <select id="Year" name="Year" style="font-size: 3vw;">
+            <select id="Year" name="Year" style="font-size: 1em;">
                 <option value="1978">1978</option>
                 <option value="1979">1979</option>
                 <option value="1980">1980</option>
@@ -61,7 +61,7 @@
                 <option value="2024">2024</option>
             </select>
             <label>Month</label>
-            <select id="Month" name="Month" style="font-size: 3vww;">
+            <select id="Month" name="Month" style="font-size: 1em;">
                 <option value="1">Jan</option>
                 <option value="2">Feb</option>
                 <option value="3">Mar</option>
@@ -76,7 +76,7 @@
                 <option value="12">Dec</option>
             </select>
             <label>Day</label>
-            <select id="Date" name="Date" style="font-size: 3vw;">
+            <select id="Date" name="Date" style="font-size: 1em;">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -156,7 +156,7 @@ $output = shell_exec('/var/www/html/000/dailyProcess.sh 2>&1');
 ?>
 
 <div class="hold">
-    <iframe src="http://3.135.162.69/dailyTest.html" name="targetframe" allowTransparency="true" scrolling="no" frameborder="0">
+    <iframe src="http://3.135.162.69/dailyTest1.html" name="targetframe" allowTransparency="true" scrolling="no" frameborder="0" width="100%" height="100%">
     </iframe>
 </div>      
 

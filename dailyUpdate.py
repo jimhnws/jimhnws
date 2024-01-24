@@ -27,17 +27,23 @@ import shutil
 colNames = ['index', 'Rain', 'HiTemp', 'LowTemp', 'Year', 'Month', 'Day']
 df = pd.read_json('/var/www/html/000/daily.txt')
 
+#
+# Exit the program if the DataFrame is empty
+#
+
 if df.empty:
     print("The dataset is empty")
     file1 = ('/var/www/html/000/NoData.html')
     file2 = ('/var/www/html/000/dailyTest.html')
     shutil.copyfile(file1, file2)
     
-    sys.exit()      
+    sys.exit()   
+    
+#
+# Calculating some needed variables for later
+#
     
 df = df.drop(df.columns[[0,7]], axis=1)
-print(df)
-
 
 Date = (df['Day']).astype(int)
 month_num  = (df['Month']).astype(int)
@@ -317,5 +323,60 @@ with open('/var/www/html/000/dailyTest.html', 'w') as f:
 # In[ ]:
 
 
-
+with open('/var/www/html/000/dailyTest1.html', 'w') as f:
+    
+    message = f'''
+    <DOCTYPE html>
+    <html>
+    <link rel="stylesheet" type="text/css" href="dailyHTML1.css" />
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Almanac for Toms River, NJ</title>
+    
+    </head>
+    <body>
+    <div class="dailyTable">
+    
+    <p> Daily Almanac for Toms River, NJ<br>
+        {month_name} {date}, {year}<br>    
+    </p><br>
+    
+    <table border="2">
+        <tr>
+            <th>Daily Data</th>
+            <th>Observed</th>   
+            <th>Normal</th>
+            <th>Record Highest</th>
+            <th>Record Lowest</th>  
+        
+        </tr>
+        <tr>
+            <td>Max Temperature</td><td>{high}</td><td>{avgHigh}</td><td>{recHigh} in {recHighYear}</td><td>{minHigh} in {recminHighYear}</td>
+        </tr>
+        <tr>
+            <td>Min Temperature</td><td>{low}</td><td>{avgLow}</td><td>{maxLow} in {recmaxLowYear}</td><td>{recLow} in {recLowYear}</td>
+        </tr>
+        <tr>
+            <td>Avg Temperature</td><td>{avg}</td><td>{avgTemp}</td><td></td><td></td>
+        </tr>
+        <tr>
+            <td>HDD</td><td>{hdd}</td><td>{nmlHDD}</td><td></td><td></td>
+        </tr>
+        <tr>
+            <td>CDD</td><td>{cdd}</td><td>{nmlCDD}</td><td></td><td></td>
+        </tr>
+        <tr>
+            <td>Rainfall</td><td>{rain}</td><td>{avgRain:.2f}</td><td>{recRain:.2f} in {recRainYear}</td><td>{lowestRainfall}</td>
+        </tr>       
+            
+        
+    </table>   
+    </div>
+   
+    </body>
+    </html>'''
+   
+    f.write(message)
 

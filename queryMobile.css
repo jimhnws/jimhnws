@@ -1,0 +1,390 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: white;
+    color: black;
+    font-family: "Times New Roman";
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-rendering: optimizeLegibility;
+
+}
+
+tr {
+    font-size: 20px;
+    color: blue;
+
+}
+
+td {
+    font-size: 24px;
+    color: black;
+    text-align: center;
+    padding: 5px;
+    font-weight: bold;
+}
+
+p {
+    font-size: 4vw;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    background-color: white;
+    padding: 10px;
+
+}
+
+a {
+    text-decoration: none;
+    color: darkblue;
+    font-weight: bold;
+    text-align: center;
+    margin: auto;
+    font-size: 1.5em;
+}
+
+.topBox {
+    border: 5px outset darkblue;
+    background-color: rgb(245, 245, 107);
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 3vw;
+    border-radius: 40px;
+    width: 70%;
+    margin: auto;
+    margin-bottom: 5%;
+
+}
+
+.greeting {
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 40px;
+}
+
+.curmon {
+    border: 5px outset darkblue;
+    background-color: lightyellow;
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 32px;
+    margin: auto;
+    width: 90%;
+    margin-top: 50px;
+}
+
+.descript {
+    border: 5px outset darkblue;
+    background-color: lightyellow;
+    text-align: justify;
+    font-size: 18px;
+    margin: auto;
+    width: 85%;
+    padding: 5px;
+    margin-top: 10%;
+    font-weight: 400;
+}
+
+.calendar {
+    /*border: 3px outset darkblue;*/
+    background-color: lightblue;
+    text-align: center;
+    font-size: 3vw;
+    margin: auto;
+    width: 100%;
+    padding: 2px;
+    margin-top: 2%;
+    font-weight: bold;
+
+}
+
+label {
+    display: block;
+    font: 3rem sans-serif;
+}
+
+input,
+label {
+    margin: .4rem 0;
+}
+
+.thisyear {
+    background-color: lightyellow;
+    padding: 2px;
+    font-weight: bold;
+    font-size: 3vw;
+    text-align: center;
+    width: 100%;
+    margin: auto;
+    margin-top: 1%;
+
+}
+
+.tabler {
+    font-size: 2vw;
+    color: black;
+    background-color: lightyellow;
+    margin: auto;
+    width: 30%;
+    text-align: center;
+    text-decoration: none;
+    border: 3px darkblue solid;
+}
+
+.descript1 {
+    border: 5px outset darkblue;
+    background-color: lightgoldenrodyellow;
+    text-align: justify;
+    font-size: 5vw;
+    width: 100%;
+    padding: 5px;
+    font-weight: 400;
+    margin-top: 2%
+}
+
+
+.tabler_index {
+    font-size: 1.5vw;
+    color: black;
+    background-color: lightblue;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    border: 3px darkblue solid;
+    max-width: 100%;
+    height: auto;
+    opacity: 0.9;
+}
+
+.currentConds {
+    font-size: 3vw;
+    color: black;
+    background-color: white;
+    margin: auto;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    width: 100vh;
+    height: 50vh;
+    margin-bottom: 1%;
+    margin-top: 1%;
+}
+
+.previous {
+    background-color: #f1f1f1;
+    color: black;
+    margin: auto;
+    font-size: 4vw;
+
+}
+
+.next {
+    background-color: #04AA6D;
+    color: white;
+    margin: auto;
+    font-size: 4vw;
+}
+
+.moveOver {
+    text-align: center;
+    font-size: 3vw;
+    margin: auto;
+    width: 70%;
+    padding: 5px;
+    font-weight: 400;
+    margin-top: 1%
+}
+
+.tablerMET {
+    font-size: 1.5vw;
+    color: black;
+    background-color: lightyellow;
+    margin: auto;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    text-decoration: none;
+    border: 3px darkblue solid;
+    margin-bottom: 15px;
+}
+
+.goBackHome {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin: auto;
+    color: darkblue;
+    background-color: lightblue;
+    text-align: center;
+    font-weight: 600;
+    padding: 15px 0;
+}
+
+.tablerMonth {
+    font-size: 24px;
+    color: black;
+    background-color: lightyellow;
+    text-align: center;
+    margin: auto;
+    text-decoration: none;
+    border: 3px darkblue solid;
+
+}
+
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.5px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.tableNA {
+    font-size: 24px;
+    color: black;
+    margin: auto;
+    text-align: center;
+    text-decoration: none;
+    transform: scale(0.65);
+    margin-top: 1%;
+}
+
+.msgMonth {
+    font-size: 32px;
+    color: black;
+    margin: auto;
+    text-align: center;
+    text-decoration: none;
+}
+
+.leftSide {
+    background-color: white;
+    color: black;
+    padding: 2px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    margin: auto;
+    margin-top: 2%;
+    font-size: 4svw;
+
+}
+
+#aboutpic {
+    max-width: 25%;
+    max-height: 90%;
+    margin: auto;
+
+}
+
+figcaption {
+    font-size: 1vw;
+    padding: 3px;
+    text-align: center;
+    font-weight: bold;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+
+}
+
+.query_box {
+    font-size: 2vw;
+    color: darkblue;
+    background-color: lightgoldenrodyellow;
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    border: 3px darkblue solid;
+    max-width: 50%;
+    height: auto;
+}
+
+.highClouds {
+    background-color: white;
+    color: lightgoldenrodyellow;
+    font-size: 5vw;
+    font-weight: 300;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.midClouds {
+    background-color: white;
+    color: black;
+    font-size: 5vw;
+    font-weight: 300;
+
+}
+
+.lowClouds {
+    background-color: white;
+    color: black;
+    font-size: 2vw;
+    font-weight: 300;
+
+}
+
+.YIR {
+    background-color: lightblue;
+    color: darkblue;
+    font-size: 5vw;
+    font-weight: 300;
+
+}
+
+.rightSide {
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    font-size: 1.5vw;
+    text-align: center;
+    border: 3px darkblue solid;
+    font-size: 2vw;
+    position: absolute;
+    top: 10%;
+    right: 10%;
+
+}
+
+.fire {
+    font-size: 1.5vw;
+    color: black;
+    background-color: lightblue;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    border: 3px darkblue solid;
+    height: auto;
+}
+
+.commands {
+    font-weight: bold;
+}
+
+img {
+    width: 100%;
+}
