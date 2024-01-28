@@ -1,39 +1,42 @@
-<?php
 
-# Set up variables to query the mySQL databases
+<?php 
+include 'getYears.php'; 
+echo $valueYear;
 
-$server = '3.135.162.69';
-$user = 'chuckwx';
-$passwd = 'jfr716!!00';
-$db_name = 'trweather';
+###############################
+# Get the Month next          #
+###############################
 
-$con = mysqli_connect($server, $user, $passwd, $db_name);
-
-# Check connection
-if ($con->connect_error) {
-    die("Connection failed: " . $con->connect_error);
-  }
-
-# Get the years avaiable in the database
-
-$result = $con->query("SELECT DISTINCT Month FROM `trw` WHERE Year = 2023");
+$valueMonth = $_POST['Month'];
+  
+$servername = "3.135.162.69";
+$username = "chuckwx";
+$password = "jfr716!!00";
+$$dbname = "trweather";
 
 echo "<html>";
 echo "<body>";
-echo "<select name='Month'>";
+echo "<form method='post'>";
 
-while ($row = $result->fetch_assoc()) {
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-        unset($month);
-        $month = $row['Month']; 
-        echo $month;
-        echo '<option value="'.$month.'"</option>';
-                 
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
 }
 
-    echo "</select>";
-    echo "</body>";
-    echo "</html>";
-?>
+$sql = "SELECT DISTINCT Month FROM trw WHERE Year = '$valueYear'";
+$result = $conn->query($sql);
 
+echo "<label>Month </label>";
+echo "<select name='Month' onchange='this.form.submit()';>";
+#echo "<option value=''>Select a Month</option>";
+while ($row = $result->fetch_assoc()) {
+  echo "<option value='" . $row['Month'] . "'>" . $row['Month'] . "</option>";
+}
 
+echo "</select>";
+echo "</form>";
+
+$conn->close();

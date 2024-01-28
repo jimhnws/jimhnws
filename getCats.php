@@ -18,15 +18,19 @@ if ($con->connect_error) {
 
 $result = $con->query("SELECT DISTINCT Year FROM `trw`");
 
+#$chuck = $result->fetch_all(MYSQLI_ASSOC);
+#$chuckwx = json_encode($chuck);
+#echo '<prev>'; print_r($chuckwx); echo '</prev>';
+
 echo "<html>";
 echo "<body>";
-echo "<select name='Year'>";
+echo "<label>Year </label>";
+echo "<select name='Year' id='Year'>";
 
 while ($row = $result->fetch_assoc()) {
 
         unset($year);
         $year = $row['Year']; 
-        echo $year;
         echo '<option value="'.$year.'"</option>';
                  
 }
@@ -34,4 +38,7 @@ while ($row = $result->fetch_assoc()) {
     echo "</select>";
     echo "</body>";
     echo "</html>";
+
+
 ?>
+
