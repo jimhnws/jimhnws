@@ -23,6 +23,7 @@ pd.options.display.float_format = '{:,.2f}'.format
 # Exit the program if the DataFrame is empty
 #
 
+'''
 if df.empty:
     print("The dataset is empty")
     Image2 = Image.open('/var/www/html/000/allInOne.png')
@@ -49,6 +50,7 @@ if df.empty:
     #        print("Error: %s file not found" % files)
         
     sys.exit()    
+'''
 
 #
 # Calculating some needed variables for later

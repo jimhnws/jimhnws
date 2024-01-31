@@ -31,6 +31,7 @@ df = pd.read_json('/var/www/html/000/daily.txt')
 # Exit the program if the DataFrame is empty
 #
 
+'''
 if df.empty:
     print("The dataset is empty")
     file1 = ('/var/www/html/000/NoData.html')
@@ -42,7 +43,8 @@ if df.empty:
 #
 # Calculating some needed variables for later
 #
-    
+''' 
+ 
 df = df.drop(df.columns[[0,7]], axis=1)
 
 Date = (df['Day']).astype(int)

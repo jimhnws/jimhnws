@@ -69,11 +69,11 @@ a {
 
 .topBox {
     border: 5px outset darkblue;
-    background-color: rgb(245, 245, 107);
+    background-color: lightblue;
     padding: 5px;
     text-align: center;
     font-weight: bold;
-    font-size: 4vw;
+    font-size: 8vw;
     border-radius: 40px;
     width: 100%;
     margin: auto;
@@ -82,44 +82,30 @@ a {
 }
 
 .query_boxMonth {
-    font-size: 1vw;
+    font-size: 8vw;
     color: darkblue;
     background-color: white;
-    width: 17%;
+    width: 70%;
     text-align: center;
     text-decoration: none;
     font-weight: bold;
-    border: 2px darkblue solid;
     height: auto;
-    margin-left: 1%;
+    margin: auto;
     padding: 3px;
 }
 
-input {
-    color: blue;
-    font-size: 3vw;
+label {
+    margin-top: 1%;
+    color: black;
+    font-size: 7vw;
+    font-weight: 600;
+    margin: auto;
+    width: 90%;
+    padding: 3px;
 
 }
 
 input,
 label {
     margin: .4rem 0;
-}
-
-.hold {
-    position: absolute;
-    top: 0;
-    left: 22%
-}
-
-.hold1 {
-    position: absolute;
-    top: 75%;
-    left: 22%
-}
-
-.image1 {
-    position: absolute;
-    top: 0;
-    left: 54%;
 }
