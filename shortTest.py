@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[49]:
+# In[63]:
 
 
 import pandas as pd
@@ -21,11 +21,8 @@ conn = mysql.connector.connect(
 
 mycursor = conn.cursor()
 mycursor.execute("USE hourlyt;")
-pop1 = ("select * from testTempest order by id DESC LIMIT 25;")
-#pop1 = ("select @startTime := timeStamp from testTempest order by id DESC LIMIT 1;")
-#pop2 = ("SELECT @endTime := DATE_SUB(@startTime, INTERVAL 24 Hour);")
-#pop3 = ("SELECT * from testTempest WHERE timeStamp BETWEEN @endTime AND @startTime;")
-#popSelect = pop1 + pop2 + pop3
+pop1 = ("select * from testTempest order by id DESC LIMIT 24;")
+#pop1 = ("select * from testTempest order by timeGroup DESC LIMIT 24;")
 
 mycursor.execute(pop1)
 hours = mycursor.fetchall()
@@ -36,7 +33,7 @@ df = df.drop(df.columns[[0, 1]], axis = 1)
 df = df.iloc[::-1]
 
 
-# In[58]:
+# In[64]:
 
 
 import matplotlib.pyplot as plt

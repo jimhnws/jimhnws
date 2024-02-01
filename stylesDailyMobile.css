@@ -5,12 +5,17 @@
 }
 
 html {
-    background-color: crimson;
+    background-color: white;
     color: black;
     font-family: "Times New Roman";
-    font-size: 1vw;
+    font-size: 2vw;
     font-weight: 300;
     text-rendering: optimizeLegibility;
+
+}
+
+.form {
+    color: darkblue;
 
 }
 
@@ -40,7 +45,7 @@ tr {
 }
 
 td {
-    font-size: 3vw;
+    font-size: 24px;
     color: black;
     text-align: center;
     padding: 5px;
@@ -62,11 +67,25 @@ a {
     margin: auto;
 }
 
+.topBox {
+    border: 5px outset darkblue;
+    background-color: lightblue;
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 8vw;
+    border-radius: 40px;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 1%;
+
+}
+
 .query_boxMonth {
-    font-size: 4vw;
+    font-size: 8vw;
     color: darkblue;
-    background-color: crimson;
-    width: 10%;
+    background-color: white;
+    width: 70%;
     text-align: center;
     text-decoration: none;
     font-weight: bold;
@@ -75,19 +94,18 @@ a {
     padding: 3px;
 }
 
-input {
-    color: blue;
-    font-size: 2vw;
+label {
+    margin-top: 1%;
+    color: black;
+    font-size: 7vw;
+    font-weight: 600;
+    margin: auto;
+    width: 90%;
+    padding: 3px;
 
 }
 
 input,
 label {
-    margin: .8rem 0;
-}
-
-.image1 {
-    position: absolute;
-    top: 0;
-    right: 30%;
+    margin: .4rem 0;
 }

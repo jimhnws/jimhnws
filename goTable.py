@@ -60,6 +60,7 @@ df = df.drop(df.columns[[0]], axis=1)
 date = ((df['Day'])).astype(int)
 month_num  = (df['Month']).astype(int)
 month_num = month_num[0]
+print(month_num)
 month_name = calendar.month_name[month_num]
 month_abbrev = month_name[0:3]
 Year = (df['Year']).astype(int)

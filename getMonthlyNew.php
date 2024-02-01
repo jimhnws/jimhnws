@@ -1,5 +1,7 @@
 <?php
 session_start();
+error_reporting(0);
+
 ?>
 
 <?php
@@ -36,7 +38,6 @@ function sanitizeInput($input)
 </head>
 <body>
 
-<div class="query_boxMonth">
 <form method='post' action='getMonthlyNew.php'>
 
     <label>Year </label>
@@ -52,10 +53,8 @@ function sanitizeInput($input)
     </select>
 
 </form>
-</div>
 
 <?php
-
 
 // Check if the form is submitted
 if (isset($_POST['Year'])) {
@@ -116,7 +115,7 @@ $conn->close();
 $output = shell_exec('/var/www/html/000/testBlast.sh 2>&1');
 //var_dump($output);
 
-sleep(3);
+sleep(5);
 
 ?>
 
@@ -124,13 +123,13 @@ sleep(3);
 <script>
   function load_anotherpage() {
     document.getElementById("display").innerHTML =
-      '<embed type="text/html" src="http://3.135.162.69/try1.html" width="440" height="1200">';
+      '<embed type="text/html" src="http://3.135.162.69/try1.html" width="440" height="1400">';
   }  
 
   load_anotherpage();
 </script>  
 
-<div class="image1">
+<div class="image1" style="position:absolute;top: 2%; right: 5%;">
     <iframe src="http://3.135.162.69/allInOne.png" name="targetframe" allowTransparency="true" scrolling="no" frameborder="0" width="1000" height="800">
     </iframe>
 </div>

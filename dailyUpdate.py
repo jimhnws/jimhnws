@@ -105,7 +105,6 @@ import pymysql as dbapi
 import sys
 import csv
 from tabulate import tabulate
-import sqlGet
 import getDays
 import logging
 
