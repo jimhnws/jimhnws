@@ -5,7 +5,6 @@
 
 
 import sandbox2
-import sqlGet
 import logging
 
 '''
@@ -79,7 +78,6 @@ recordHigh()
 
 
 import sandbox2
-import sqlGet
 import logging
 
 logger = logging.getLogger(__name__)
@@ -159,7 +157,6 @@ recordLow()
 
 
 import sandbox2
-import sqlGet
 import logging 
 
 '''

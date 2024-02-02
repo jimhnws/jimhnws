@@ -12,8 +12,15 @@ import pymysql as dbapi
 import sys
 import csv
 from tabulate import tabulate
-import sqlGet
 import getDays
+import logging
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+formatter = logging.Formatter('%(levelname)s:%(name)s:%(message)s')
+file_handler = logging.FileHandler('/home/ec2-user/sandbox2.log')
+file_handler.setFormatter(formatter)
+logger.addHandler(file_handler)
 
 def sandbox2():  
            
