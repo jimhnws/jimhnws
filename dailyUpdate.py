@@ -234,6 +234,118 @@ cur.execute(QUERY7)
 result7 = cur.fetchall()
 
 #
+# Get the high average for the date
+#
+
+QUERY8 = """SELECT * FROM dailyHiAvg 
+         WHERE Month = %s 
+         AND Date = %s""" % (month_num, date)
+
+db = dbapi.connect(host='3.135.162.69',user='chuckwx',passwd='jfr716!!00', database = 'trweather')
+
+cur = db.cursor()
+cur.execute(QUERY8)
+result8 = cur.fetchall()
+dailyHiAvg = result8[0]
+recYearNum =  len(result8)
+hiAvg = int(dailyHiAvg[3])
+hiAvgYear = int(dailyHiAvg[4])
+print(hiAvg, hiAvgYear)
+
+#
+# Get the low average for the date
+#
+
+QUERY9 = """SELECT * FROM dailyLoAvg
+               WHERE Month = %s 
+               AND Date = %s""" % (month_num, date)
+
+
+db = dbapi.connect(host='3.135.162.69',user='chuckwx',passwd='jfr716!!00', database = 'trweather')
+
+cur = db.cursor()
+cur.execute(QUERY9)
+result9 = cur.fetchall()
+recYearNum =  len(result9)
+dailyLoAvg = result9[0]
+loAvg = int(dailyLoAvg[3])
+loAvgYear = int(dailyLoAvg[4])
+
+#
+# Get the high HDD for the date
+#
+
+QUERY10 = """SELECT * FROM dailyHDDMax 
+         WHERE Month = %s 
+         AND Date = %s""" % (month_num, date)
+
+db = dbapi.connect(host='3.135.162.69',user='chuckwx',passwd='jfr716!!00', database = 'trweather')
+
+cur = db.cursor()
+cur.execute(QUERY10)
+result10 = cur.fetchall()
+dailyHDDMax = result10[0]
+recYearNum =  len(result10)
+HDDMax = int(dailyHDDMax[4])
+HDDMaxYear = int(dailyHDDMax[3])
+
+#
+# Get the low HDD for the date
+#
+
+QUERY11 = """SELECT * FROM dailyHDDMin
+               WHERE Month = %s 
+               AND Date = %s""" % (month_num, date)
+
+
+db = dbapi.connect(host='3.135.162.69',user='chuckwx',passwd='jfr716!!00', database = 'trweather')
+
+cur = db.cursor()
+cur.execute(QUERY11)
+result11 = cur.fetchall()
+recYearNum =  len(result11)
+dailyHDDMin = result11[0]
+HDDMin = int(dailyHDDMin[4])
+HDDMinYear = int(dailyHDDMin[3])
+
+#
+# Get the high CDD for the date
+#
+
+QUERY12 = """SELECT * FROM dailyCDDMax 
+         WHERE Month = %s 
+         AND Date = %s""" % (month_num, date)
+
+db = dbapi.connect(host='3.135.162.69',user='chuckwx',passwd='jfr716!!00', database = 'trweather')
+
+cur = db.cursor()
+cur.execute(QUERY12)
+result12 = cur.fetchall()
+dailyCDDMax = result12[0]
+recYearNum =  len(result12)
+CDDMax = int(dailyCDDMax[4])
+CDDMaxYear = int(dailyCDDMax[3])
+
+#
+# Get the low HDD for the date
+#
+
+QUERY13 = """SELECT * FROM dailyCDDMin
+               WHERE Month = %s 
+               AND Date = %s""" % (month_num, date)
+
+
+db = dbapi.connect(host='3.135.162.69',user='chuckwx',passwd='jfr716!!00', database = 'trweather')
+
+cur = db.cursor()
+cur.execute(QUERY13)
+result13 = cur.fetchall()
+recYearNum =  len(result13)
+dailyCDDMin = result13[0]
+CDDMin = int(dailyCDDMin[4])
+CDDMinYear = int(dailyCDDMin[3])
+
+#
 # Calculate phrasing for the web page
 #
 
@@ -293,22 +405,22 @@ with open('/var/www/html/000/dailyTest.html', 'w') as f:
         
         </tr>
         <tr>
-            <td>Max Temperature</td><td>{high}</td><td>{avgHigh}</td><td>{recHigh} in {recHighYear}</td><td>{minHigh} in {recminHighYear}</td>
+            <td>Max Temp</td><td>{high}</td><td>{avgHigh}</td><td>{recHigh} in {recHighYear}</td><td>{minHigh} in {recminHighYear}</td>
         </tr>
         <tr>
-            <td>Min Temperature</td><td>{low}</td><td>{avgLow}</td><td>{maxLow} in {recmaxLowYear}</td><td>{recLow} in {recLowYear}</td>
+            <td>Min Temp</td><td>{low}</td><td>{avgLow}</td><td>{maxLow} in {recmaxLowYear}</td><td>{recLow} in {recLowYear}</td>
         </tr>
         <tr>
-            <td>Avg Temperature</td><td>{avg}</td><td>{avgTemp}</td><td></td><td></td>
+            <td>Avg Temp</td><td>{avg}</td><td>{avgTemp}</td><td>{hiAvg} in {hiAvgYear}</td><td>{loAvg} in {loAvgYear}</td>
         </tr>
         <tr>
-            <td>HDD</td><td>{hdd}</td><td>{nmlHDD}</td><td></td><td></td>
+            <td>HDD</td><td>{hdd}</td><td>{nmlHDD}</td><td>{HDDMax} in {HDDMaxYear}</td><td>{HDDMin} in {HDDMinYear}</td>
         </tr>
         <tr>
-            <td>CDD</td><td>{cdd}</td><td>{nmlCDD}</td><td></td><td></td>
+            <td>CDD</td><td>{cdd}</td><td>{nmlCDD}</td><td>{CDDMax} in {CDDMaxYear}</td><td>{CDDMin} in {CDDMinYear}</td>
         </tr>
         <tr>
-            <td>Rainfall</td><td>{rain}</td><td>{avgRain:.2f}</td><td>{recRain:.2f} in {recRainYear}</td><td>{lowestRainfall}</td>
+            <td>Rain</td><td>{rain}</td><td>{avgRain:.2f}</td><td>{recRain:.2f} in {recRainYear}</td><td>{lowestRainfall}</td>
         </tr>       
             
         
@@ -360,13 +472,13 @@ with open('/var/www/html/000/dailyTest1.html', 'w') as f:
             <td>Min Temperature</td><td>{low}</td><td>{avgLow}</td><td>{maxLow} in {recmaxLowYear}</td><td>{recLow} in {recLowYear}</td>
         </tr>
         <tr>
-            <td>Avg Temperature</td><td>{avg}</td><td>{avgTemp}</td><td></td><td></td>
+            <td>Avg Temperature</td><td>{avg}</td><td>{avgTemp}</td><td>{hiAvg} in {hiAvgYear}</td><td>{loAvg} in {loAvgYear}</td>
         </tr>
         <tr>
-            <td>HDD</td><td>{hdd}</td><td>{nmlHDD}</td><td></td><td></td>
+            <td>HDD</td><td>{hdd}</td><td>{nmlHDD}</td><td>{HDDMax} in {HDDMaxYear}</td><td>{HDDMin} in {HDDMinYear}</td>
         </tr>
         <tr>
-            <td>CDD</td><td>{cdd}</td><td>{nmlCDD}</td><td></td><td></td>
+            <td>CDD</td><td>{cdd}</td><td>{nmlCDD}</td><td>{CDDMax} in {CDDMaxYear}</td><td>{CDDMin} in {CDDMinYear}</td>
         </tr>
         <tr>
             <td>Rainfall</td><td>{rain}</td><td>{avgRain:.2f}</td><td>{recRain:.2f} in {recRainYear}</td><td>{lowestRainfall}</td>

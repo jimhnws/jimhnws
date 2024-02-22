@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: white;
+    color: black;
+    font-family: "Times New Roman";
+    font-size: 2vw;
+    font-weight: 300;
+    text-rendering: optimizeLegibility;
+
+}
+
+.form {
+    color: darkblue;
+
+}
+
+h1 {
+    color: black;
+    font-size: 2vw;
+    text-align: center;
+}
+
+h2 {
+    color: black;
+    font-size: 2vw;
+    text-align: center;
+}
+
+h3 {
+    font-size: 4vw;
+    color: black;
+    text-align: center;
+    padding: 10px;
+}
+
+tr {
+    font-size: 20px;
+    color: blue;
+
+}
+
+td {
+    font-size: 24px;
+    color: black;
+    text-align: center;
+    padding: 5px;
+    font-weight: bold;
+}
+
+p {
+    font-size: 2vw;
+    font-weight: bold;
+    color: blue;
+    margin-left: 2%;
+}
+
+a {
+    text-decoration: none;
+    color: darkblue;
+    font-weight: bold;
+    text-align: center;
+    margin: auto;
+}
+
+.topBox {
+    border: 5px outset darkblue;
+    background-color: rgb(245, 245, 107);
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 3vw;
+    border-radius: 40px;
+    width: 50%;
+    margin: auto;
+    margin-bottom: 2%;
+
+}
+
+.query_boxMonth {
+    font-size: 1vw;
+    color: darkblue;
+    background-color: white;
+    width: 10%;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px darkblue solid;
+    height: auto;
+    margin: auto;
+    padding: 3px;
+}
+
+input {
+    color: blue;
+    font-size: 3vw;
+
+}
+
+input,
+label {
+    margin: .4rem 0;
+}
+
+.hold {
+    position: absolute;
+    top: 0;
+    left: 22%
+}
+
+.hold1 {
+    position: absolute;
+    top: 75%;
+    left: 22%
+}
+
+.image1 {
+    position: absolute;
+    top: 0;
+    left: 38%;
+}

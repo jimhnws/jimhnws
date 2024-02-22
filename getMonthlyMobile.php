@@ -29,13 +29,15 @@ function sanitizeInput($input)
     <meta charset="utf-8" />  
     <meta name="viewport" content="width=device-width, initial-scale=1" />  
     <link rel="stylesheet" media="screen and (min-width: 900px)" href="stylesQuery.css" />
-    <link rel="stylesheet" media="screen and (max-width: 600px) " href="stylesMonthlyMobile.css" />
+    <link rel="stylesheet" media="screen and (max-width: 600px)" href="stylesMonthlyMobile.css" />
     <link rel="stylesheet" href="normalize.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Get Monthly Data from the Database</title>
 </head>
 <body>
+<a href="http://trclimate.org">
     <div class="topBox">Monthly Data</div>
+    </a>
     <div class="query_boxMonth">
 
     <form method='post' action='getMonthlyMobile.php'>

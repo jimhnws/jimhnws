@@ -35,8 +35,9 @@ function sanitizeInput($input)
     <title>Get Daily Data from the Database</title>
 </head>
 <body>
-
+    <a href="http://trclimate.org">
     <div class="topBox">Daily Data</div>
+    </a>
     <div class="query_boxMonth">
 
 

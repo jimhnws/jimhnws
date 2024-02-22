@@ -1,6 +1,5 @@
 <?php
 session_start();
-error_reporting(0);
 
 ?>
 
@@ -30,6 +29,9 @@ function sanitizeInput($input)
 <head>
     <meta charset="utf-8" />  
     <meta name="viewport" content="width=device-width, initial-scale=1" />  
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <link rel="stylesheet" media="screen and (min-width: 900px)" href="stylesQuery.css" />
     <link rel="stylesheet" media="screen and (max-width: 600px) " href="stylesMonthlyMobile.css" />
     <link rel="stylesheet" href="normalize.css">
@@ -129,7 +131,7 @@ sleep(5);
   load_anotherpage();
 </script>  
 
-<div class="image1" style="position:absolute;top: 2%; right: 5%;">
+<div class="image1" style="position:absolute;top: 2%; right: 2%;">
     <iframe src="http://3.135.162.69/allInOne.png" name="targetframe" allowTransparency="true" scrolling="no" frameborder="0" width="1000" height="800">
     </iframe>
 </div>
@@ -142,7 +144,12 @@ sleep(5);
   }
 
   load_anotherpage();
+  
 </script>
+
+<div class="bottomCenter" style="position: absolute; bottom: 0; left: 40%; font-size: 2vw;">
+<a href="http://trclimate.org">Return to trclimate.org</a>
+</div>    
 
 </body>
 </html>

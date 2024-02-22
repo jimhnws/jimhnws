@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[8]:
+# In[2]:
 
 
 import calcOneDay
@@ -10,6 +10,7 @@ from datetime import datetime, timedelta
 import calcTimeNow
 import daysAndDates
 import logging
+import os
 
 #
 # Set up some logging
@@ -39,7 +40,7 @@ nextDay = int(dayInfo[5])
 print(month, month_num, date, year)
 
 
-# In[6]:
+# In[7]:
 
 
 import collections
@@ -63,7 +64,7 @@ parameters = {
 parameters = collections.OrderedDict(sorted(parameters.items()))
 
 for key in parameters:
-    logger.info("Parameter name: \"{}\" has value \"{}\"".format(key, parameters[key]))
+    print("Parameter name: \"{}\" has value \"{}\"".format(key, parameters[key]))
 
 apiSecret = parameters["api-secret"];
 parameters.pop("api-secret", None);
@@ -72,7 +73,7 @@ data = ""
 for key in parameters:
     data = data + key + str(parameters[key])
 
-logger.info('Data string to hash is: \"{}\"'.format(data))   
+#logger.info('Data string to hash is: \"{}\"'.format(data))   
 
 """
 Calculate the HMAC SHA-256 hash that will be used as the API Signature.
@@ -87,7 +88,7 @@ apiSignature = hmac.new(
 Let's see what the final API Signature looks like.
 """
 
-logger.info('API Signature is: \"{}\"'.format(apiSignature))
+#logger.info('API Signature is: \"{}\"'.format(apiSignature))
 
 # Building the URL to get the station
 
@@ -105,7 +106,7 @@ r =  requests.get(URLfinal)
 davisAPI = (r.json())
 
 
-# In[11]:
+# In[13]:
 
 
 import numpy as np
@@ -115,6 +116,7 @@ import matplotlib.pyplot as plt
 import sqlalchemy
 from dateutil.tz import tzutc, tzlocal
 import pytz
+import os
 
 a = davisAPI['sensors']    
 b = a[1]
@@ -130,9 +132,15 @@ df['localTime'] = df['timeGroup'].dt.strftime('%I:%M %p')
 
 df = df.loc[:,['timestamp', 'temp_hi', 'temp_hi_at','temp_lo', 'temp_lo_at', 'rainfall_in', 'dew_point_hi', 'dew_point_lo',  'rain_rate_hi_in', 'rain_rate_hi_at', 'timeGroup', 'localTime']]
 
+#
+# use environmental variables for the SQL query
+#
 
-database_username = 'chuckwx'
-database_password = 'jfr716!!00'
+db_user = os.environ.get('dbUser')
+db_password = os.environ.get('dbPass')
+
+database_username = db_user
+database_password = db_password
 database_ip       = '3.135.162.69'
 database_name     = 'davisInfo'
 database_connection = sqlalchemy.create_engine('mysql+mysqlconnector://{0}:{1}@{2}/{3}'.
@@ -189,13 +197,21 @@ if cdd < 0:
 import sqlalchemy
 import mysql.connector
 import sqlite3
+import os
 
 df2 = pd.DataFrame(columns = ['Year', 'Month', 'Date', 'High', 'Low', 'Average', 'HDD', 'CDD', 'Rainfall', 'Max_Dew_Point'])
 newRow = pd.DataFrame({'Year': year, 'Month': month_num, 'Date': yesterday, 'High': maxT, 'Low': minT, 'Average': avgTemp, 'HDD': hdd, 'CDD': cdd, 'Rainfall' : rain, 'Max_Dew_Point': dewMaxT }, index = [yesterday])
 df2 = pd.concat([newRow, df2]).reset_index(drop = True)
 
-database_username = 'chuckwx'
-database_password = 'jfr716!!00'
+#
+# use environmental variables for the SQL query
+#
+
+db_user = os.environ.get('dbUser')
+db_password = os.environ.get('dbPass')
+
+database_username = db_user
+database_password = db_password
 database_ip       = '3.135.162.69'
 database_name     = 'davisf6'
 database_connection = sqlalchemy.create_engine('mysql+mysqlconnector://{0}:{1}@{2}/{3}'.
@@ -204,7 +220,7 @@ database_connection = sqlalchemy.create_engine('mysql+mysqlconnector://{0}:{1}@{
 df2.to_sql(con=database_connection, name='davisUpdate', if_exists='append', index = False)
 
 
-# In[1]:
+# In[17]:
 
 
 #
@@ -214,13 +230,21 @@ df2.to_sql(con=database_connection, name='davisUpdate', if_exists='append', inde
 import pandas as pd
 import pymysql as dbapi
 from pretty_html_table import build_table
+import os
+
+#
+# use environmental variables for the SQL query
+#
+
+db_user = os.environ.get('dbUser')
+db_password = os.environ.get('dbPass')
 
 QUERY2 = """SELECT * FROM davisUpdate 
          WHERE Month = %s""" % (month_num)
 
 
 html_path = '/var/www/html/000/'
-db = dbapi.connect(host='3.135.162.69',user='chuckwx',passwd='jfr716!!00', database = 'davisf6')
+db = dbapi.connect(host='3.135.162.69', user=db_user, passwd=db_password, database = 'davisf6', port = 3306)
 
 cur = db.cursor()
 cur.execute(QUERY2)
@@ -233,7 +257,7 @@ df3 = df3.drop(df3.columns[[0, 1]], axis = 1)
 df3 = df3.reindex(columns=['Date', 'High', 'Low', 'Average', 'HDD', 'CDD', 'Rainfall', 'Max_Dew_Point'])
 df3.to_html(f'{html_path}throttled.html', index = False)     
 
-html_table_blue_light = build_table(df3, 'blue_light', text_align='center')
+html_table_blue_light = build_table(df3, 'blue_light', text_align='center', font_size='32px')
 
 with open(f'{html_path}davisLocal.html', 'w') as f:
           f.write(html_table_blue_light)   
@@ -250,19 +274,25 @@ import pymysql as dbapi
 import sys
 import csv
 from tabulate import tabulate
+import os
 
 #
 # Get normal highs and lows
 #
 
+#
+# use environmental variables for the SQL query
+#
+
+db_user = os.environ.get('dbUser')
+db_password = os.environ.get('dbPass')
+
 QUERY = """SELECT * FROM avgHiLo 
            WHERE Month = %s 
            AND Day = %s""" % (month_num, date)
 
-logger.info(QUERY)
 
-
-db = dbapi.connect(host='3.135.162.69',user='chuckwx',passwd='jfr716!!00', database = 'trweather')
+db = dbapi.connect(host='3.135.162.69',user=db_user,passwd=db_password, database = 'trweather')
 
 cur = db.cursor()
 cur.execute(QUERY)
@@ -281,7 +311,7 @@ QUERY1 = """SELECT * FROM recHigh
            AND Day = %s""" % (month_num, date)
 
 
-db = dbapi.connect(host='3.135.162.69',user='chuckwx',passwd='jfr716!!00', database = 'trweather')
+db = dbapi.connect(host='3.135.162.69',user=db_user,passwd=db_password, database = 'trweather')
 
 cur = db.cursor()
 cur.execute(QUERY1)
@@ -299,7 +329,7 @@ QUERY2 = """SELECT * FROM recLow
            AND Day = %s""" % (month_num, date)
 
 
-db = dbapi.connect(host='3.135.162.69',user='chuckwx',passwd='jfr716!!00', database = 'trweather')
+db = dbapi.connect(host='3.135.162.69',user=db_user,passwd=db_password, database = 'trweather')
 
 cur = db.cursor()
 cur.execute(QUERY2)
@@ -318,7 +348,7 @@ QUERY3 = """SELECT * FROM recRain
            AND Day = %s""" % (month_num, date)
 
 
-db = dbapi.connect(host='3.135.162.69',user='chuckwx',passwd='jfr716!!00', database = 'trweather')
+db = dbapi.connect(host='3.135.162.69',user=db_user,passwd=db_password, database = 'trweather')
 
 cur = db.cursor()
 cur.execute(QUERY3)
@@ -329,7 +359,7 @@ recRain = recordRain[1]
 recRainYear = int(recordRain[4])
 
 
-# In[ ]:
+# In[1]:
 
 
 import numpy as np
@@ -344,16 +374,12 @@ import sandbox1
 import sandbox2
 
 nmlData = sandbox2.sandbox2()
-logger.info("This is the value of nmlData: ", nmlData)
 nmlHi = nmlData[3]
 nmlLo = nmlData[4]
 
 highData = sandbox1.recordHigh()
-logger.info("THIS IS THE HIGH DATA: ", highData)
 lowData = sandbox1.recordLow()
-logger.info("THIS IS THE LOW DATA: ", lowData)
 rainData = sandbox1.recordRain()
-logger.info("THIS IS THE RAIN DATA: ", rainData)
 
 highPhrase = highData[2]
 lowPhrase = lowData[2]
