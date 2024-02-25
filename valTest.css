@@ -8,7 +8,7 @@ html {
     background-color: white;
     color: black;
     font-family: sans-serif;
-    font-size: 1vw;
+    font-size: 2vw;
     font-weight: 300;
     text-rendering: optimizeLegibility;
 
@@ -51,7 +51,7 @@ p {
     font-size: 1.5vw;
     font-weight: bold;
     color: blue;
-    margin-left: 2%;
+    margin-left: 1%;
 
 
 }
@@ -148,19 +148,19 @@ img {
 .testBox {
     color: darkblue;
     background-color: lightblue;
-    width: 15%;
+    width: 10%;
     text-align: center;
     text-decoration: none;
     font-weight: 800;
     border: 2px darkblue solid;
     height: auto;
-    margin-left: 6%;
+    margin-left: 1%;
     padding: 3px;
 
 }
 
 label {
-    font-size: 2vw;
+    font-size: 1vw;
     color: blue;
 }
 
@@ -174,7 +174,6 @@ span {
 
 input {
     color: black;
-    font-size: 2vw;
 
 }
 
@@ -191,12 +190,10 @@ input {
     left: 12%;
 }
 
-.hold {
+.righter {
     position: absolute;
     top: 0;
-    left: 25%;
-    width: 60%;
-    height: 900px;
+    left: 15%
 }
 
 .testBox1 {
@@ -234,18 +231,9 @@ img {
     right: 4%
 }
 
-.testBox {
-    color: black;
-    background-color: lightblue;
-    width: 10%;
-    text-align: center;
-    text-decoration: none;
-    font-weight: 800;
-    border: 2px darkblue solid;
-    height: auto;
-    padding: 5px;
-    font-size: 2em;
-    margin-left: 2%;
-
+.rockBottom {
+    position: absolute;
+    top: 90%;
+    left: 32%;
 
 }

@@ -1,3 +1,28 @@
+<?php
+
+if($_POST['Month'] and $_POST['Year']){
+    $month = $_POST['Month'];
+    $year = $_POST['Year'];
+}            
+
+// render month/year names to attach to images
+
+$monthYear = $month.$year;
+$temp_suffix = '_temps.png';
+$rain_suffix = '_rainfall.png';
+$newTemps = 'Temps.png';
+$newRain = 'Rain.png';
+
+$siteID = 'http://trclimate.org/';
+$siteID1 = 'http://trclimate.org/images/';
+
+$tempImage = $siteID.$monthYear.$temp_suffix;
+$rainImage = $siteID.$monthYear.$rain_suffix;
+$newTempImage = $siteID1.$monthYear.$newTemps;
+$newRainImage = $siteID1.$monthYear.$newRain;
+
+?>
+
 <!DOCTYPE html>
 
 <head>
@@ -86,30 +111,6 @@
                            
          </form>
         </div>
-<?php
-
-if($_POST['Month'] and $_POST['Year']){
-    $month = $_POST['Month'];
-    $year = $_POST['Year'];
-}            
-
-// render month/year names to attach to images
-
-$monthYear = $month.$year;
-$temp_suffix = '_temps.png';
-$rain_suffix = '_rainfall.png';
-$newTemps = 'Temps.png';
-$newRain = 'Rain.png';
-
-$siteID = 'http://trclimate.org/';
-$siteID1 = 'http://trclimate.org/images/';
-
-$tempImage = $siteID.$monthYear.$temp_suffix;
-$rainImage = $siteID.$monthYear.$rain_suffix;
-$newTempImage = $siteID1.$monthYear.$newTemps;
-$newRainImage = $siteID1.$monthYear.$newRain;
-
-?>
 
 <div class="sizeIt">
 
@@ -150,6 +151,10 @@ $newRainImage = $siteID1.$monthYear.$newRain;
     src.appendChild(img);
 
 </script>  
+</div>
+
+<div class="rockBottom">
+<a href="http://trclimate.org" style="font-size: 3vw;">Return to trclimate.org</a>
 </div>
 
 </body>
